@@ -1,0 +1,39 @@
+{
+  "sonic_revision": "b042411fae38ee4d1af9aac82a37a1f8d14d6dd0",
+  "runtime_patch_sha256": "0666c1ad8e035457ec6485639826905ed024d2b67e72ee6c1a6feeeab4a4e620",
+  "patch_verification": "Applied to clean upstream text in temporary directory; all 15 resulting files byte-identical to existing runtime; current environment untouched",
+  "patched_source_sha256": {
+    "gear_sonic/envs/manager_env/mdp/commands.py": "444bdb5a84987ec5bcc4f768640722f90a85c24011c4ee16c292a6d49b28ba5f",
+    "gear_sonic/envs/manager_env/mdp/events.py": "22c61a5337ecd6750cdd69b99fd05e463c3c404ee1c22f7bb7c8a0741ebdfd49",
+    "gear_sonic/envs/manager_env/mdp/observations.py": "9e671b55e8288f7a6c25abfcbf1c1eb4e3485c7412d1b73410ab59c2d95fc443",
+    "gear_sonic/envs/manager_env/mdp/recorders.py": "156af3ad025c575e5ce7440596a044660ac936dba68c4b656bde27dc211ebcc0",
+    "gear_sonic/envs/manager_env/mdp/rewards.py": "5b64c88691f90e0e40dd149d8822e4b6d31c4ee65c7eca4ffe1674dc6770836e",
+    "gear_sonic/envs/manager_env/mdp/terminations.py": "73a4c0230f8e696199d6bc46be1c1f2cf5e6a529dde10f09468fc657dbaf2bbe",
+    "gear_sonic/envs/manager_env/mdp/utils.py": "95e4cbf338f70f3034495850d5a387d68d4c7f716285081236ac78a9511482f3",
+    "gear_sonic/envs/manager_env/modular_tracking_env_cfg.py": "d841ea9c199018fa83cc26f7c086ab9e9cf32c098feb37f94034a35521b63bca",
+    "gear_sonic/envs/manager_env/robots/g1.py": "97344e379b15ee347576caa6b56de29e871bec590bb9ad7d4d2215032ce14eb0",
+    "gear_sonic/envs/wrapper/manager_env_wrapper.py": "f4796294fa09d6dc9d40cccf5464c9c4e8c6e158f91acc07a85b6d7c58e27433",
+    "gear_sonic/eval_agent_trl.py": "a5d2292d9121246e61b5c7768ad0968c49028778fdbe28cf4b720647f4b06b5a",
+    "gear_sonic/pyproject.toml": "2469d6a6b02bd6adc135046826cc9f7d7c85ec8c167f0e75130f063a53e767dd",
+    "gear_sonic/trl/callbacks/im_eval_callback.py": "dbee4fbbc1cb4e7dd4c2f5d0438256f59b7732248d15422b23be826f5f4ce16e",
+    "gear_sonic/trl/utils/common.py": "81e95c59eae539f34db01cfed0ee248390b48abf0adcdd842236d1d0abe756c2",
+    "gear_sonic/utils/lab3_wxyz.py": "5df7963d49fb2008760020cbb8d97e397c38d0786da4a316d09dd3e5522d14a5"
+  },
+  "packages": {
+    "torch": "2.10.0+cu128",
+    "numpy": "2.3.1",
+    "scipy": "1.17.0",
+    "transformers": "4.57.6",
+    "huggingface-hub": "0.36.2",
+    "isaacsim": null,
+    "isaaclab": "6.1.11",
+    "PyYAML": "6.0.3"
+  },
+  "sonic_checkpoint_sha256": "e6bdab3f64a39336b3d41877d4f497d05f58af275f288ec0e6746c283ded8909",
+  "sonic_checkpoint_bytes": 469418283,
+  "exclusions": "Robot meshes, controller weights, existing experiment callbacks and datasets are not redistributed",
+  "python": "3.12.14",
+  "isaaclab_source_revision": "28a37cecdd433c22d9eabd6a5954add9f13a8951",
+  "gpu": "NVIDIA GeForce RTX 4090, 570.211.01, 49140 MiB",
+  "version_note": "Directory names and historical lab3_wxyz shim name are not release versions; exact package metadata and source revision are recorded."
+}

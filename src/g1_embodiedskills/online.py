@@ -159,7 +159,7 @@ def run_closed_loop(wrapper, policy, request):
     if int(lib._num_motions) < env.num_envs:
         raise ValueError("Every physical slot needs an independent reference timeline")
     original_fields = {name: value.clone() for name, value in NativeReferencePatcher(lib).fields.items()}
-    episodes, global_selections = [], []
+    episodes, global_selections, recorded_videos = [], [], []
     timings = {key: [] for key in ("decision", "render", "proposal", "encoder", "selector", "patch")}
     started = time.monotonic()
 
@@ -199,7 +199,7 @@ def run_closed_loop(wrapper, policy, request):
         selections = [[] for _ in range(count)]
         estimates = [None] * env.num_envs
         random_generators = [np.random.default_rng(np.random.SeedSequence([seed, 0x474153])) for seed in seeds]
-        trace_records, decisions, video_frames = [env.capture()], [], []
+        trace_records, decisions, video_frames = [env.capture()], [], {}
         batch_started = time.monotonic()
 
         for step in range(total_steps):
@@ -212,8 +212,9 @@ def run_closed_loop(wrapper, policy, request):
                 before_render = time.perf_counter()
                 images = render_observations(env, live_slots, refresh=True)
                 timings["render"].append(time.perf_counter()-before_render)
-                if batch_id == 0 and getattr(request, "record_video", False) and 0 in images:
-                    video_frames.append(images[0]["rgb"].copy())
+                if batch_id == 0 and getattr(request, "record_video", False):
+                    for slot in live_slots:
+                        video_frames.setdefault(slot, []).append(images[slot]["rgb"].copy())
                 # Collection refreshes target estimates only in its clear-view
                 # window. Current RGB is still encoded at every decision.
                 if 3.4 <= elapsed <= 6.6:
@@ -363,8 +364,10 @@ def run_closed_loop(wrapper, policy, request):
         trace = {key: np.stack([_array(record[key]) for record in trace_records]) for key in trace_records[0]}
         _save_npz(batch_dir / "trace.npz", **trace, env_origins=origins)
         write_json(batch_dir / "decisions.json", decisions)
-        if video_frames:
-            encode_video(output / "head-first-batch-slot-0.mp4", video_frames, fps=5)
+        for slot, frames in video_frames.items():
+            video_path = f"head-first-batch-slot-{slot}.mp4"
+            encode_video(output / video_path, frames, fps=5)
+            recorded_videos.append({"batch": batch_id, "slot": slot, "seed": seeds[slot], "path": video_path})
         for slot in range(count):
             completed_steps = end_steps[slot] if end_steps[slot] >= 0 else len(trace_records)-1
             slot_trace = {key: value[:completed_steps+1] for key, value in trace.items()}
@@ -388,6 +391,8 @@ def run_closed_loop(wrapper, policy, request):
         gpu_peak = {"allocated_bytes": int(torch.cuda.max_memory_allocated(device)),
                     "reserved_bytes": int(torch.cuda.max_memory_reserved(device)),
                     "scope": "PyTorch allocator for entire process; excludes non-PyTorch renderer allocations"}
+    successful_seeds = {row["seed"] for row in episodes if row["success"]}
+    preferred_videos = [row for row in recorded_videos if row["seed"] in successful_seeds] or recorded_videos
     result = {"completed": len(episodes) == repeats, "mode": "closed_loop", "method": method,
         "episodes": episodes, "success_rate": sum(row["success"] for row in episodes)/len(episodes),
         "requested_episodes": repeats, "counted_episodes": len(episodes), "seed_base": seed_base,
@@ -398,6 +403,6 @@ def run_closed_loop(wrapper, policy, request):
         "latency": {key: _latency(value) for key, value in timings.items()}, "gpu_peak": gpu_peak,
         "wall_seconds": time.monotonic()-started, "hard_physics_reset": True,
         "protocol": "Every decision uses present RGB/proprioception and five native previews; ten actual control steps, then feedback. No future labels, rollout lookahead, forced switching, or counted padding slots.",
-        "video": "head-first-batch-slot-0.mp4" if getattr(request, "record_video", False) else None}
+        "video": preferred_videos[0]["path"] if preferred_videos else None, "videos": recorded_videos}
     write_json(output / "result.json", result)
     return result
