@@ -1,0 +1,93 @@
+{
+  "task_name": "g1_pick_place",
+  "instruction": "Place the red block into the green tray.",
+  "position_jitter": 0.02,
+  "amplitude_m": 0.025,
+  "execution_steps": 10,
+  "hard_physics_reset": true,
+  "prefix_tolerance": 0.001,
+  "max_amplitude_halvings": 5,
+  "anchors": [
+    {
+      "seed": 1060,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1061,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1062,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1063,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1064,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1065,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1066,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1067,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1068,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1069,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1070,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1071,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1072,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1073,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1074,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1075,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1076,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1077,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1078,
+      "anchor_step": 500
+    },
+    {
+      "seed": 1079,
+      "anchor_step": 500
+    }
+  ],
+  "synchronize_batch_anchors": true
+}

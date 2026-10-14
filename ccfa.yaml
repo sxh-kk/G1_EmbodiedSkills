@@ -1,36 +1,39 @@
-version: "0.4.0"
+version: 0.4.0
 project:
-  title: "EmbodiedSkills 迁移 G1 仿真抓放"
-  short_name: "G1_EmbodiedSkills"
-  root: "."
+  title: EmbodiedSkills 迁移 G1 仿真抓放
+  short_name: G1_EmbodiedSkills
+  root: .
 target_venue:
-  name: ""
-  year: ""
-  mode: "review"
+  name: ''
+  year: ''
+  mode: review
 stage:
-  current: "candidate_branch_collection"
-  gate: "stage2_passed"
-  updated_at: "2026-10-14T22:13:00+08:00"
+  current: data_and_training
+  gate: stage3_passed
+  updated_at: '2026-10-14T23:07:00+08:00'
 artifacts:
-  manuscript: ""
-  bibliography: ""
-  figures: ""
-  tables: ""
-  experiments: "outputs/"
-  reviews: "docs/"
-  submission: ""
+  manuscript: ''
+  bibliography: ''
+  figures: ''
+  tables: ''
+  experiments: outputs/
+  reviews: docs/
+  submission: ''
 claims: []
 experiments:
-  - id: "stage1_interface"
-    status: "passed"
-    report: "docs/01-夹爪与控制接口验收.md"
-  - id: "stage2_direct_pick_place"
-    status: "passed"
-    report: "docs/02-直接抓放与视觉反馈验收.md"
+- id: stage1_interface
+  status: passed
+  report: docs/01-夹爪与控制接口验收.md
+- id: stage2_direct_pick_place
+  status: passed
+  report: docs/02-直接抓放与视觉反馈验收.md
+- id: stage3_five_branches
+  status: passed
+  report: docs/03-五候选与分支采集验收.md
 reviews: []
 revision_ledger:
-  path: "LOG.md"
-  status: "active"
+  path: LOG.md
+  status: active
 submission_checks:
-  path: ""
-  status: "not_started"
+  path: ''
+  status: not_started

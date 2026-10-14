@@ -1,0 +1,15 @@
+{
+  "task_name": "g1_pick_place",
+  "instruction": "Place the red block into the green tray.",
+  "position_jitter": 0.01,
+  "amplitude_m": 0.012,
+  "execution_steps": 10,
+  "hard_physics_reset": true,
+  "prefix_tolerance": 0.001,
+  "anchors": [
+    {"seed": 1000, "anchor_step": 400},
+    {"seed": 1001, "anchor_step": 450},
+    {"seed": 1002, "anchor_step": 480},
+    {"seed": 1003, "anchor_step": 800}
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "task_name": "g1_pick_place",
+  "instruction": "Place the red block into the green tray.",
+  "position_jitter": 0.02,
+  "amplitude_m": 0.025,
+  "execution_steps": 10,
+  "hard_physics_reset": true,
+  "prefix_tolerance": 0.001,
+  "max_amplitude_halvings": 5,
+  "anchors": [
+    {
+      "seed": 1100,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1101,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1102,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1103,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1104,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1105,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1106,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1107,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1108,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1109,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1110,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1111,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1112,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1113,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1114,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1115,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1116,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1117,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1118,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1119,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1120,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1121,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1122,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1123,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1124,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1125,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1126,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1127,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1128,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1129,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1130,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1131,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1132,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1133,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1134,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1135,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1136,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1137,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1138,
+      "anchor_step": 800
+    },
+    {
+      "seed": 1139,
+      "anchor_step": 800
+    }
+  ],
+  "synchronize_batch_anchors": true
+}

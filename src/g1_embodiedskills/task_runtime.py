@@ -42,8 +42,8 @@ def run_task(wrapper, policy, request):
         for name, value in original_fields.items():
             getattr(lib, name).copy_(value)
         if request.hard_reset:
-            env.sim.stop()
-            env.sim.reset(soft=False)
+            from .simulation import rebuild_physics
+            rebuild_physics(env)
         policy.init_rollout()
         env.episode_seed = request.seed_base + repeat
         obs = wrapper.process_raw_obs(env.reset_nominal(), True)

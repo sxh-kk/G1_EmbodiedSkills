@@ -25,6 +25,16 @@ def tensor(value):
     return value.torch if hasattr(value, "torch") else value
 
 
+def rebuild_physics(env):
+    """Detach the old GPU stage before Lab 3 rebuilds its physics views."""
+    import omni.physx
+    import omni.kit.app
+    env.sim.stop()
+    omni.physx.get_physx_simulation_interface().detach_stage()
+    omni.kit.app.get_app().update()
+    env.sim.reset(soft=False)
+
+
 def body_position(env):
     robot = env.scene["robot"]
     ids = get_body_joint_indices(robot)
@@ -238,11 +248,16 @@ class MigrationEnv(ManagerBasedRLEnv):
         reference_quat = command.body_quat_w[:, reference_index]
         reference_tcp = command.body_pos_w[:, reference_index] + lab3_wxyz.quat_apply(
             reference_quat, pos.new_tensor(TCP_OFFSET).expand_as(pos))
+        cube_data = self.scene["cube"].data
+        cube_root = torch.cat([tensor(cube_data.root_pos_w), lab3_wxyz.from_lab(cube_data.root_quat_w),
+            tensor(cube_data.root_lin_vel_w), tensor(cube_data.root_ang_vel_w)], -1)
         return {"root": root.detach().clone(), "q": tensor(d.joint_pos).detach().clone(),
             "qdot": tensor(d.joint_vel).detach().clone(), "tcp": tcp.detach().clone(),
             "wrist_quat_wxyz": quat.detach().clone(),
             "reference_tcp": reference_tcp.detach().clone(),
+            "terminated": self.reset_terminated.detach().clone(),
             "cube": tensor(self.scene["cube"].data.root_pos_w).detach().clone(),
+            "cube_root": cube_root.detach().clone(),
             "gripper": tensor(d.joint_pos)[:, self.gripper_ids].detach().clone(),
             "time": torch.full((self.num_envs,), self.physics_elapsed - self.episode_start_time, device=self.device)}
 

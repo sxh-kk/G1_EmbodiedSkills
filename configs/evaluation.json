@@ -1,0 +1,22 @@
+{
+  "seed_base": 900000,
+  "repeats": 30,
+  "num_envs": 8,
+  "position_jitter_m": 0.02,
+  "amplitude_m": 0.025,
+  "seconds": 24,
+  "methods": [
+    "direct",
+    "random",
+    "selector"
+  ],
+  "execution_steps": 10,
+  "split_seed": 42,
+  "validation_fraction": 0.15,
+  "test_fraction": 0.15,
+  "development_seeds": "1000-1053 and 990000; excluded from formal training and evaluation",
+  "training_seeds": [
+    1100,
+    1139
+  ]
+}

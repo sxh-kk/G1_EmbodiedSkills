@@ -1,0 +1,70 @@
+{
+  "anchors": 20,
+  "branches": 100,
+  "unique_episodes": 20,
+  "successes": 89,
+  "failures": 11,
+  "direct_success_rate": 0.8500000238418579,
+  "any_candidate_success_rate": 0.949999988079071,
+  "informative_anchors": 3,
+  "rescuable_anchors": 2,
+  "harmful_alternatives_anchors": 1,
+  "candidate_success_counts": [
+    17,
+    18,
+    18,
+    18,
+    18
+  ],
+  "state_dim": 1041,
+  "action_shape": [
+    5,
+    75,
+    38
+  ],
+  "prefix_maximum_absolute_errors": {
+    "root": 0.0,
+    "q": 0.0,
+    "qdot": 0.0,
+    "actor_obs": 0.0,
+    "tokenizer": 0.0,
+    "servo_correction": 0.0,
+    "cube_offset": 0.0,
+    "tray_offset": 0.0,
+    "cube_root": 0.0
+  },
+  "labels_verified_against_recorded_physical_outcomes": true,
+  "outcomes_recomputed_from_physical_traces": true,
+  "canonical_command_hashes_verified": true,
+  "physical_object_prefix_recomputed": true,
+  "provenance": {
+    "robot_asset_sha256": "a262118f75f369da675034d700082798aafdd5e476430650b3c36133cb6973b8",
+    "reference_sha256": {
+      "motion.pkl": "3be392248e5f5d7e0e13628a205ad30cd24381b7adb5c5cdd424890a6d7dca6d",
+      "planned.npz": "cd938bed6f875c9867ed7242eacdd1585486830b904a9224f97e221a363748b9",
+      "reference.json": "5f75c93b2d6f862999292a548d39ce17d1bdd45c2e098f0de11da42d8014d63e",
+      "task.json": "5775546c9ef63ed71c94f4e9ee5cbf64e38874d5cfbb648c2a5060c730486b8d"
+    },
+    "adapter_source_sha256": {
+      "collection.py": "97c8f963698072fc0db2e6054943914dec7fd946b4f3b7fc5283c001ace8c28b",
+      "candidates.py": "0107456428f8b45655014a663dca0785ac4b067aed7f519d196445666b9e9475",
+      "simulation.py": "62788b6b9adeb733bf1ff6ad445bc82b77a0c0caceacce3e7ac3c60d6d329dc0",
+      "servo.py": "2998bf2b195b6baccda62b63b1bda85e745f413d3c4f778f645b59a115ee1281",
+      "native_reference.py": "c6a49542fb17ba8c5d8d3dfdece15cb71b4f49120b5a8eb988d40dd905fd42cf",
+      "metrics.py": "71d9695036d45568bc1baf7dbe5e20019d8fc21468c8d283adcba57aa1fbfae0",
+      "perception.py": "5838a1ed336a2d1d39e627dbfc8111d56763684c1eaf55cdbe36fa5337c05c20"
+    }
+  },
+  "output_sha256": "0f8b4271da00bba3713a8171f8633fd49b5aa1a61a72c9a380db39cc949032a7",
+  "sources": [
+    {
+      "anchors": 20,
+      "raw_sha256": "0f8b4271da00bba3713a8171f8633fd49b5aa1a61a72c9a380db39cc949032a7",
+      "collection_config_sha256": "b22330d76c90162c138d1dc7bbe00582b01c2275e5025ddbe43863df8539ca91",
+      "attempted_groups": 20,
+      "rejected_groups": 0,
+      "jitter_m": 0.02,
+      "wall_seconds": 389.0826067730013
+    }
+  ]
+}
