@@ -6,6 +6,7 @@ __pycache__/
 .env.*
 configs/local.json
 outputs/
+artifacts/
 cache/
 *.pt
 *.pth
