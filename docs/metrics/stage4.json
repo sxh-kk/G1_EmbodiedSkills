@@ -1,0 +1,1365 @@
+{
+  "schema": "g1_embodiedskills.stage4.v1",
+  "status": "passed_training_and_offline_audit",
+  "completed_at": "2026-10-15T00:31:06.774954+08:00",
+  "online_success_not_yet_claimed": true,
+  "collection": {
+    "anchors": 200,
+    "branches": 1000,
+    "unique_episodes": 40,
+    "successes": 957,
+    "failures": 43,
+    "direct_success_rate": 0.9700000286102295,
+    "any_candidate_success_rate": 0.9850000143051147,
+    "informative_anchors": 20,
+    "rescuable_anchors": 3,
+    "harmful_alternatives_anchors": 17,
+    "candidate_success_counts": [
+      194,
+      189,
+      192,
+      192,
+      190
+    ],
+    "state_dim": 1041,
+    "action_shape": [
+      5,
+      75,
+      38
+    ],
+    "prefix_maximum_absolute_errors": {
+      "root": 0.0,
+      "q": 0.0,
+      "qdot": 0.0,
+      "actor_obs": 0.0,
+      "tokenizer": 0.0,
+      "servo_correction": 0.0,
+      "cube_offset": 0.0,
+      "tray_offset": 0.0,
+      "cube_root": 0.0
+    },
+    "labels_verified_against_recorded_physical_outcomes": true,
+    "outcomes_recomputed_from_physical_traces": true,
+    "canonical_command_hashes_verified": true,
+    "physical_object_prefix_recomputed": true,
+    "provenance": {
+      "robot_asset_sha256": "a262118f75f369da675034d700082798aafdd5e476430650b3c36133cb6973b8",
+      "reference_sha256": {
+        "motion.pkl": "3be392248e5f5d7e0e13628a205ad30cd24381b7adb5c5cdd424890a6d7dca6d",
+        "planned.npz": "cd938bed6f875c9867ed7242eacdd1585486830b904a9224f97e221a363748b9",
+        "reference.json": "5f75c93b2d6f862999292a548d39ce17d1bdd45c2e098f0de11da42d8014d63e",
+        "task.json": "5775546c9ef63ed71c94f4e9ee5cbf64e38874d5cfbb648c2a5060c730486b8d"
+      },
+      "adapter_source_sha256": {
+        "collection.py": "05ada7b17a5762a489be78ab2a2df342a36442e2dd39427d33b02a1c32cbe679",
+        "candidates.py": "0107456428f8b45655014a663dca0785ac4b067aed7f519d196445666b9e9475",
+        "simulation.py": "62788b6b9adeb733bf1ff6ad445bc82b77a0c0caceacce3e7ac3c60d6d329dc0",
+        "servo.py": "2998bf2b195b6baccda62b63b1bda85e745f413d3c4f778f645b59a115ee1281",
+        "native_reference.py": "c6a49542fb17ba8c5d8d3dfdece15cb71b4f49120b5a8eb988d40dd905fd42cf",
+        "metrics.py": "71d9695036d45568bc1baf7dbe5e20019d8fc21468c8d283adcba57aa1fbfae0",
+        "perception.py": "5838a1ed336a2d1d39e627dbfc8111d56763684c1eaf55cdbe36fa5337c05c20"
+      }
+    },
+    "output_sha256": "8bc92283c05496fa1d60f13f4e411fc6e8430de8771969eab29a7ef7a1b95990",
+    "sources": [
+      {
+        "anchors": 40,
+        "raw_sha256": "929d98a94146551658a3244125c5b6ef0962bad263a6dfc0da080c6d43acd4f6",
+        "collection_config_sha256": "702ae3c8f36564c743ba42dc0c5f034f73879e0911da4af9bd410ce6b2d17006",
+        "attempted_groups": 40,
+        "rejected_groups": 0,
+        "jitter_m": 0.02,
+        "wall_seconds": 967.4110535869986
+      },
+      {
+        "anchors": 40,
+        "raw_sha256": "c5f3826bce5b5df8cc9ccf03558f0cfa3f4da1f05abd27cd69fd6fb22ccec557",
+        "collection_config_sha256": "a657f6ba67487e3f7c43c1261196c9bef6179baee2c51b0b0ccf677bb62c6a7c",
+        "attempted_groups": 40,
+        "rejected_groups": 0,
+        "jitter_m": 0.02,
+        "wall_seconds": 941.6356597949998
+      },
+      {
+        "anchors": 40,
+        "raw_sha256": "83b80bf348179f926ba97db00c577db3293cb2c9cc79ae70cb123954ea1036f3",
+        "collection_config_sha256": "5b4a0f49d5aa1e2decc430a4dd6d022319e1a0dbc2a620d810d93a0daf3c3348",
+        "attempted_groups": 40,
+        "rejected_groups": 0,
+        "jitter_m": 0.02,
+        "wall_seconds": 912.8869970960004
+      },
+      {
+        "anchors": 40,
+        "raw_sha256": "1e3933c5207f1a7cb4515fe92adea76b8bc00527dd5a97eb3a188e668f448c5d",
+        "collection_config_sha256": "a712837460a3487e843d475d1cda7739fc8d50d7af09c0c799be8ecceda8b896",
+        "attempted_groups": 40,
+        "rejected_groups": 0,
+        "jitter_m": 0.02,
+        "wall_seconds": 892.2672503260001
+      },
+      {
+        "anchors": 40,
+        "raw_sha256": "9471e58cd9df081b4f5beb0b6f8e5cff5f3cd38f3576a9afbf71a87a7607ac15",
+        "collection_config_sha256": "63a380b78743eaf031e5d86e26046c0faebcaf142b89623a0c59c4083f8f9793",
+        "attempted_groups": 40,
+        "rejected_groups": 0,
+        "jitter_m": 0.02,
+        "wall_seconds": 875.5492409930011
+      }
+    ]
+  },
+  "collection_runtime": {
+    "pipeline": {
+      "started_at": "2026-10-14T23:07:36.826341+08:00",
+      "shards": [
+        {
+          "index": 0,
+          "config": "/home/zxc/ski/g1_embodiedskills/configs/collection-formal-phase-0.json",
+          "config_sha256": "702ae3c8f36564c743ba42dc0c5f034f73879e0911da4af9bd410ce6b2d17006",
+          "output": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/dataset/shard-00",
+          "status": "complete",
+          "returncode": 0,
+          "wall_seconds": 987.0002420780002,
+          "result": {
+            "completed": true,
+            "mode": "collect",
+            "accepted_anchors": 40,
+            "rejected_groups": 0,
+            "raw_archive": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/dataset/shard-00/collection/raw.npz",
+            "manifest": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/dataset/shard-00/collection/manifest.json",
+            "all_requested_anchors_accepted": true,
+            "note": "Collection completion does not imply replay gates passed; rejected groups have no training row"
+          }
+        },
+        {
+          "index": 1,
+          "config": "/home/zxc/ski/g1_embodiedskills/configs/collection-formal-phase-1.json",
+          "config_sha256": "a657f6ba67487e3f7c43c1261196c9bef6179baee2c51b0b0ccf677bb62c6a7c",
+          "output": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/dataset/shard-01",
+          "status": "complete",
+          "returncode": 0,
+          "wall_seconds": 963.9514000939998,
+          "result": {
+            "completed": true,
+            "mode": "collect",
+            "accepted_anchors": 40,
+            "rejected_groups": 0,
+            "raw_archive": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/dataset/shard-01/collection/raw.npz",
+            "manifest": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/dataset/shard-01/collection/manifest.json",
+            "all_requested_anchors_accepted": true,
+            "note": "Collection completion does not imply replay gates passed; rejected groups have no training row"
+          }
+        },
+        {
+          "index": 2,
+          "config": "/home/zxc/ski/g1_embodiedskills/configs/collection-formal-phase-2.json",
+          "config_sha256": "5b4a0f49d5aa1e2decc430a4dd6d022319e1a0dbc2a620d810d93a0daf3c3348",
+          "output": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/dataset/shard-02",
+          "status": "complete",
+          "returncode": 0,
+          "wall_seconds": 932.8942592010026,
+          "result": {
+            "completed": true,
+            "mode": "collect",
+            "accepted_anchors": 40,
+            "rejected_groups": 0,
+            "raw_archive": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/dataset/shard-02/collection/raw.npz",
+            "manifest": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/dataset/shard-02/collection/manifest.json",
+            "all_requested_anchors_accepted": true,
+            "note": "Collection completion does not imply replay gates passed; rejected groups have no training row"
+          }
+        },
+        {
+          "index": 3,
+          "config": "/home/zxc/ski/g1_embodiedskills/configs/collection-formal-phase-3.json",
+          "config_sha256": "a712837460a3487e843d475d1cda7739fc8d50d7af09c0c799be8ecceda8b896",
+          "output": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/dataset/shard-03",
+          "status": "complete",
+          "returncode": 0,
+          "wall_seconds": 911.8336727799979,
+          "result": {
+            "completed": true,
+            "mode": "collect",
+            "accepted_anchors": 40,
+            "rejected_groups": 0,
+            "raw_archive": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/dataset/shard-03/collection/raw.npz",
+            "manifest": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/dataset/shard-03/collection/manifest.json",
+            "all_requested_anchors_accepted": true,
+            "note": "Collection completion does not imply replay gates passed; rejected groups have no training row"
+          }
+        },
+        {
+          "index": 4,
+          "config": "/home/zxc/ski/g1_embodiedskills/configs/collection-formal-phase-4.json",
+          "config_sha256": "63a380b78743eaf031e5d86e26046c0faebcaf142b89623a0c59c4083f8f9793",
+          "output": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/dataset/shard-04",
+          "status": "complete",
+          "returncode": 0,
+          "wall_seconds": 895.8164362520001,
+          "result": {
+            "completed": true,
+            "mode": "collect",
+            "accepted_anchors": 40,
+            "rejected_groups": 0,
+            "raw_archive": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/dataset/shard-04/collection/raw.npz",
+            "manifest": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/dataset/shard-04/collection/manifest.json",
+            "all_requested_anchors_accepted": true,
+            "note": "Collection completion does not imply replay gates passed; rejected groups have no training row"
+          }
+        }
+      ],
+      "completed": true,
+      "finished_at": "2026-10-15T00:25:48.349253+08:00"
+    },
+    "wall_seconds": 4691.522912,
+    "sampled_whole_gpu_max_mib": 7740.0,
+    "resource_samples": 471,
+    "dataset_bytes": 935730137
+  },
+  "features": {
+    "schema": "g1_embodiedskills.features.v1",
+    "source_sha256": "8bc92283c05496fa1d60f13f4e411fc6e8430de8771969eab29a7ef7a1b95990",
+    "dimensions": {
+      "rows": 200,
+      "episodes": 40,
+      "state_dim": 1041,
+      "action_dim": 38,
+      "execution_horizon": 75,
+      "candidates": 5,
+      "branch_success_rate": 0.9570000171661377,
+      "informative_rows": 20,
+      "return_range": [
+        -0.8253594040870667,
+        5.993527412414551
+      ],
+      "expert_utility_range": [
+        -0.05582671985030174,
+        -0.0
+      ]
+    },
+    "encoders": {
+      "visual_backbone": "vjepa2",
+      "visual_model": "facebook/vjepa2-vitl-fpc64-256",
+      "visual_revision": "b3c1679b7c34d3255ef3547f27c7b226aefab26f",
+      "language_model": "sentence-transformers/all-MiniLM-L6-v2",
+      "language_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "spatial_grid": 1
+    },
+    "visual_preprocessing": "resize_292_center_crop_256_imagenet_two_identical_frames",
+    "visual_normalization": "L2 after spatial_grid=1 pooling",
+    "language_preprocessing": "MiniLM masked mean pooling and L2; max_length=64; single instruction batch=1; exact cached float32",
+    "g1_language_cache": {
+      "schema": "g1_embodiedskills.language_cache.v1",
+      "encoding": "single_instruction_batch_one",
+      "sha256": {
+        "Place the red block into the green tray.": "c0401f03587462d5aaa84978c7adde70b9d7647b27492ddf1c38aae9fd421202"
+      }
+    },
+    "labels": "Copied unchanged from raw archive; measured return/expert utility required"
+  },
+  "split": {
+    "schema": "g1_embodiedskills.episode_split.v1",
+    "seed": 42,
+    "source_sha256": "c7db104884d70fb803d557a161ce2f29644b60e8aece90c72abd675dc5661863",
+    "splits": {
+      "train": {
+        "rows": 140,
+        "episodes": 28,
+        "state_dim": 1041,
+        "action_dim": 38,
+        "execution_horizon": 75,
+        "candidates": 5,
+        "branch_success_rate": 0.9599999785423279,
+        "informative_rows": 13,
+        "return_range": [
+          -0.8001987934112549,
+          5.993527412414551
+        ],
+        "expert_utility_range": [
+          -0.05569258704781532,
+          -0.0
+        ]
+      },
+      "validation": {
+        "rows": 30,
+        "episodes": 6,
+        "state_dim": 1041,
+        "action_dim": 38,
+        "execution_horizon": 75,
+        "candidates": 5,
+        "branch_success_rate": 0.9399999976158142,
+        "informative_rows": 3,
+        "return_range": [
+          -0.8253594040870667,
+          5.958425998687744
+        ],
+        "expert_utility_range": [
+          -0.05295339599251747,
+          -0.0
+        ]
+      },
+      "test": {
+        "rows": 30,
+        "episodes": 6,
+        "state_dim": 1041,
+        "action_dim": 38,
+        "execution_horizon": 75,
+        "candidates": 5,
+        "branch_success_rate": 0.9599999785423279,
+        "informative_rows": 4,
+        "return_range": [
+          -0.785050094127655,
+          5.989777565002441
+        ],
+        "expert_utility_range": [
+          -0.05582671985030174,
+          -0.0
+        ]
+      }
+    }
+  },
+  "training": {
+    "schema": "g1_embodiedskills.training.v1",
+    "upstream_revision": "e3aa582614a9601f1c826950b9673cab81da2cb0",
+    "train_sha256": "936915320d0c37b7972b9b3616b2f81d63de8f74f9533876c11791bb314c9a43",
+    "validation_sha256": "13a0b92a3ee8cea793f7ccefcf3f867e5c92a02929de88a2cc23dea5e178c2c3",
+    "train": {
+      "rows": 140,
+      "episodes": 28,
+      "state_dim": 1041,
+      "action_dim": 38,
+      "execution_horizon": 75,
+      "candidates": 5,
+      "branch_success_rate": 0.9599999785423279,
+      "informative_rows": 13,
+      "return_range": [
+        -0.8001987934112549,
+        5.993527412414551
+      ],
+      "expert_utility_range": [
+        -0.05569258704781532,
+        -0.0
+      ]
+    },
+    "validation": {
+      "rows": 30,
+      "episodes": 6,
+      "state_dim": 1041,
+      "action_dim": 38,
+      "execution_horizon": 75,
+      "candidates": 5,
+      "branch_success_rate": 0.9399999976158142,
+      "informative_rows": 3,
+      "return_range": [
+        -0.8253594040870667,
+        5.958425998687744
+      ],
+      "expert_utility_range": [
+        -0.05295339599251747,
+        -0.0
+      ]
+    },
+    "configuration": {
+      "family": "continuous",
+      "seed": 0,
+      "member_seeds": [
+        0,
+        1,
+        2
+      ],
+      "batch_size": 128,
+      "model": {
+        "hidden": 192,
+        "success_priority": 4.0,
+        "outcome_change_standardized": true,
+        "detach_consequence_for_score": true,
+        "state_dim": 1041,
+        "action_dim": 38,
+        "execution_horizon": 75
+      },
+      "member": {
+        "epochs": 30,
+        "learning_rate": 0.0003,
+        "expert_weight": 0.5
+      },
+      "consensus": {
+        "epochs": 40,
+        "batch_size": 128,
+        "samples_per_task": 256,
+        "learning_rate": 0.0003
+      },
+      "encoders": {
+        "visual_backbone": "vjepa2",
+        "visual_model": "facebook/vjepa2-vitl-fpc64-256",
+        "visual_revision": "b3c1679b7c34d3255ef3547f27c7b226aefab26f",
+        "language_model": "sentence-transformers/all-MiniLM-L6-v2",
+        "language_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "spatial_grid": 1
+      }
+    },
+    "bundle_load": "passed",
+    "members": 3,
+    "algorithm": "Original EmbodiedSkills continuous training/losses/validation are unchanged",
+    "g1_language_cache": {
+      "schema": "g1_embodiedskills.language_cache.v1",
+      "encoding": "single_instruction_batch_one",
+      "sha256": {
+        "Place the red block into the green tray.": "c0401f03587462d5aaa84978c7adde70b9d7647b27492ddf1c38aae9fd421202"
+      }
+    },
+    "member_validation": "Original cosine_gain + 0.01 * expert_correct; not task-success checkpoint selection",
+    "evaluation_scope": "Bundle compatibility only; closed-loop task success requires simulator evaluation"
+  },
+  "offline_validation": {
+    "schema": "g1_embodiedskills.offline_branch_evaluation.v1",
+    "evaluated_at_utc": "2026-10-14T16:29:56.978809+00:00",
+    "scope": "Offline single archived branch selection with recorded continuation; not online closed-loop success rate",
+    "input": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/splits/validation.npz",
+    "input_sha256": "13a0b92a3ee8cea793f7ccefcf3f867e5c92a02929de88a2cc23dea5e178c2c3",
+    "input_sidecar_sha256": "bc799454d3f182c6e6e660fbfb9b735e24c2ecbd56aeb9c281c5cd63a6557b1f",
+    "declared_split": "validation",
+    "dimensions": {
+      "rows": 30,
+      "episodes": 6,
+      "state_dim": 1041,
+      "action_dim": 38,
+      "execution_horizon": 75,
+      "candidates": 5,
+      "branch_success_rate": 0.9399999976158142,
+      "informative_rows": 3,
+      "return_range": [
+        -0.8253594040870667,
+        5.958425998687744
+      ],
+      "expert_utility_range": [
+        -0.05295339599251747,
+        -0.0
+      ]
+    },
+    "selector": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/selector/selector.pt",
+    "selector_sha256": "5ecd410e6ff122e827bef34d4c5ca12334fe3c9366fbcb7edcfec01658cdfa90",
+    "upstream_source_hashes": {
+      "runtime.py": "ebfec204eacfbfa6687d523f480857a83e060b880d698bfe674aa3717748ee40",
+      "checkpoint.py": "8e1789f6363a904bcb15e24d11bd5eaf48fb79aae0545c9956275c09b964d309",
+      "continuous.py": "74fc9d0f7e862ab8908a6ae3a2a1ad41943148fa436b9ea22b37952fa64d377b",
+      "continuous_consensus.py": "170039c29fae7d7246129802bc8ea926e7c7916d34a76603a0ccf6508930ec26"
+    },
+    "model": {
+      "family": "continuous",
+      "members": 3,
+      "comparison_head": "MT50FutureConsequenceCritic",
+      "hidden_sizes": [
+        192,
+        192,
+        192
+      ],
+      "encoders": {
+        "visual_backbone": "vjepa2",
+        "visual_model": "facebook/vjepa2-vitl-fpc64-256",
+        "visual_revision": "b3c1679b7c34d3255ef3547f27c7b226aefab26f",
+        "language_model": "sentence-transformers/all-MiniLM-L6-v2",
+        "language_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "spatial_grid": 1
+      }
+    },
+    "prediction_inputs": [
+      "visual",
+      "state",
+      "language",
+      "progress",
+      "actions",
+      "mask"
+    ],
+    "labels_enter_prediction": false,
+    "metrics": {
+      "rows": 30,
+      "informative_rows": 3,
+      "rescuable_rows": 1,
+      "harmable_rows": 2,
+      "all_success_rows": 26,
+      "all_failure_rows": 1,
+      "branch_success": {
+        "selected": 0.9333333373069763,
+        "direct": 0.9333333373069763,
+        "uniform_random_expectation": 0.9399999976158142,
+        "oracle_five_candidate_upper_bound": 0.9666666388511658
+      },
+      "conditional_accuracy": {
+        "informative_selects_success": {
+          "count": 3,
+          "value": 0.6666666865348816
+        },
+        "rescuable_recovery": {
+          "count": 1,
+          "value": 0.0
+        },
+        "harmable_preserves_direct_success": {
+          "count": 2,
+          "value": 1.0
+        },
+        "all_direct_success_avoids_harm": {
+          "count": 28,
+          "value": 1.0
+        }
+      },
+      "rescues": 0,
+      "harms": 0,
+      "non_direct_selections": 30,
+      "selected_histogram": [
+        0,
+        0,
+        27,
+        1,
+        2
+      ],
+      "physical_return": {
+        "selected": {
+          "count": 30,
+          "minimum": -0.721390962600708,
+          "maximum": 5.958425998687744,
+          "mean": 5.493223969141642
+        },
+        "direct": {
+          "count": 30,
+          "minimum": -0.721390962600708,
+          "maximum": 5.9243340492248535,
+          "mean": 5.4815967361132305
+        },
+        "uniform_random_expectation": {
+          "count": 30,
+          "minimum": -0.721390962600708,
+          "maximum": 5.924240589141846,
+          "mean": 5.484874653816223
+        },
+        "oracle": {
+          "count": 30,
+          "minimum": -0.721390962600708,
+          "maximum": 5.958425998687744,
+          "mean": 5.66040780544281
+        }
+      },
+      "return_regret": {
+        "selected": {
+          "count": 30,
+          "minimum": 0.0,
+          "maximum": 4.211076736450195,
+          "mean": 0.16718382835388185
+        },
+        "direct": {
+          "count": 30,
+          "minimum": 0.0,
+          "maximum": 4.21389627456665,
+          "mean": 0.17881107330322266
+        },
+        "uniform_random_expectation": {
+          "count": 30,
+          "minimum": 0.0,
+          "maximum": 1.695359706878662,
+          "mean": 0.17553315162658692
+        },
+        "selected_on_informative": {
+          "count": 3,
+          "minimum": 0.022376537322998047,
+          "maximum": 4.211076736450195,
+          "mean": 1.4279944101969402
+        }
+      },
+      "proxy_expert_alignment": {
+        "tie_aware_top_utility_fraction": 0.0,
+        "selected_utility": {
+          "count": 30,
+          "minimum": -0.05295339226722717,
+          "maximum": -0.010798311792314053,
+          "mean": -0.03307999946797888
+        },
+        "utility_regret": {
+          "count": 30,
+          "minimum": 0.010798311792314053,
+          "maximum": 0.05295339226722717,
+          "mean": 0.03307999946797888
+        },
+        "definition": "Recorded normalized distance to frozen direct planner, not an optimal-success expert"
+      },
+      "definitions": {
+        "informative": "At least one recorded successful and one unsuccessful candidate in the row",
+        "rescuable": "Direct branch fails and at least one alternative branch succeeds",
+        "harmable": "Direct branch succeeds and at least one alternative branch fails",
+        "conditional_accuracy": "Any recorded successful choice is correct; successful ties are not reduced to one index",
+        "uniform_random": "Exact equal-weight expectation over the five recorded branches; no random trials",
+        "oracle": "Hindsight bound over available candidates; success and maximum return are separate bounds",
+        "return_regret": "Maximum measured physical return in row minus chosen/expected measured return"
+      }
+    },
+    "member_diagnostics": [
+      {
+        "member": 0,
+        "config": {
+          "hidden": 192,
+          "success_priority": 4.0,
+          "outcome_change_standardized": true,
+          "detach_consequence_for_score": true,
+          "state_dim": 1041,
+          "action_dim": 38,
+          "execution_horizon": 75
+        },
+        "future_cosine": {
+          "count": 150,
+          "minimum": 0.974998414516449,
+          "maximum": 0.9979786276817322,
+          "mean": 0.99451655626297
+        },
+        "identity_cosine": {
+          "count": 150,
+          "minimum": 0.9670743346214294,
+          "maximum": 0.9978373050689697,
+          "mean": 0.9903454911708832
+        },
+        "future_cosine_gain_over_identity": {
+          "count": 150,
+          "minimum": -0.002592146396636963,
+          "maximum": 0.027315974235534668,
+          "mean": 0.004171065092086792
+        },
+        "cosine_gain_per_candidate_mean": [
+          0.00439691124483943,
+          0.0043342155404388905,
+          0.0038645565509796143,
+          0.004136596340686083,
+          0.004123046062886715
+        ],
+        "cosine_gain_head_selected": {
+          "count": 30,
+          "minimum": -0.002592146396636963,
+          "maximum": 0.02301347255706787,
+          "mean": 0.003915361563364665
+        },
+        "branch_success": {
+          "selected": 0.9666666388511658,
+          "direct": 0.9333333373069763,
+          "uniform_random_expectation": 0.9399999976158142,
+          "oracle_five_candidate_upper_bound": 0.9666666388511658
+        },
+        "conditional_accuracy": {
+          "informative_selects_success": {
+            "count": 3,
+            "value": 1.0
+          },
+          "rescuable_recovery": {
+            "count": 1,
+            "value": 1.0
+          },
+          "harmable_preserves_direct_success": {
+            "count": 2,
+            "value": 1.0
+          },
+          "all_direct_success_avoids_harm": {
+            "count": 28,
+            "value": 1.0
+          }
+        },
+        "proxy_expert_alignment": {
+          "tie_aware_top_utility_fraction": 0.03333333333333333,
+          "selected_utility": {
+            "count": 30,
+            "minimum": -0.05295339226722717,
+            "maximum": -0.0,
+            "mean": -0.03199087291335066
+          },
+          "utility_regret": {
+            "count": 30,
+            "minimum": 0.0,
+            "maximum": 0.05295339226722717,
+            "mean": 0.03199087291335066
+          },
+          "definition": "Recorded normalized distance to frozen direct planner, not an optimal-success expert"
+        },
+        "success_probability_brier": 0.05543177202343941
+      },
+      {
+        "member": 1,
+        "config": {
+          "hidden": 192,
+          "success_priority": 4.0,
+          "outcome_change_standardized": true,
+          "detach_consequence_for_score": true,
+          "state_dim": 1041,
+          "action_dim": 38,
+          "execution_horizon": 75
+        },
+        "future_cosine": {
+          "count": 150,
+          "minimum": 0.9755373597145081,
+          "maximum": 0.9979349374771118,
+          "mean": 0.9945670795440674
+        },
+        "identity_cosine": {
+          "count": 150,
+          "minimum": 0.9670743346214294,
+          "maximum": 0.9978373050689697,
+          "mean": 0.9903454911708832
+        },
+        "future_cosine_gain_over_identity": {
+          "count": 150,
+          "minimum": -0.0017538070678710938,
+          "maximum": 0.026178956031799316,
+          "mean": 0.004221588373184204
+        },
+        "cosine_gain_per_candidate_mean": [
+          0.004406640771776438,
+          0.004389188718050718,
+          0.0038849313277751207,
+          0.004196016117930412,
+          0.004231164697557688
+        ],
+        "cosine_gain_head_selected": {
+          "count": 30,
+          "minimum": -0.0017538070678710938,
+          "maximum": 0.022538304328918457,
+          "mean": 0.003985406955083212
+        },
+        "branch_success": {
+          "selected": 0.9666666388511658,
+          "direct": 0.9333333373069763,
+          "uniform_random_expectation": 0.9399999976158142,
+          "oracle_five_candidate_upper_bound": 0.9666666388511658
+        },
+        "conditional_accuracy": {
+          "informative_selects_success": {
+            "count": 3,
+            "value": 1.0
+          },
+          "rescuable_recovery": {
+            "count": 1,
+            "value": 1.0
+          },
+          "harmable_preserves_direct_success": {
+            "count": 2,
+            "value": 1.0
+          },
+          "all_direct_success_avoids_harm": {
+            "count": 28,
+            "value": 1.0
+          }
+        },
+        "proxy_expert_alignment": {
+          "tie_aware_top_utility_fraction": 0.0,
+          "selected_utility": {
+            "count": 30,
+            "minimum": -0.05295339226722717,
+            "maximum": -0.010798311792314053,
+            "mean": -0.03320004682367047
+          },
+          "utility_regret": {
+            "count": 30,
+            "minimum": 0.010798311792314053,
+            "maximum": 0.05295339226722717,
+            "mean": 0.03320004682367047
+          },
+          "definition": "Recorded normalized distance to frozen direct planner, not an optimal-success expert"
+        },
+        "success_probability_brier": 0.05575190857052803
+      },
+      {
+        "member": 2,
+        "config": {
+          "hidden": 192,
+          "success_priority": 4.0,
+          "outcome_change_standardized": true,
+          "detach_consequence_for_score": true,
+          "state_dim": 1041,
+          "action_dim": 38,
+          "execution_horizon": 75
+        },
+        "future_cosine": {
+          "count": 150,
+          "minimum": 0.975214958190918,
+          "maximum": 0.9980173707008362,
+          "mean": 0.9945379320780436
+        },
+        "identity_cosine": {
+          "count": 150,
+          "minimum": 0.9670743346214294,
+          "maximum": 0.9978373050689697,
+          "mean": 0.9903454911708832
+        },
+        "future_cosine_gain_over_identity": {
+          "count": 150,
+          "minimum": -0.0024638772010803223,
+          "maximum": 0.027134299278259277,
+          "mean": 0.004192440907160441
+        },
+        "cosine_gain_per_candidate_mean": [
+          0.004458143375813961,
+          0.0043752193450927734,
+          0.003893868066370487,
+          0.0040781376883387566,
+          0.004156835842877626
+        ],
+        "cosine_gain_head_selected": {
+          "count": 30,
+          "minimum": -0.001788794994354248,
+          "maximum": 0.02309781312942505,
+          "mean": 0.003958537181218465
+        },
+        "branch_success": {
+          "selected": 0.9333333373069763,
+          "direct": 0.9333333373069763,
+          "uniform_random_expectation": 0.9399999976158142,
+          "oracle_five_candidate_upper_bound": 0.9666666388511658
+        },
+        "conditional_accuracy": {
+          "informative_selects_success": {
+            "count": 3,
+            "value": 0.6666666865348816
+          },
+          "rescuable_recovery": {
+            "count": 1,
+            "value": 0.0
+          },
+          "harmable_preserves_direct_success": {
+            "count": 2,
+            "value": 1.0
+          },
+          "all_direct_success_avoids_harm": {
+            "count": 28,
+            "value": 1.0
+          }
+        },
+        "proxy_expert_alignment": {
+          "tie_aware_top_utility_fraction": 0.03333333333333333,
+          "selected_utility": {
+            "count": 30,
+            "minimum": -0.05295339226722717,
+            "maximum": -0.0,
+            "mean": -0.031031212055434784
+          },
+          "utility_regret": {
+            "count": 30,
+            "minimum": 0.0,
+            "maximum": 0.05295339226722717,
+            "mean": 0.031031212055434784
+          },
+          "definition": "Recorded normalized distance to frozen direct planner, not an optimal-success expert"
+        },
+        "success_probability_brier": 0.05487433075904846
+      }
+    ],
+    "future_diagnostic_definition": "cos(predicted_future,recorded_future)-cos(current_visual,recorded_future), all five candidate continuations",
+    "predictions_archive": "predictions.npz",
+    "predictions_archive_sha256": "10ec8346aaec566faaf079b4d25bd1da547bde61e05db9ec61dd16f6f5a9b3e7",
+    "device": "cuda",
+    "batch_size": 32,
+    "prediction_seconds": 0.21616912899844465,
+    "member_diagnostic_seconds": 0.008170629997039214,
+    "wall_seconds": 0.240721260997816,
+    "limitations": [
+      "Branches share archived anchors; no repeated online interventions were evaluated",
+      "Uniform-random value is an exact archive expectation; oracle uses measured future labels only as a bound",
+      "Proxy expert labels measure planner distance, not optimal task success",
+      "Rows within the same task/seed are correlated; no independence-based confidence interval is claimed"
+    ]
+  },
+  "offline_test": {
+    "schema": "g1_embodiedskills.offline_branch_evaluation.v1",
+    "evaluated_at_utc": "2026-10-14T16:30:08.791609+00:00",
+    "scope": "Offline single archived branch selection with recorded continuation; not online closed-loop success rate",
+    "input": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/splits/test.npz",
+    "input_sha256": "e5d566bb08540280ef328515967ca809da783e1fd8711a8f5b9022906c4527ed",
+    "input_sidecar_sha256": "cbcd3bdd0b25f4ff6a1a875da8f2b9ba1b76f4ba199b422d301b00077112876a",
+    "declared_split": "test",
+    "dimensions": {
+      "rows": 30,
+      "episodes": 6,
+      "state_dim": 1041,
+      "action_dim": 38,
+      "execution_horizon": 75,
+      "candidates": 5,
+      "branch_success_rate": 0.9599999785423279,
+      "informative_rows": 4,
+      "return_range": [
+        -0.785050094127655,
+        5.989777565002441
+      ],
+      "expert_utility_range": [
+        -0.05582671985030174,
+        -0.0
+      ]
+    },
+    "selector": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/selector/selector.pt",
+    "selector_sha256": "5ecd410e6ff122e827bef34d4c5ca12334fe3c9366fbcb7edcfec01658cdfa90",
+    "upstream_source_hashes": {
+      "runtime.py": "ebfec204eacfbfa6687d523f480857a83e060b880d698bfe674aa3717748ee40",
+      "checkpoint.py": "8e1789f6363a904bcb15e24d11bd5eaf48fb79aae0545c9956275c09b964d309",
+      "continuous.py": "74fc9d0f7e862ab8908a6ae3a2a1ad41943148fa436b9ea22b37952fa64d377b",
+      "continuous_consensus.py": "170039c29fae7d7246129802bc8ea926e7c7916d34a76603a0ccf6508930ec26"
+    },
+    "model": {
+      "family": "continuous",
+      "members": 3,
+      "comparison_head": "MT50FutureConsequenceCritic",
+      "hidden_sizes": [
+        192,
+        192,
+        192
+      ],
+      "encoders": {
+        "visual_backbone": "vjepa2",
+        "visual_model": "facebook/vjepa2-vitl-fpc64-256",
+        "visual_revision": "b3c1679b7c34d3255ef3547f27c7b226aefab26f",
+        "language_model": "sentence-transformers/all-MiniLM-L6-v2",
+        "language_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "spatial_grid": 1
+      }
+    },
+    "prediction_inputs": [
+      "visual",
+      "state",
+      "language",
+      "progress",
+      "actions",
+      "mask"
+    ],
+    "labels_enter_prediction": false,
+    "metrics": {
+      "rows": 30,
+      "informative_rows": 4,
+      "rescuable_rows": 1,
+      "harmable_rows": 3,
+      "all_success_rows": 26,
+      "all_failure_rows": 0,
+      "branch_success": {
+        "selected": 0.9333333373069763,
+        "direct": 0.9666666388511658,
+        "uniform_random_expectation": 0.9599999785423279,
+        "oracle_five_candidate_upper_bound": 1.0
+      },
+      "conditional_accuracy": {
+        "informative_selects_success": {
+          "count": 4,
+          "value": 0.5
+        },
+        "rescuable_recovery": {
+          "count": 1,
+          "value": 1.0
+        },
+        "harmable_preserves_direct_success": {
+          "count": 3,
+          "value": 0.3333333432674408
+        },
+        "all_direct_success_avoids_harm": {
+          "count": 29,
+          "value": 0.931034505367279
+        }
+      },
+      "rescues": 1,
+      "harms": 2,
+      "non_direct_selections": 30,
+      "selected_histogram": [
+        0,
+        0,
+        29,
+        0,
+        1
+      ],
+      "physical_return": {
+        "selected": {
+          "count": 30,
+          "minimum": -0.7719046473503113,
+          "maximum": 5.944624423980713,
+          "mean": 5.504704815149307
+        },
+        "direct": {
+          "count": 30,
+          "minimum": 1.7074624300003052,
+          "maximum": 5.989777565002441,
+          "mean": 5.738555641969045
+        },
+        "uniform_random_expectation": {
+          "count": 30,
+          "minimum": 3.3370258808135986,
+          "maximum": 5.972243309020996,
+          "mean": 5.669637084007263
+        },
+        "oracle": {
+          "count": 30,
+          "minimum": 5.768075466156006,
+          "maximum": 5.989777565002441,
+          "mean": 5.890083010991415
+        }
+      },
+      "return_regret": {
+        "selected": {
+          "count": 30,
+          "minimum": 0.0,
+          "maximum": 6.627695083618164,
+          "mean": 0.38537818590799966
+        },
+        "direct": {
+          "count": 30,
+          "minimum": 0.0,
+          "maximum": 4.06061315536499,
+          "mean": 0.15152737299601238
+        },
+        "uniform_random_expectation": {
+          "count": 30,
+          "minimum": 1.430511474609375e-06,
+          "maximum": 2.4310495853424072,
+          "mean": 0.2204459269841512
+        },
+        "selected_on_informative": {
+          "count": 4,
+          "minimum": 0.03187417984008789,
+          "maximum": 6.627695083618164,
+          "mean": 2.74082350730896
+        }
+      },
+      "proxy_expert_alignment": {
+        "tie_aware_top_utility_fraction": 0.0,
+        "selected_utility": {
+          "count": 30,
+          "minimum": -0.055826712399721146,
+          "maximum": -0.010981520637869835,
+          "mean": -0.03406118238344789
+        },
+        "utility_regret": {
+          "count": 30,
+          "minimum": 0.010981520637869835,
+          "maximum": 0.055826712399721146,
+          "mean": 0.03406118238344789
+        },
+        "definition": "Recorded normalized distance to frozen direct planner, not an optimal-success expert"
+      },
+      "definitions": {
+        "informative": "At least one recorded successful and one unsuccessful candidate in the row",
+        "rescuable": "Direct branch fails and at least one alternative branch succeeds",
+        "harmable": "Direct branch succeeds and at least one alternative branch fails",
+        "conditional_accuracy": "Any recorded successful choice is correct; successful ties are not reduced to one index",
+        "uniform_random": "Exact equal-weight expectation over the five recorded branches; no random trials",
+        "oracle": "Hindsight bound over available candidates; success and maximum return are separate bounds",
+        "return_regret": "Maximum measured physical return in row minus chosen/expected measured return"
+      }
+    },
+    "member_diagnostics": [
+      {
+        "member": 0,
+        "config": {
+          "hidden": 192,
+          "success_priority": 4.0,
+          "outcome_change_standardized": true,
+          "detach_consequence_for_score": true,
+          "state_dim": 1041,
+          "action_dim": 38,
+          "execution_horizon": 75
+        },
+        "future_cosine": {
+          "count": 150,
+          "minimum": 0.987255871295929,
+          "maximum": 0.9975725412368774,
+          "mean": 0.9945546138286591
+        },
+        "identity_cosine": {
+          "count": 150,
+          "minimum": 0.9664114117622375,
+          "maximum": 0.9975281953811646,
+          "mean": 0.9902875677744547
+        },
+        "future_cosine_gain_over_identity": {
+          "count": 150,
+          "minimum": -0.0032053589820861816,
+          "maximum": 0.027429401874542236,
+          "mean": 0.004267046054204305
+        },
+        "cosine_gain_per_candidate_mean": [
+          0.00419338745996356,
+          0.0045885322615504265,
+          0.004383379127830267,
+          0.004008368588984013,
+          0.0041615623049438
+        ],
+        "cosine_gain_head_selected": {
+          "count": 30,
+          "minimum": -0.0022275447845458984,
+          "maximum": 0.024817824363708496,
+          "mean": 0.004357343912124634
+        },
+        "branch_success": {
+          "selected": 0.9666666388511658,
+          "direct": 0.9666666388511658,
+          "uniform_random_expectation": 0.9599999785423279,
+          "oracle_five_candidate_upper_bound": 1.0
+        },
+        "conditional_accuracy": {
+          "informative_selects_success": {
+            "count": 4,
+            "value": 0.75
+          },
+          "rescuable_recovery": {
+            "count": 1,
+            "value": 1.0
+          },
+          "harmable_preserves_direct_success": {
+            "count": 3,
+            "value": 0.6666666865348816
+          },
+          "all_direct_success_avoids_harm": {
+            "count": 29,
+            "value": 0.9655172228813171
+          }
+        },
+        "proxy_expert_alignment": {
+          "tie_aware_top_utility_fraction": 0.03333333333333333,
+          "selected_utility": {
+            "count": 30,
+            "minimum": -0.055826712399721146,
+            "maximum": -0.0,
+            "mean": -0.03211659984663129
+          },
+          "utility_regret": {
+            "count": 30,
+            "minimum": 0.0,
+            "maximum": 0.055826712399721146,
+            "mean": 0.03211659984663129
+          },
+          "definition": "Recorded normalized distance to frozen direct planner, not an optimal-success expert"
+        },
+        "success_probability_brier": 0.03949309140443802
+      },
+      {
+        "member": 1,
+        "config": {
+          "hidden": 192,
+          "success_priority": 4.0,
+          "outcome_change_standardized": true,
+          "detach_consequence_for_score": true,
+          "state_dim": 1041,
+          "action_dim": 38,
+          "execution_horizon": 75
+        },
+        "future_cosine": {
+          "count": 150,
+          "minimum": 0.9878362417221069,
+          "maximum": 0.997722327709198,
+          "mean": 0.9946283507347107
+        },
+        "identity_cosine": {
+          "count": 150,
+          "minimum": 0.9664114117622375,
+          "maximum": 0.9975281953811646,
+          "mean": 0.9902875677744547
+        },
+        "future_cosine_gain_over_identity": {
+          "count": 150,
+          "minimum": -0.0029683709144592285,
+          "maximum": 0.02656877040863037,
+          "mean": 0.00434078296025594
+        },
+        "cosine_gain_per_candidate_mean": [
+          0.00423766952008009,
+          0.004636045079678297,
+          0.004414498805999756,
+          0.004208304453641176,
+          0.004207396414130926
+        ],
+        "cosine_gain_head_selected": {
+          "count": 30,
+          "minimum": -0.0016368627548217773,
+          "maximum": 0.023823916912078857,
+          "mean": 0.00439600149790446
+        },
+        "branch_success": {
+          "selected": 0.9666666388511658,
+          "direct": 0.9666666388511658,
+          "uniform_random_expectation": 0.9599999785423279,
+          "oracle_five_candidate_upper_bound": 1.0
+        },
+        "conditional_accuracy": {
+          "informative_selects_success": {
+            "count": 4,
+            "value": 0.75
+          },
+          "rescuable_recovery": {
+            "count": 1,
+            "value": 1.0
+          },
+          "harmable_preserves_direct_success": {
+            "count": 3,
+            "value": 0.6666666865348816
+          },
+          "all_direct_success_avoids_harm": {
+            "count": 29,
+            "value": 0.9655172228813171
+          }
+        },
+        "proxy_expert_alignment": {
+          "tie_aware_top_utility_fraction": 0.0,
+          "selected_utility": {
+            "count": 30,
+            "minimum": -0.055826712399721146,
+            "maximum": -0.010981520637869835,
+            "mean": -0.033958300668746236
+          },
+          "utility_regret": {
+            "count": 30,
+            "minimum": 0.010981520637869835,
+            "maximum": 0.055826712399721146,
+            "mean": 0.033958300668746236
+          },
+          "definition": "Recorded normalized distance to frozen direct planner, not an optimal-success expert"
+        },
+        "success_probability_brier": 0.03895198553800583
+      },
+      {
+        "member": 2,
+        "config": {
+          "hidden": 192,
+          "success_priority": 4.0,
+          "outcome_change_standardized": true,
+          "detach_consequence_for_score": true,
+          "state_dim": 1041,
+          "action_dim": 38,
+          "execution_horizon": 75
+        },
+        "future_cosine": {
+          "count": 150,
+          "minimum": 0.9886736869812012,
+          "maximum": 0.9975136518478394,
+          "mean": 0.9946385431289673
+        },
+        "identity_cosine": {
+          "count": 150,
+          "minimum": 0.9664114117622375,
+          "maximum": 0.9975281953811646,
+          "mean": 0.9902875677744547
+        },
+        "future_cosine_gain_over_identity": {
+          "count": 150,
+          "minimum": -0.0023730993270874023,
+          "maximum": 0.02746438980102539,
+          "mean": 0.004350975354512532
+        },
+        "cosine_gain_per_candidate_mean": [
+          0.004253518767654896,
+          0.004681690596044064,
+          0.00446803355589509,
+          0.004073743242770433,
+          0.0042778910137712955
+        ],
+        "cosine_gain_head_selected": {
+          "count": 30,
+          "minimum": -0.0011428594589233398,
+          "maximum": 0.02472078800201416,
+          "mean": 0.004451741774876912
+        },
+        "branch_success": {
+          "selected": 0.9666666388511658,
+          "direct": 0.9666666388511658,
+          "uniform_random_expectation": 0.9599999785423279,
+          "oracle_five_candidate_upper_bound": 1.0
+        },
+        "conditional_accuracy": {
+          "informative_selects_success": {
+            "count": 4,
+            "value": 0.75
+          },
+          "rescuable_recovery": {
+            "count": 1,
+            "value": 1.0
+          },
+          "harmable_preserves_direct_success": {
+            "count": 3,
+            "value": 0.6666666865348816
+          },
+          "all_direct_success_avoids_harm": {
+            "count": 29,
+            "value": 0.9655172228813171
+          }
+        },
+        "proxy_expert_alignment": {
+          "tie_aware_top_utility_fraction": 0.0,
+          "selected_utility": {
+            "count": 30,
+            "minimum": -0.055826712399721146,
+            "maximum": -0.010981520637869835,
+            "mean": -0.02970517287030816
+          },
+          "utility_regret": {
+            "count": 30,
+            "minimum": 0.010981520637869835,
+            "maximum": 0.055826712399721146,
+            "mean": 0.02970517287030816
+          },
+          "definition": "Recorded normalized distance to frozen direct planner, not an optimal-success expert"
+        },
+        "success_probability_brier": 0.039156630635261536
+      }
+    ],
+    "future_diagnostic_definition": "cos(predicted_future,recorded_future)-cos(current_visual,recorded_future), all five candidate continuations",
+    "predictions_archive": "predictions.npz",
+    "predictions_archive_sha256": "1d878a65d5f0f57bcf30c10228cd2595e9779fa0a68f2649466e7c1fdadf238f",
+    "device": "cuda",
+    "batch_size": 32,
+    "prediction_seconds": 0.21613510899987887,
+    "member_diagnostic_seconds": 0.008138949997373857,
+    "wall_seconds": 0.24068901099963114,
+    "limitations": [
+      "Branches share archived anchors; no repeated online interventions were evaluated",
+      "Uniform-random value is an exact archive expectation; oracle uses measured future labels only as a bound",
+      "Proxy expert labels measure planner distance, not optimal task success",
+      "Rows within the same task/seed are correlated; no independence-based confidence interval is claimed"
+    ]
+  },
+  "selector": {
+    "path": "/home/zxc/ski/g1_embodiedskills/outputs/stage4/selector/selector.pt",
+    "sha256": "5ecd410e6ff122e827bef34d4c5ca12334fe3c9366fbcb7edcfec01658cdfa90",
+    "bytes": 28689887
+  },
+  "runtime": {
+    "extract": {
+      "stage": "extract",
+      "ended_at": "2026-10-15T00:29:00.729620+08:00",
+      "returncode": 0,
+      "wall_seconds": 6.876553,
+      "child_peak_rss_KiB": 2876640,
+      "sampled_gpu_memory_peak_MiB": 2128.0,
+      "gpu_samples": 7
+    },
+    "split": {
+      "stage": "split",
+      "ended_at": "2026-10-15T00:29:21.664052+08:00",
+      "returncode": 0,
+      "wall_seconds": 0.343417,
+      "child_peak_rss_KiB": 81092,
+      "sampled_gpu_memory_peak_MiB": null,
+      "gpu_samples": 0
+    },
+    "train": {
+      "stage": "train",
+      "ended_at": "2026-10-15T00:29:44.575308+08:00",
+      "returncode": 0,
+      "wall_seconds": 5.458289,
+      "child_peak_rss_KiB": 1814884,
+      "sampled_gpu_memory_peak_MiB": 2872.0,
+      "gpu_samples": 6
+    },
+    "offline-validation": {
+      "stage": "offline-validation",
+      "ended_at": "2026-10-15T00:29:57.253458+08:00",
+      "returncode": 0,
+      "wall_seconds": 1.542727,
+      "child_peak_rss_KiB": 1294252,
+      "sampled_gpu_memory_peak_MiB": null,
+      "gpu_samples": 0
+    },
+    "offline-test": {
+      "stage": "offline-test",
+      "ended_at": "2026-10-15T00:30:09.075726+08:00",
+      "returncode": 0,
+      "wall_seconds": 1.544234,
+      "child_peak_rss_KiB": 1294104,
+      "sampled_gpu_memory_peak_MiB": null,
+      "gpu_samples": 0
+    }
+  },
+  "conclusion": "Original three-WAM/head pipeline trained on newly measured G1 data; offline test selection is worse than direct. This is engineering migration, not evidence of task-success improvement."
+}

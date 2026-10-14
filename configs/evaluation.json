@@ -14,7 +14,7 @@
   "split_seed": 42,
   "validation_fraction": 0.15,
   "test_fraction": 0.15,
-  "development_seeds": "1000-1053 and 990000; excluded from formal training and evaluation",
+  "development_seeds": "1000-1053, 1060-1079, 990000 and 990100-990102; excluded from formal training and evaluation",
   "training_seeds": [
     1100,
     1139

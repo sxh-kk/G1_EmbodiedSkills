@@ -8,9 +8,9 @@ target_venue:
   year: ''
   mode: review
 stage:
-  current: data_and_training
-  gate: stage3_passed
-  updated_at: '2026-10-14T23:07:00+08:00'
+  current: online_evaluation
+  gate: stage4_passed
+  updated_at: '2026-10-15T00:30:00+08:00'
 artifacts:
   manuscript: ''
   bibliography: ''
@@ -30,6 +30,9 @@ experiments:
 - id: stage3_five_branches
   status: passed
   report: docs/03-五候选与分支采集验收.md
+- id: stage4_new_data_and_training
+  status: passed
+  report: docs/04-新数据与模型训练结论.md
 reviews: []
 revision_ledger:
   path: LOG.md
