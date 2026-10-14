@@ -22,10 +22,16 @@ def main():
     p.add_argument("--seconds", type=float, default=8.)
     p.add_argument("--cameras", action="store_true")
     p.add_argument("--task", type=Path)
+    p.add_argument("--servo", action="store_true", help="Use measured TCP feedback to correct SONIC references")
+    p.add_argument("--seed-base", type=int, default=0)
+    p.add_argument("--position-jitter", type=float, default=0., help="Cube XY randomization radius in meters")
+    p.add_argument("--record-video", action="store_true", help="Record full 5Hz video; otherwise render only sensing/diagnostic frames")
+    p.add_argument("--collection-config", type=Path)
+    p.add_argument("--hard-reset", action="store_true", help="Rebuild PhysX before each diagnostic repeat")
     a = p.parse_args()
     if a.sonic is None:
         p.error("Set SONIC_ROOT or pass --sonic")
-    for key in ["sonic", "reference", "asset", "output", "task"]:
+    for key in ["sonic", "reference", "asset", "output", "task", "collection_config"]:
         value = getattr(a, key)
         if value is not None:
             setattr(a, key, value.resolve())

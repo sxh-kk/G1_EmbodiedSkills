@@ -112,11 +112,14 @@ def create_env(config, device, args_cli, request):
             collision_props=sim_utils.CollisionPropertiesCfg(contact_offset=.001, rest_offset=0.),
             physics_material=sim_utils.RigidBodyMaterialCfg(static_friction=1.5, dynamic_friction=1.3, restitution=0.),
             visual_material=sim_utils.PreviewSurfaceCfg(diffuse_color=(.9, .025, .025))),
-        init_state=RigidObjectCfg.InitialStateCfg(pos=(.43, -.23, .728)))
+        init_state=RigidObjectCfg.InitialStateCfg(pos=(.28, -.23, .728)))
     cfg.scene.tray = AssetBaseCfg(prim_path="{ENV_REGEX_NS}/Tray",
         spawn=sim_utils.CuboidCfg(size=(.16, .16, .012), collision_props=sim_utils.CollisionPropertiesCfg(),
             visual_material=sim_utils.PreviewSurfaceCfg(diffuse_color=(.025, .65, .08))),
-        init_state=AssetBaseCfg.InitialStateCfg(pos=(.43, -.015, .716)))
+        init_state=AssetBaseCfg.InitialStateCfg(pos=(.28, -.03, .716)))
+    if request.cameras:
+        from .perception import make_head_camera_cfg
+        cfg.scene.head_camera = make_head_camera_cfg()
     env = MigrationEnv(cfg=cfg)
     env.request = request
     env.reference = json.loads((request.reference / "reference.json").read_text(encoding="utf-8"))
@@ -186,6 +189,18 @@ class MigrationEnv(ManagerBasedRLEnv):
         robot.write_joint_state_to_sim(q, torch.zeros_like(q), env_ids=ids)
         lab3_wxyz.write_root_state(robot, state, env_ids=ids)
         robot.set_joint_position_target(q, env_ids=ids)
+        robot.set_joint_velocity_target(torch.zeros_like(q), env_ids=ids)
+        robot.set_joint_effort_target(torch.zeros_like(q), env_ids=ids)
+        cube = self.scene["cube"]
+        cube_state = tensor(cube.data.default_root_state).clone()
+        cube_state[:, :3] += tensor(self.scene.env_origins)
+        jitter = getattr(self.request, "position_jitter", 0.)
+        if jitter:
+            seeds = getattr(self, "episode_seeds", [getattr(self, "episode_seed", 0) + i for i in range(self.num_envs)])
+            offsets = np.stack([np.random.default_rng(seed).uniform(-jitter, jitter, 2) for seed in seeds])
+            cube_state[:, :2] += cube_state.new_tensor(offsets)
+        cube.reset(ids)
+        cube.write_root_state_to_sim(cube_state, env_ids=ids)
         for name in ["permanent_wrench_composer", "instantaneous_wrench_composer"]:
             getattr(robot, name).reset(env_ids=ids)
         self.gripper_target.fill_(.035)
@@ -244,8 +259,15 @@ class SimulationCallback:
         env.command_manager.get_term("motion").motion_lib.load_motions(
             random_sample=False, num_motions_to_load=env.num_envs, is_evaluation=True)
         if request.mode != "interface":
-            from .task_runtime import run_task
-            result = run_task(wrapper, policy, request)
+            if request.mode == "collect":
+                from .collection import collect_branches
+                result = collect_branches(wrapper, policy, request)
+            elif request.mode == "closed_loop":
+                from .online import run_closed_loop
+                result = run_closed_loop(wrapper, policy, request)
+            else:
+                from .task_runtime import run_task
+                result = run_task(wrapper, policy, request)
             write_json(request.output / "result.json", result)
             raise RunFinished(0 if result["completed"] else 2)
         episodes = []
@@ -253,6 +275,12 @@ class SimulationCallback:
         for repeat in range(request.repeats):
             policy.init_rollout()
             obs = wrapper.process_raw_obs(env.reset_nominal(), True)
+            if request.cameras:
+                from .task_runtime import camera_observation
+                from PIL import Image
+                rgb, depth, estimates = camera_observation(env)
+                Image.fromarray(rgb).save(request.output / f"camera-{repeat:02d}.png")
+                write_json(request.output / f"camera-{repeat:02d}.json", estimates)
             cmd = env.command_manager.get_term("motion")
             write_json(request.output / "preview.json", dict(
                 offsets_seconds=cmd.future_time_steps_init[0] / cmd.motion_lib.target_fps,

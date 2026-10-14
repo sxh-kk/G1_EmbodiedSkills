@@ -17,6 +17,21 @@ export PYTHONPATH="$PWD/src:$SONIC_ROOT:$EMBODIEDSKILLS_ROOT/src:${PYTHONPATH:-}
 
 依赖现有 SONIC / Isaac Lab 环境，不自动更新依赖。仿真需使用其 Isaac 启动包装器，离线准备可使用同一环境的普通 Python。
 
+## 当前可运行内容
+
+阶段 1 完成 6 次站立、腕部运动与开合验收；阶段 2 固定场景抓放 10/10 通过。现有入口可重新生成夹爪、轨迹并运行视觉反馈抓放。五候选采集与学习选择器仍在实施，详见各阶段报告。
+
+```bash
+python scripts/build_asset.py --output outputs/assets
+python scripts/prepare_reference.py --output outputs/references --duration 20
+python scripts/prepare_task.py --output outputs/task-pilot-v1
+bash "$ISAAC_PYTHON" scripts/run_sim.py \
+  --reference outputs/task-pilot-v1/native \
+  --asset outputs/assets/g1_parallel_gripper.urdf \
+  --output outputs/direct-demo --mode direct --seconds 24 \
+  --cameras --servo --record-video
+```
+
 ## 来源
 
 - [EmbodiedSkills](https://github.com/ZJU4EmbodiedAI/EmbodiedSkills)：后果模型、比较头、训练与运行接口；当前参考版本 `e3aa582614a9601f1c826950b9673cab81da2cb0`。

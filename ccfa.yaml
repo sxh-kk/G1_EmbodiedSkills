@@ -8,9 +8,9 @@ target_venue:
   year: ""
   mode: "review"
 stage:
-  current: "direct_pick_place"
-  gate: "stage1_passed"
-  updated_at: "2026-10-14T21:48:00+08:00"
+  current: "candidate_branch_collection"
+  gate: "stage2_passed"
+  updated_at: "2026-10-14T22:13:00+08:00"
 artifacts:
   manuscript: ""
   bibliography: ""
@@ -24,6 +24,9 @@ experiments:
   - id: "stage1_interface"
     status: "passed"
     report: "docs/01-夹爪与控制接口验收.md"
+  - id: "stage2_direct_pick_place"
+    status: "passed"
+    report: "docs/02-直接抓放与视觉反馈验收.md"
 reviews: []
 revision_ledger:
   path: "LOG.md"

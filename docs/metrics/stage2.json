@@ -1,0 +1,208 @@
+{
+  "protocol": "fixed-scene 10 repeats; floating G1; frozen SONIC with measured reference feedback; RGB-D targets from clear view",
+  "episodes": [
+    {
+      "seed": 0,
+      "duration": 24.0,
+      "wall_seconds": 55.45806901399919,
+      "lifted": true,
+      "placed": true,
+      "released": true,
+      "retreated": true,
+      "standing": true,
+      "terminated": false,
+      "success": true,
+      "maximum_cube_height_m": 0.8242080211639404,
+      "final_cube_position": [
+        0.27439767122268677,
+        -0.013723240233957767,
+        0.7394999861717224
+      ],
+      "final_target_distance_m": 0.017213918676773264,
+      "return_value": 5.89322468475183
+    },
+    {
+      "seed": 1,
+      "duration": 24.0,
+      "wall_seconds": 54.891071784000815,
+      "lifted": true,
+      "placed": true,
+      "released": true,
+      "retreated": true,
+      "standing": true,
+      "terminated": false,
+      "success": true,
+      "maximum_cube_height_m": 0.8215668797492981,
+      "final_cube_position": [
+        0.27228838205337524,
+        -0.02224504016339779,
+        0.7394999861717224
+      ],
+      "final_target_distance_m": 0.010936564973611175,
+      "return_value": 5.891922685418055
+    },
+    {
+      "seed": 2,
+      "duration": 24.0,
+      "wall_seconds": 54.8804695200015,
+      "lifted": true,
+      "placed": true,
+      "released": true,
+      "retreated": true,
+      "standing": true,
+      "terminated": false,
+      "success": true,
+      "maximum_cube_height_m": 0.8193167448043823,
+      "final_cube_position": [
+        0.27319419384002686,
+        -0.0023564514704048634,
+        0.7394999861717224
+      ],
+      "final_target_distance_m": 0.028469014257525852,
+      "return_value": 5.799291538833239
+    },
+    {
+      "seed": 3,
+      "duration": 24.0,
+      "wall_seconds": 54.85357644300166,
+      "lifted": true,
+      "placed": true,
+      "released": true,
+      "retreated": true,
+      "standing": true,
+      "terminated": false,
+      "success": true,
+      "maximum_cube_height_m": 0.8205881118774414,
+      "final_cube_position": [
+        0.2772293984889984,
+        -0.0112813925370574,
+        0.7394999861717224
+      ],
+      "final_target_distance_m": 0.01892253941955188,
+      "return_value": 5.850191108915726
+    },
+    {
+      "seed": 4,
+      "duration": 24.0,
+      "wall_seconds": 54.82746827399751,
+      "lifted": true,
+      "placed": true,
+      "released": true,
+      "retreated": true,
+      "standing": true,
+      "terminated": false,
+      "success": true,
+      "maximum_cube_height_m": 0.8205987811088562,
+      "final_cube_position": [
+        0.27251413464546204,
+        -0.020578190684318542,
+        0.7394999861717224
+      ],
+      "final_target_distance_m": 0.012033647447359177,
+      "return_value": 5.877853369118644
+    },
+    {
+      "seed": 5,
+      "duration": 24.0,
+      "wall_seconds": 54.831376337999245,
+      "lifted": true,
+      "placed": true,
+      "released": true,
+      "retreated": true,
+      "standing": true,
+      "terminated": false,
+      "success": true,
+      "maximum_cube_height_m": 0.8215361833572388,
+      "final_cube_position": [
+        0.2698867917060852,
+        -0.017764205113053322,
+        0.7394999861717224
+      ],
+      "final_target_distance_m": 0.015874245132022433,
+      "return_value": 5.871865000863817
+    },
+    {
+      "seed": 6,
+      "duration": 24.0,
+      "wall_seconds": 55.132607354000356,
+      "lifted": true,
+      "placed": true,
+      "released": true,
+      "retreated": true,
+      "standing": true,
+      "terminated": false,
+      "success": true,
+      "maximum_cube_height_m": 0.8165104389190674,
+      "final_cube_position": [
+        0.2812178432941437,
+        -0.012532557360827923,
+        0.7394999861717224
+      ],
+      "final_target_distance_m": 0.017509845648715966,
+      "return_value": 5.815065154415329
+    },
+    {
+      "seed": 7,
+      "duration": 24.0,
+      "wall_seconds": 54.68488853099916,
+      "lifted": true,
+      "placed": true,
+      "released": true,
+      "retreated": true,
+      "standing": true,
+      "terminated": false,
+      "success": true,
+      "maximum_cube_height_m": 0.8189073801040649,
+      "final_cube_position": [
+        0.2776651680469513,
+        -0.027164526283740997,
+        0.7394999861717224
+      ],
+      "final_target_distance_m": 0.003673057506298124,
+      "return_value": 5.894381718834976
+    },
+    {
+      "seed": 8,
+      "duration": 24.0,
+      "wall_seconds": 54.71080140000049,
+      "lifted": true,
+      "placed": true,
+      "released": true,
+      "retreated": true,
+      "standing": true,
+      "terminated": false,
+      "success": true,
+      "maximum_cube_height_m": 0.8213696479797363,
+      "final_cube_position": [
+        0.2729450762271881,
+        -0.008405782282352448,
+        0.7394999861717224
+      ],
+      "final_target_distance_m": 0.022717442379751953,
+      "return_value": 5.842826858097874
+    },
+    {
+      "seed": 9,
+      "duration": 24.0,
+      "wall_seconds": 54.69713933700041,
+      "lifted": true,
+      "placed": true,
+      "released": true,
+      "retreated": true,
+      "standing": true,
+      "terminated": false,
+      "success": true,
+      "maximum_cube_height_m": 0.8230019807815552,
+      "final_cube_position": [
+        0.27115532755851746,
+        -0.019128719344735146,
+        0.7394999861717224
+      ],
+      "final_target_distance_m": 0.014014741299169853,
+      "return_value": 5.893960990438392
+    }
+  ],
+  "successes": 10,
+  "episodes_count": 10,
+  "metrics_source": "raw traces rescored by shared episode_outcome, including >=1s stability and >=6cm retreat"
+}
