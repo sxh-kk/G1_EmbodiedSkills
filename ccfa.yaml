@@ -8,9 +8,9 @@ target_venue:
   year: ''
   mode: review
 stage:
-  current: online_evaluation
-  gate: stage4_passed
-  updated_at: '2026-10-15T00:30:00+08:00'
+  current: engineering_baseline_complete
+  gate: stage5_passed
+  updated_at: '2026-10-15T00:53:00+08:00'
 artifacts:
   manuscript: ''
   bibliography: ''
@@ -33,10 +33,13 @@ experiments:
 - id: stage4_new_data_and_training
   status: passed
   report: docs/04-新数据与模型训练结论.md
+- id: stage5_online_closed_loop
+  status: passed
+  report: docs/05-在线闭环与配对评测结论.md
 reviews: []
 revision_ledger:
   path: LOG.md
-  status: active
+  status: baseline_complete
 submission_checks:
   path: ''
   status: not_started
