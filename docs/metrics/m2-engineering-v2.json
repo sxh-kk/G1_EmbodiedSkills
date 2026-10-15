@@ -1,0 +1,3524 @@
+{
+  "schema": "g1_embodiedskills.m2_engineering_conclusion.v1",
+  "created_at": "2026-10-15T22:13:41.105119+08:00",
+  "dataset_phase": "development",
+  "scope": "Engineering development only; the planned formal body-hand interaction experiment was not started",
+  "engineering_passed": false,
+  "formal_collection_enabled": false,
+  "runtime": {
+    "started_at": "2026-10-15T18:06:03.732841+08:00",
+    "finished_at": "2026-10-15T22:11:02.331335+08:00",
+    "wall_seconds": 14698.59698894601,
+    "status": "complete",
+    "completed": true,
+    "source_changes": []
+  },
+  "physical_runtime_source_revision": "d18dcdff07e04b666699443acc3dd1e60c67e1b0",
+  "physical_protocol": {
+    "schema": "g1_embodiedskills.m2_protocol.v1",
+    "m1_revision": "3348806df8f6dcd415d5725113ead3847f226dce",
+    "num_envs": 10,
+    "seconds": 24,
+    "execution_steps": 50,
+    "native_horizon": 105,
+    "position_jitter_m": 0.02,
+    "sample_offsets_steps": [
+      10,
+      25,
+      50,
+      150
+    ],
+    "amplitude_m": 0.01,
+    "body_pitch_rad": 0.06,
+    "max_amplitude_halvings": 3,
+    "prefix_tolerance": {
+      "default": 1e-06
+    },
+    "scene_shift_m": 0.01,
+    "scene_signs": {
+      "low": "z-",
+      "high": "z+",
+      "far": "x+",
+      "right": "y-"
+    },
+    "purpose": "Candidate frozen protocol: complete development coverage before acceptance; formal collection forbidden without engineering acceptance"
+  },
+  "unique_episode_seeds": [
+    929000,
+    929001,
+    929002,
+    929003,
+    929004,
+    929005,
+    929006,
+    929007
+  ],
+  "independent_episodes": 8,
+  "groups": [
+    {
+      "id": "seed-929000-anchor-300",
+      "condition": "low",
+      "family": "height",
+      "seed": 929000,
+      "anchor_step": 300,
+      "slot": 0,
+      "capsule_id": "low-anchor300-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            2.627260982990265e-05,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 2.627260982990265e-05,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.0021229851990938187,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0021229851990938187,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929001-anchor-300",
+      "condition": "low",
+      "family": "height",
+      "seed": 929001,
+      "anchor_step": 300,
+      "slot": 1,
+      "capsule_id": "low-anchor300-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.0005376096814870834,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0005376096814870834,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.002698548138141632,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.002698548138141632,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929000-anchor-480",
+      "condition": "low",
+      "family": "height",
+      "seed": 929000,
+      "anchor_step": 480,
+      "slot": 0,
+      "capsule_id": "low-anchor480-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.00125,
+      "effective_body_pitch_rad": 0.0075,
+      "common_scale": 0.125,
+      "analysis_runs": 27,
+      "valid_analysis_runs": 27,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.00044932588934898376,
+            -0.00044932588934898376,
+            -0.00044932588934898376
+          ],
+          "first_pass_signed_response_rad": -0.00044932588934898376,
+          "centered_repeat_noise_rad": 0.0,
+          "direction_threshold_rad": 0.0001,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": 929000,
+          "noise_reference_condition": "low",
+          "noise_reference_amplitudes_match": true
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.0004934519529342651,
+            0.0004934519529342651,
+            0.0004934519529342651
+          ],
+          "first_pass_signed_response_rad": -0.0004934519529342651,
+          "centered_repeat_noise_rad": 0.0,
+          "direction_threshold_rad": 0.0001,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": 929000,
+          "noise_reference_condition": "low",
+          "noise_reference_amplitudes_match": true
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929001-anchor-480",
+      "condition": "low",
+      "family": "height",
+      "seed": 929001,
+      "anchor_step": 480,
+      "slot": 1,
+      "capsule_id": "low-anchor480-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.00125,
+      "effective_body_pitch_rad": 0.0075,
+      "common_scale": 0.125,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.0008348561823368073,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0008348561823368073,
+          "centered_repeat_noise_rad": 0.0,
+          "direction_threshold_rad": 0.0001,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": 929000,
+          "noise_reference_condition": "low",
+          "noise_reference_amplitudes_match": true
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.0010676272213459015,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0010676272213459015,
+          "centered_repeat_noise_rad": 0.0,
+          "direction_threshold_rad": 0.0001,
+          "first_pass_direction_correct_above_floor_and_noise": true,
+          "noise_reference_seed": 929000,
+          "noise_reference_condition": "low",
+          "noise_reference_amplitudes_match": true
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929000-anchor-680",
+      "condition": "low",
+      "family": "height",
+      "seed": 929000,
+      "anchor_step": 680,
+      "slot": 0,
+      "capsule_id": "low-anchor680-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.00414527952671051,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.00414527952671051,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.0008531808853149414,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0008531808853149414,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929001-anchor-680",
+      "condition": "low",
+      "family": "height",
+      "seed": 929001,
+      "anchor_step": 680,
+      "slot": 1,
+      "capsule_id": "low-anchor680-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.0017243288457393646,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0017243288457393646,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.0018166005611419678,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0018166005611419678,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929000-anchor-830",
+      "condition": "low",
+      "family": "height",
+      "seed": 929000,
+      "anchor_step": 830,
+      "slot": 0,
+      "capsule_id": "low-anchor830-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.005181936547160149,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.005181936547160149,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.0034199655055999756,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0034199655055999756,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929001-anchor-830",
+      "condition": "low",
+      "family": "height",
+      "seed": 929001,
+      "anchor_step": 830,
+      "slot": 1,
+      "capsule_id": "low-anchor830-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.006734417751431465,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.006734417751431465,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.0006645563989877701,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0006645563989877701,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929000-anchor-980",
+      "condition": "low",
+      "family": "height",
+      "seed": 929000,
+      "anchor_step": 980,
+      "slot": 0,
+      "capsule_id": "low-anchor980-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.00125,
+      "effective_body_pitch_rad": 0.0075,
+      "common_scale": 0.125,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.0023294929414987564,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0023294929414987564,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.0026387814432382584,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0026387814432382584,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929001-anchor-980",
+      "condition": "low",
+      "family": "height",
+      "seed": 929001,
+      "anchor_step": 980,
+      "slot": 1,
+      "capsule_id": "low-anchor980-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.00125,
+      "effective_body_pitch_rad": 0.0075,
+      "common_scale": 0.125,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.004912907257676125,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.004912907257676125,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.0011322759091854095,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0011322759091854095,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929002-anchor-300",
+      "condition": "high",
+      "family": "height",
+      "seed": 929002,
+      "anchor_step": 300,
+      "slot": 0,
+      "capsule_id": "high-anchor300-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.003261098638176918,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.003261098638176918,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.0034709107130765915,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0034709107130765915,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929003-anchor-300",
+      "condition": "high",
+      "family": "height",
+      "seed": 929003,
+      "anchor_step": 300,
+      "slot": 1,
+      "capsule_id": "high-anchor300-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.001253616064786911,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.001253616064786911,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.002519747242331505,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.002519747242331505,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929002-anchor-480",
+      "condition": "high",
+      "family": "height",
+      "seed": 929002,
+      "anchor_step": 480,
+      "slot": 0,
+      "capsule_id": "high-anchor480-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.0014191363006830215,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0014191363006830215,
+          "centered_repeat_noise_rad": 0.0,
+          "direction_threshold_rad": 0.0001,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": 929000,
+          "noise_reference_condition": "low",
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.002281706780195236,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.002281706780195236,
+          "centered_repeat_noise_rad": 0.0,
+          "direction_threshold_rad": 0.0001,
+          "first_pass_direction_correct_above_floor_and_noise": true,
+          "noise_reference_seed": 929000,
+          "noise_reference_condition": "low",
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929003-anchor-480",
+      "condition": "high",
+      "family": "height",
+      "seed": 929003,
+      "anchor_step": 480,
+      "slot": 1,
+      "capsule_id": "high-anchor480-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.0036149919033050537,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0036149919033050537,
+          "centered_repeat_noise_rad": 0.0,
+          "direction_threshold_rad": 0.0001,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": 929000,
+          "noise_reference_condition": "low",
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.0023843254894018173,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0023843254894018173,
+          "centered_repeat_noise_rad": 0.0,
+          "direction_threshold_rad": 0.0001,
+          "first_pass_direction_correct_above_floor_and_noise": true,
+          "noise_reference_seed": 929000,
+          "noise_reference_condition": "low",
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929002-anchor-680",
+      "condition": "high",
+      "family": "height",
+      "seed": 929002,
+      "anchor_step": 680,
+      "slot": 0,
+      "capsule_id": "high-anchor680-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.0013618692755699158,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0013618692755699158,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.0009454376995563507,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0009454376995563507,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929003-anchor-680",
+      "condition": "high",
+      "family": "height",
+      "seed": 929003,
+      "anchor_step": 680,
+      "slot": 1,
+      "capsule_id": "high-anchor680-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.004922393709421158,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.004922393709421158,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.0009740889072418213,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0009740889072418213,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929002-anchor-830",
+      "condition": "high",
+      "family": "height",
+      "seed": 929002,
+      "anchor_step": 830,
+      "slot": 0,
+      "capsule_id": "high-anchor830-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.0007181260734796524,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0007181260734796524,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.0015278514474630356,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0015278514474630356,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929003-anchor-830",
+      "condition": "high",
+      "family": "height",
+      "seed": 929003,
+      "anchor_step": 830,
+      "slot": 1,
+      "capsule_id": "high-anchor830-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.0035206349566578865,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0035206349566578865,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.0020430851727724075,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0020430851727724075,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929002-anchor-980",
+      "condition": "high",
+      "family": "height",
+      "seed": 929002,
+      "anchor_step": 980,
+      "slot": 0,
+      "capsule_id": "high-anchor980-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.0025,
+      "effective_body_pitch_rad": 0.015,
+      "common_scale": 0.25,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.000980626791715622,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.000980626791715622,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.0036214031279087067,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0036214031279087067,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929003-anchor-980",
+      "condition": "high",
+      "family": "height",
+      "seed": 929003,
+      "anchor_step": 980,
+      "slot": 1,
+      "capsule_id": "high-anchor980-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.0025,
+      "effective_body_pitch_rad": 0.015,
+      "common_scale": 0.25,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.001083817332983017,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.001083817332983017,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.0025078803300857544,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0025078803300857544,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929004-anchor-300",
+      "condition": "far",
+      "family": "position",
+      "seed": 929004,
+      "anchor_step": 300,
+      "slot": 0,
+      "capsule_id": "far-anchor300-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.0008304715156555176,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0008304715156555176,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.0014358870685100555,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0014358870685100555,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929005-anchor-300",
+      "condition": "far",
+      "family": "position",
+      "seed": 929005,
+      "anchor_step": 300,
+      "slot": 1,
+      "capsule_id": "far-anchor300-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.0012201853096485138,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0012201853096485138,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.0022510886192321777,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0022510886192321777,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929004-anchor-480",
+      "condition": "far",
+      "family": "position",
+      "seed": 929004,
+      "anchor_step": 480,
+      "slot": 0,
+      "capsule_id": "far-anchor480-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.00125,
+      "effective_body_pitch_rad": 0.0075,
+      "common_scale": 0.125,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.0011099278926849365,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0011099278926849365,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            6.628409028053284e-05,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -6.628409028053284e-05,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929005-anchor-480",
+      "condition": "far",
+      "family": "position",
+      "seed": 929005,
+      "anchor_step": 480,
+      "slot": 1,
+      "capsule_id": "far-anchor480-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.00125,
+      "effective_body_pitch_rad": 0.0075,
+      "common_scale": 0.125,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.0025297626852989197,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0025297626852989197,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.00033872202038764954,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.00033872202038764954,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929004-anchor-680",
+      "condition": "far",
+      "family": "position",
+      "seed": 929004,
+      "anchor_step": 680,
+      "slot": 0,
+      "capsule_id": "far-anchor680-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.0023392997682094574,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0023392997682094574,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.002545248717069626,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.002545248717069626,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929005-anchor-680",
+      "condition": "far",
+      "family": "position",
+      "seed": 929005,
+      "anchor_step": 680,
+      "slot": 1,
+      "capsule_id": "far-anchor680-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.006626684218645096,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.006626684218645096,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.0017085708677768707,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0017085708677768707,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929004-anchor-830",
+      "condition": "far",
+      "family": "position",
+      "seed": 929004,
+      "anchor_step": 830,
+      "slot": 0,
+      "capsule_id": "far-anchor830-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.005,
+      "effective_body_pitch_rad": 0.03,
+      "common_scale": 0.5,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.00030881166458129883,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.00030881166458129883,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.004711678251624107,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.004711678251624107,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929005-anchor-830",
+      "condition": "far",
+      "family": "position",
+      "seed": 929005,
+      "anchor_step": 830,
+      "slot": 1,
+      "capsule_id": "far-anchor830-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.0005717817693948746,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0005717817693948746,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.003392305225133896,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.003392305225133896,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929004-anchor-980",
+      "condition": "far",
+      "family": "position",
+      "seed": 929004,
+      "anchor_step": 980,
+      "slot": 0,
+      "capsule_id": "far-anchor980-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.00125,
+      "effective_body_pitch_rad": 0.0075,
+      "common_scale": 0.125,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.0012172460556030273,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0012172460556030273,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.0012966878712177277,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0012966878712177277,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929005-anchor-980",
+      "condition": "far",
+      "family": "position",
+      "seed": 929005,
+      "anchor_step": 980,
+      "slot": 1,
+      "capsule_id": "far-anchor980-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.00125,
+      "effective_body_pitch_rad": 0.0075,
+      "common_scale": 0.125,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -4.637986421585083e-06,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -4.637986421585083e-06,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.001904219388961792,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.001904219388961792,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929006-anchor-300",
+      "condition": "right",
+      "family": "position",
+      "seed": 929006,
+      "anchor_step": 300,
+      "slot": 0,
+      "capsule_id": "right-anchor300-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.0017359629273414612,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0017359629273414612,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.002384606748819351,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.002384606748819351,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929007-anchor-300",
+      "condition": "right",
+      "family": "position",
+      "seed": 929007,
+      "anchor_step": 300,
+      "slot": 1,
+      "capsule_id": "right-anchor300-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.0006114635616540909,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0006114635616540909,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.0018496587872505188,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0018496587872505188,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929006-anchor-480",
+      "condition": "right",
+      "family": "position",
+      "seed": 929006,
+      "anchor_step": 480,
+      "slot": 0,
+      "capsule_id": "right-anchor480-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.00125,
+      "effective_body_pitch_rad": 0.0075,
+      "common_scale": 0.125,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.0029090754687786102,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0029090754687786102,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.002132359892129898,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.002132359892129898,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929007-anchor-480",
+      "condition": "right",
+      "family": "position",
+      "seed": 929007,
+      "anchor_step": 480,
+      "slot": 1,
+      "capsule_id": "right-anchor480-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.0025,
+      "effective_body_pitch_rad": 0.015,
+      "common_scale": 0.25,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.0008344575762748718,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0008344575762748718,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.0001333281397819519,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0001333281397819519,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929006-anchor-680",
+      "condition": "right",
+      "family": "position",
+      "seed": 929006,
+      "anchor_step": 680,
+      "slot": 0,
+      "capsule_id": "right-anchor680-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.004145804792642593,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.004145804792642593,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.0009886398911476135,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0009886398911476135,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929007-anchor-680",
+      "condition": "right",
+      "family": "position",
+      "seed": 929007,
+      "anchor_step": 680,
+      "slot": 1,
+      "capsule_id": "right-anchor680-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.01,
+      "effective_body_pitch_rad": 0.06,
+      "common_scale": 1.0,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.0021970197558403015,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0021970197558403015,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.0019252486526966095,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0019252486526966095,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929006-anchor-830",
+      "condition": "right",
+      "family": "position",
+      "seed": 929006,
+      "anchor_step": 830,
+      "slot": 0,
+      "capsule_id": "right-anchor830-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.005,
+      "effective_body_pitch_rad": 0.03,
+      "common_scale": 0.5,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.00313648022711277,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.00313648022711277,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.0003795437514781952,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0003795437514781952,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929007-anchor-830",
+      "condition": "right",
+      "family": "position",
+      "seed": 929007,
+      "anchor_step": 830,
+      "slot": 1,
+      "capsule_id": "right-anchor830-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.005,
+      "effective_body_pitch_rad": 0.03,
+      "common_scale": 0.5,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.0005705617368221283,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0005705617368221283,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.003917226567864418,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.003917226567864418,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929006-anchor-980",
+      "condition": "right",
+      "family": "position",
+      "seed": 929006,
+      "anchor_step": 980,
+      "slot": 0,
+      "capsule_id": "right-anchor980-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.005,
+      "effective_body_pitch_rad": 0.03,
+      "common_scale": 0.5,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.0005761459469795227,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.0005761459469795227,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.005105931311845779,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.005105931311845779,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929007-anchor-980",
+      "condition": "right",
+      "family": "position",
+      "seed": 929007,
+      "anchor_step": 980,
+      "slot": 1,
+      "capsule_id": "right-anchor980-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.06,
+      "effective_amplitude_m": 0.0025,
+      "effective_body_pitch_rad": 0.015,
+      "common_scale": 0.25,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            -0.001429205760359764,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": -0.001429205760359764,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.001071913167834282,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.001071913167834282,
+          "centered_repeat_noise_rad": null,
+          "direction_threshold_rad": null,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": null,
+          "noise_reference_condition": null,
+          "noise_reference_amplitudes_match": false
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    }
+  ],
+  "aggregate": {
+    "anchors": 40,
+    "accepted_grids": 40,
+    "observed_body_pairs": 40,
+    "positive_direction_above_floor_without_noise_qualification": 17,
+    "negative_direction_above_floor_without_noise_qualification": 17,
+    "both_directions_above_floor_without_noise_qualification": 6,
+    "effective_hand_amplitude_m_range": [
+      0.00125,
+      0.01
+    ],
+    "effective_body_amplitude_rad_range": [
+      0.0075,
+      0.06
+    ]
+  },
+  "by_condition": {
+    "low": {
+      "anchors": 10,
+      "accepted_grids": 10,
+      "observed_body_pairs": 10,
+      "positive_direction_above_floor_without_noise_qualification": 5,
+      "negative_direction_above_floor_without_noise_qualification": 4,
+      "both_directions_above_floor_without_noise_qualification": 2,
+      "effective_hand_amplitude_m_range": [
+        0.00125,
+        0.01
+      ],
+      "effective_body_amplitude_rad_range": [
+        0.0075,
+        0.06
+      ]
+    },
+    "high": {
+      "anchors": 10,
+      "accepted_grids": 10,
+      "observed_body_pairs": 10,
+      "positive_direction_above_floor_without_noise_qualification": 5,
+      "negative_direction_above_floor_without_noise_qualification": 6,
+      "both_directions_above_floor_without_noise_qualification": 4,
+      "effective_hand_amplitude_m_range": [
+        0.0025,
+        0.01
+      ],
+      "effective_body_amplitude_rad_range": [
+        0.015,
+        0.06
+      ]
+    },
+    "far": {
+      "anchors": 10,
+      "accepted_grids": 10,
+      "observed_body_pairs": 10,
+      "positive_direction_above_floor_without_noise_qualification": 3,
+      "negative_direction_above_floor_without_noise_qualification": 2,
+      "both_directions_above_floor_without_noise_qualification": 0,
+      "effective_hand_amplitude_m_range": [
+        0.00125,
+        0.01
+      ],
+      "effective_body_amplitude_rad_range": [
+        0.0075,
+        0.06
+      ]
+    },
+    "right": {
+      "anchors": 10,
+      "accepted_grids": 10,
+      "observed_body_pairs": 10,
+      "positive_direction_above_floor_without_noise_qualification": 4,
+      "negative_direction_above_floor_without_noise_qualification": 5,
+      "both_directions_above_floor_without_noise_qualification": 0,
+      "effective_hand_amplitude_m_range": [
+        0.00125,
+        0.01
+      ],
+      "effective_body_amplitude_rad_range": [
+        0.0075,
+        0.06
+      ]
+    }
+  },
+  "by_anchor_step": {
+    "300": {
+      "anchors": 8,
+      "accepted_grids": 8,
+      "observed_body_pairs": 8,
+      "positive_direction_above_floor_without_noise_qualification": 4,
+      "negative_direction_above_floor_without_noise_qualification": 1,
+      "both_directions_above_floor_without_noise_qualification": 1,
+      "effective_hand_amplitude_m_range": [
+        0.01,
+        0.01
+      ],
+      "effective_body_amplitude_rad_range": [
+        0.06,
+        0.06
+      ]
+    },
+    "480": {
+      "anchors": 8,
+      "accepted_grids": 8,
+      "observed_body_pairs": 8,
+      "positive_direction_above_floor_without_noise_qualification": 2,
+      "negative_direction_above_floor_without_noise_qualification": 5,
+      "both_directions_above_floor_without_noise_qualification": 0,
+      "effective_hand_amplitude_m_range": [
+        0.00125,
+        0.01
+      ],
+      "effective_body_amplitude_rad_range": [
+        0.0075,
+        0.06
+      ]
+    },
+    "680": {
+      "anchors": 8,
+      "accepted_grids": 8,
+      "observed_body_pairs": 8,
+      "positive_direction_above_floor_without_noise_qualification": 5,
+      "negative_direction_above_floor_without_noise_qualification": 4,
+      "both_directions_above_floor_without_noise_qualification": 2,
+      "effective_hand_amplitude_m_range": [
+        0.01,
+        0.01
+      ],
+      "effective_body_amplitude_rad_range": [
+        0.06,
+        0.06
+      ]
+    },
+    "830": {
+      "anchors": 8,
+      "accepted_grids": 8,
+      "observed_body_pairs": 8,
+      "positive_direction_above_floor_without_noise_qualification": 1,
+      "negative_direction_above_floor_without_noise_qualification": 2,
+      "both_directions_above_floor_without_noise_qualification": 0,
+      "effective_hand_amplitude_m_range": [
+        0.005,
+        0.01
+      ],
+      "effective_body_amplitude_rad_range": [
+        0.03,
+        0.06
+      ]
+    },
+    "980": {
+      "anchors": 8,
+      "accepted_grids": 8,
+      "observed_body_pairs": 8,
+      "positive_direction_above_floor_without_noise_qualification": 5,
+      "negative_direction_above_floor_without_noise_qualification": 5,
+      "both_directions_above_floor_without_noise_qualification": 3,
+      "effective_hand_amplitude_m_range": [
+        0.00125,
+        0.005
+      ],
+      "effective_body_amplitude_rad_range": [
+        0.0075,
+        0.03
+      ]
+    }
+  },
+  "common_scale_counts": {
+    "1.0": 23,
+    "0.125": 9,
+    "0.25": 4,
+    "0.5": 4
+  },
+  "direction_floor_rad": 0.0001,
+  "descriptive_direction_counts_scope": "Signs and minimum floor only; noise at the other conditions/anchors is not calibrated by the single low/480 repeat. These counts are not formal noise-qualified body gates or independent statistical samples.",
+  "fixed_R3": {
+    "id": "seed-929000-anchor-480",
+    "condition": "low",
+    "family": "height",
+    "seed": 929000,
+    "anchor_step": 480,
+    "slot": 0,
+    "capsule_id": "low-anchor480-batch0",
+    "accepted": true,
+    "rejections": [],
+    "cohort": "8a71a9a6abad9e4fe478ebf76faf59fe53e85c1951e76713fb8a7b379cb864d5",
+    "candidate_feasible": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "complete_feasible_grid": true,
+    "requested_amplitude_m": 0.01,
+    "requested_body_pitch_rad": 0.06,
+    "effective_amplitude_m": 0.00125,
+    "effective_body_pitch_rad": 0.0075,
+    "common_scale": 0.125,
+    "analysis_runs": 27,
+    "valid_analysis_runs": 27,
+    "signed_body_response_half_second": [
+      {
+        "body_index": 1,
+        "body_sign": 1,
+        "contrasts_rad": [
+          -0.00044932588934898376,
+          -0.00044932588934898376,
+          -0.00044932588934898376
+        ],
+        "first_pass_signed_response_rad": -0.00044932588934898376,
+        "centered_repeat_noise_rad": 0.0,
+        "direction_threshold_rad": 0.0001,
+        "first_pass_direction_correct_above_floor_and_noise": false,
+        "noise_reference_seed": 929000,
+        "noise_reference_condition": "low",
+        "noise_reference_amplitudes_match": true
+      },
+      {
+        "body_index": 2,
+        "body_sign": -1,
+        "contrasts_rad": [
+          0.0004934519529342651,
+          0.0004934519529342651,
+          0.0004934519529342651
+        ],
+        "first_pass_signed_response_rad": -0.0004934519529342651,
+        "centered_repeat_noise_rad": 0.0,
+        "direction_threshold_rad": 0.0001,
+        "first_pass_direction_correct_above_floor_and_noise": false,
+        "noise_reference_seed": 929000,
+        "noise_reference_condition": "low",
+        "noise_reference_amplitudes_match": true
+      }
+    ],
+    "both_body_directions_observed_above_noise": false
+  },
+  "body_definition": "D_b=[waist_b(t)-waist_b(anchor)]-[waist_0(t)-waist_0(anchor)], u=0, t=+.5s",
+  "noise_definition": "sqrt(sum_r ||D_r-mean(D)||^2/(R-1)), R=3; same cohort/family/anchor only; missing is not zero",
+  "direction_gate": "sign(b)*D_b > max(3*centered_R3_paired_noise, 1e-4 rad)",
+  "release_rules": {
+    "recorded_at": "2026-10-15T18:13:16.155119+08:00",
+    "new_body006_development_outcomes_read": false,
+    "purpose": "Operational engineering release before formal diagnostic; separate from future interaction-model gate",
+    "conditions": [
+      "All 20 condition/anchor development shards complete with independent physical/control/prefix/cache/sample/official-FK audits passed and immutable source/input checks",
+      "Final 10-environment layout completes without resource/protocol errors; CPU suite passed",
+      "At least one complete feasible 3x3 development grid in each scene family; all rejections/weak responses retained, no 100% grid requirement",
+      "At preselected development R3 grid seed929000 low anchor480, both signed u0 body contrasts exceed max(3*direct centered R3 noise,1e-4 rad); no replacement of this grid based on outcomes"
+    ],
+    "not_required": [
+      "Positive Gamma, rank flips or success advantage before formal collection",
+      "Every development/formal grid feasible or every body direction passing"
+    ],
+    "if_failed": "Do not mark engineering_passed true. Preserve complete development coverage and negative/limited findings. Any further reference/controller redesign requires a separate explicit development protocol; formal 40 seeds remain unused."
+  },
+  "release_rules_sha256": "aa18824b093071e8d6ceeb4faaf72d0c08a6ad61d6f957287b23ceace6e7d5e5",
+  "release_condition_checks": {
+    "all_twenty_development_shards_audited": true,
+    "runtime_frozen": true,
+    "final_ten_environment_layout": true,
+    "cpu_runtime_suite_131_passed": true,
+    "each_scene_family_has_complete_grid": true,
+    "fixed_R3_both_signed_body_directions": false
+  },
+  "cost_totals": {
+    "attempted_anchors": 40,
+    "analysis_branches": 378,
+    "physical_total_slot_rollouts": 1980,
+    "physical_padding_slot_rollouts": 1584,
+    "physical_extra_active_companion_rollouts": 18,
+    "physical_active_branch_rows": 396
+  },
+  "physical_control_slot_steps": 2376000,
+  "physical_record_audit_passed": true,
+  "official_CPU_FK_audited_shards": 20,
+  "independent_fk_maxima": {
+    "same_hand_position_m": 0.001982473712344982,
+    "same_hand_orientation_rad": 0.013917722458019016
+  },
+  "prefix_maximum_absolute_errors": {
+    "root": 0,
+    "q": 0,
+    "qdot": 0,
+    "actor_obs": 0,
+    "tokenizer": 0,
+    "servo_correction": 0,
+    "cube_offset": 0,
+    "tray_offset": 0,
+    "cube_root": 0,
+    "cached_estimates_present": 0,
+    "cached_estimates_json": 0,
+    "servo_target_valid": 0,
+    "servo_target_time": 0,
+    "policy_steps": 0,
+    "policy_history_keys": 0,
+    "policy_dones_present": 0,
+    "policy_dones": 0,
+    "reference/body_pos_w": 0,
+    "reference/body_quat_w": 0,
+    "reference/body_lin_vel_w": 0,
+    "reference/body_ang_vel_w": 0,
+    "reference/body_pos_w_full": 0,
+    "reference/body_quat_w_full": 0,
+    "reference/body_lin_vel_w_full": 0,
+    "reference/body_ang_vel_w_full": 0,
+    "reference/body_pos_b": 0,
+    "reference/root_linv_vel_w": 0,
+    "reference/root_ang_vel_w": 0,
+    "reference/dof_pos": 0,
+    "reference/dof_vel": 0,
+    "reference/feet_l": 0,
+    "reference/feet_r": 0,
+    "policy_observation/actor_obs": 0,
+    "policy_observation/critic_obs": 0,
+    "policy_observation/tokenizer": 0
+  },
+  "analysis_branch_observation": {
+    "first_termination_steps": {
+      "None": 378
+    },
+    "outcome_budget_seconds": {
+      "24.0": 378
+    },
+    "outcome_observation_end_steps": {
+      "1200": 378
+    },
+    "d24_valid": {
+      "True": 378
+    },
+    "scope": "analysis_included=true only; excludes 18 extra active companion rows and 1584 padding rollouts",
+    "count": 378
+  },
+  "resource": {
+    "whole_card_sampled_peak_mib": 8401.0,
+    "memory_total_driver_mib": 49140.0,
+    "free_disk_bytes_after_run": 203381841920
+  },
+  "evidence": {
+    "pipeline_sha256": "38a75df5111da9d3c6ad65a813005a9f915796dbb56388b8be2eb556ede06aed",
+    "engineering_summary_sha256": "f81fb25026a83cb5075503921a21a3548d342f5f5d4a29253d23035f1bd29437",
+    "source_input_fingerprint": "553f5ee79fd62ddbf2e5d271eb0b6cab23d6a02a110e201b1cece6019b90bb4d",
+    "evidence_files_rehashed": 3982,
+    "evidence_unchanged": true,
+    "analysis_entrypoint_sha256": "2254aab4d423fc835d7b1f72cd1c1091614d1aa9302dd869e9353e62dc067265",
+    "analysis_module_sha256": "4d8d7dc0eca91cf8c9d284c6019a74f171d63d37b157211271b4c401c7c264e0",
+    "runtime_cpu_test_log_sha256": "714592774830c96289f535ad629669e1634e0062fe9a4804a2e9f8891f45b7e3",
+    "public_analysis_test_log_sha256": "a120868bd3fc09d509fffc59557d83c4a1b7c4ac7ff8bd6cf4e1a6bd1c89bd3b",
+    "source_input_sha256": {
+      "configuration/evaluation.json": "47e57cb2dcb83941a85a3cc716f45dd1eb9ad8aa5930faa9b72a772e72408f0f",
+      "project/src/g1_embodiedskills/__init__.py": "a66e540824984a4243fb0154363c7cc98fbf17a5fb79229bb3c3d1d74c703ce0",
+      "project/src/g1_embodiedskills/assets.py": "7337f525219ca484296c266e3ed1845226ca8be040c4f63591d97da7f1f33625",
+      "project/src/g1_embodiedskills/candidates.py": "0107456428f8b45655014a663dca0785ac4b067aed7f519d196445666b9e9475",
+      "project/src/g1_embodiedskills/collection.py": "a25e1d2aa40b21756e013b9b02fa3bd99330b02ff977efe8821460d07d777f19",
+      "project/src/g1_embodiedskills/io.py": "355f3c6cf86cbce15334f3f28c893f78d3042d46f4886ac5f7823b2e991938d8",
+      "project/src/g1_embodiedskills/kinematics.py": "c179e4b4a6be02ca108d1b4c5fbeaedeffe6720d4edf79b28c9ca0d86c084c2d",
+      "project/src/g1_embodiedskills/learning.py": "e62a0b3b68edf251b99fda1b063d43de2b6e12b387ad1fd3136a83c40f15681e",
+      "project/src/g1_embodiedskills/m1_learning.py": "68f167481fbf851aeaeac936ca1b84cb86dfd8d1d2746153f8f54892ad226d71",
+      "project/src/g1_embodiedskills/m1_runtime.py": "a42c7aa859c3494007bcf81742112477e06eb1a2e62d312dbcd9abd5f4b85c60",
+      "project/src/g1_embodiedskills/m2_analysis.py": "4d8d7dc0eca91cf8c9d284c6019a74f171d63d37b157211271b4c401c7c264e0",
+      "project/src/g1_embodiedskills/m2_audit.py": "83a7fbf0d5998385ce2497061bfd0867d6912683eadaae80d7fd3cd1f7969237",
+      "project/src/g1_embodiedskills/m2_candidates.py": "fb6ec831d87104d8e9ed9fe243af07cff4f63212987092d13cfb4ec557aaf208",
+      "project/src/g1_embodiedskills/m2_collection.py": "1d30336b9c24d1c7932806e796917d19da59d0cf16c357d2118184a03edc93d2",
+      "project/src/g1_embodiedskills/m2_kinematic_null.py": "78088153cf3dede25d28c85f49b25f765f392a41c5200f2cbdf09da8a18d4836",
+      "project/src/g1_embodiedskills/m2_kinematics.py": "3275acabfe4e3b5e64e44e78eb6c324d02e796c925a2f52df40bb44478342f13",
+      "project/src/g1_embodiedskills/metrics.py": "5ebee31d107edf090a8bb366ea90aa6b3792642ce1acd64d0946a5d92700318e",
+      "project/src/g1_embodiedskills/native_reference.py": "c6a49542fb17ba8c5d8d3dfdece15cb71b4f49120b5a8eb988d40dd905fd42cf",
+      "project/src/g1_embodiedskills/online.py": "3c49a5d76477f71b6e9cf698918f5e248f2676147c19e230c41cc3bf7e63dee3",
+      "project/src/g1_embodiedskills/perception.py": "5838a1ed336a2d1d39e627dbfc8111d56763684c1eaf55cdbe36fa5337c05c20",
+      "project/src/g1_embodiedskills/policies.py": "7c05404241b37d88965dbfabac2146faf8a21cea82e77c6f5235aaab44dda71a",
+      "project/src/g1_embodiedskills/servo.py": "63bfbd7b55057669bc05f484c3990cfa7815580f2471b40798f538c680671db1",
+      "project/src/g1_embodiedskills/simulation.py": "2ee4fa9217a02247e15e0ae8d71675eb70c6653106cc9f57335789ced5a259e3",
+      "project/src/g1_embodiedskills/task_runtime.py": "60dc57809065655bd1eb8abe14768f894de5bdd300ed3aa1de1f821c9b8ee401",
+      "embodiedskills/src/embodiedskills/__init__.py": "193c97298ae606ccb31afd8b8637361273e5c8d58121a9ca3bdede7ca5aef9ac",
+      "embodiedskills/src/embodiedskills/adapters.py": "8061c094596a134f3fb4d3fa7f5d8be35ef2aaab53aa7fd5f859fe00644833d6",
+      "embodiedskills/src/embodiedskills/checkpoint.py": "8e1789f6363a904bcb15e24d11bd5eaf48fb79aae0545c9956275c09b964d309",
+      "embodiedskills/src/embodiedskills/cli.py": "7295163f1b245d4487c4e58331c2b2a28db706a00cad98f583601b678841c3a4",
+      "embodiedskills/src/embodiedskills/consensus.py": "6a8acc9559c257ec9d63cdf7c7b4500126c45a1cefa7d0bd69a603d04ac76442",
+      "embodiedskills/src/embodiedskills/continuous.py": "74fc9d0f7e862ab8908a6ae3a2a1ad41943148fa436b9ea22b37952fa64d377b",
+      "embodiedskills/src/embodiedskills/continuous_consensus.py": "170039c29fae7d7246129802bc8ea926e7c7916d34a76603a0ccf6508930ec26",
+      "embodiedskills/src/embodiedskills/data.py": "a619bd69e712e46d60c76bdb37b34a468d000a89cf30e726dd90eb138311e020",
+      "embodiedskills/src/embodiedskills/language.py": "9a8352dc7a38cddf61b3dd2c9e608f79c4f22bb7049316161a388d81efa559a9",
+      "embodiedskills/src/embodiedskills/losses.py": "bf1864bbe7e15509bc5b53b45bd032cb52741ce93b4be109b471fe43edfc3328",
+      "embodiedskills/src/embodiedskills/migration.py": "2e5265bd59b7a458cba2f91723ab910035858abcf56b380ae9665770bd450f65",
+      "embodiedskills/src/embodiedskills/runtime.py": "ebfec204eacfbfa6687d523f480857a83e060b880d698bfe674aa3717748ee40",
+      "embodiedskills/src/embodiedskills/sampling.py": "98d512136f0809eff6279cb152a562aeb3471ca28fc9c65b3e68eb151610d411",
+      "embodiedskills/src/embodiedskills/spatial.py": "6a3e80d565ca52e6d4ade5feccb588a9b511441ecc5ca910c9d031b8fb985daa",
+      "embodiedskills/src/embodiedskills/training.py": "c866c9c3226ee56334de95dbec974c0a8b9cf24f59b25e051ba9b63a1d8ed8eb",
+      "embodiedskills/src/embodiedskills/vision.py": "7193f4e91a2e45f9aa76474902868b39f251be7cd59e55664d60461179e4faa8",
+      "sonic/gear_sonic/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/camera/__init__.py": "6e0dff5d68fb8188c6207d944e6c54931f354eeb81df74c7ab2c99e26ddfaa4f",
+      "sonic/gear_sonic/camera/composed_camera.py": "86e603ee644253c8e93207fbe31bc1ce57db0fe4f61a78329007d0847db6119d",
+      "sonic/gear_sonic/camera/drivers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/camera/drivers/dummy.py": "89242f396c3987a98a4eaed82c56aaf509e5df435f331a96c32cf0e01241a474",
+      "sonic/gear_sonic/camera/drivers/oak.py": "fac8e9c782174a6e79366a80317c23774bd2ecfa0d7eb005e4ec5b6f55f5c8df",
+      "sonic/gear_sonic/camera/drivers/realsense.py": "1f80954faa863c88bf0f1c8982c7b2f4499a73881caa618534578255fa63fd87",
+      "sonic/gear_sonic/camera/drivers/usb_camera.py": "3ab15d2661c6fe6f629f929b275026e08ea70038a203efc368d9db317e6ca8bc",
+      "sonic/gear_sonic/camera/sensor.py": "36b73c91225e02cf13cd6b5313b53c036cd58bcae49ae459153212038d7cf3e7",
+      "sonic/gear_sonic/camera/sensor_server.py": "cadaf157e02220b0f6a75f5daf95be207160fc013d560909492c1f49769331c1",
+      "sonic/gear_sonic/data/exporter.py": "5ebabae815e2ce45a10674fd60bdcd97f9e948cb1c50517e5d851008a9be204c",
+      "sonic/gear_sonic/data/features_sonic_vla.py": "16c82be34abbc4dace19485e0f806cd4022a182115e51062e05a54786447fd5a",
+      "sonic/gear_sonic/data/robot_model/__init__.py": "3fe6ac461e6dba6997491d4bf71f41ac1e033ba6af6e492eb8d133bb39b4e04f",
+      "sonic/gear_sonic/data/robot_model/instantiation/__init__.py": "f69483729a10cafcf569972ab3b530438d1aee71141811454c6a38727280087f",
+      "sonic/gear_sonic/data/robot_model/instantiation/g1.py": "801fe771bd3a61ec74d59f73952d34605dca089cbca5e42d8333e344d342f864",
+      "sonic/gear_sonic/data/robot_model/robot_model.py": "f69e637da1df27441ef86a3dfafc33f35fab41216d2a44cc87515b287989455d",
+      "sonic/gear_sonic/data/robot_model/supplemental_info/__init__.py": "e77f2d9d4cd77af7e9ec2e337b355a436a6e88ba6a3bb7b753c9261d520b68a8",
+      "sonic/gear_sonic/data/robot_model/supplemental_info/g1/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/data/robot_model/supplemental_info/g1/g1_supplemental_info.py": "d9b07ca20228442f806e9bb85cd082b6952bffee9ce1fcec53288f01a09b49da",
+      "sonic/gear_sonic/data/robot_model/supplemental_info/robot_supplemental_info.py": "57e15f85d92b6fd8fd0b978aadb5e24e9a1c53910024eda25d78fc07da932c41",
+      "sonic/gear_sonic/data/video_writer.py": "f4f18b22c222e8063cf3f61b480171b8ab49c68898ef7c76960ee2e12b45839e",
+      "sonic/gear_sonic/data_process/convert_soma_csv_to_motion_lib.py": "ab8361a08894c19b7160278d25cf3d47aad924f5be78c72fc0f1a38eba68e9dd",
+      "sonic/gear_sonic/data_process/export_motion_to_deploy.py": "807ec84dcafdf80a34d8f4cdca88842fa9db64633b0b36f4398aeff43cd05920",
+      "sonic/gear_sonic/data_process/extract_soma_joints_from_bvh.py": "8cad919b5eab31a5e4aabb6212ac02536b9a21127cd248585f48f251ec5ed692",
+      "sonic/gear_sonic/data_process/filter_and_copy_bones_data.py": "b6b50d441a4876a382eb3ff33ba940c487d1647230b5ecacaa37cfcf521258da",
+      "sonic/gear_sonic/data_process/split_pkl_files.py": "0fdeae9b7e7c38f5153e245d65f5c2cfb5808570289fe9274ba2b6b311159545",
+      "sonic/gear_sonic/envs/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/envs/env_utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/envs/env_utils/joint_utils.py": "b69a07f6bd1850370f8b7d6161e9e099222eebc6eec967b3dc5a936bc8b87f4a",
+      "sonic/gear_sonic/envs/manager_env/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/envs/manager_env/mdp/__init__.py": "03d02f26cab1144d527a8091d6ebc02778e282b50f2d54563535f9aad452bc48",
+      "sonic/gear_sonic/envs/manager_env/mdp/actions.py": "d678c1f4fbaa8e314ac3fd068e905d455cf2ebfcd88bb9c5f70a56827694e8b2",
+      "sonic/gear_sonic/envs/manager_env/mdp/actuators.py": "64e86ed1cce64f4a29c935a979b0703508e08a11247b39d27e450b796926f606",
+      "sonic/gear_sonic/envs/manager_env/mdp/commands.py": "444bdb5a84987ec5bcc4f768640722f90a85c24011c4ee16c292a6d49b28ba5f",
+      "sonic/gear_sonic/envs/manager_env/mdp/curriculum.py": "5405accd219561c9a31d3c757dc83c215f19a813063a91d51ce2ea8e2c2eb625",
+      "sonic/gear_sonic/envs/manager_env/mdp/events.py": "22c61a5337ecd6750cdd69b99fd05e463c3c404ee1c22f7bb7c8a0741ebdfd49",
+      "sonic/gear_sonic/envs/manager_env/mdp/observations.py": "9e671b55e8288f7a6c25abfcbf1c1eb4e3485c7412d1b73410ab59c2d95fc443",
+      "sonic/gear_sonic/envs/manager_env/mdp/recorders.py": "156af3ad025c575e5ce7440596a044660ac936dba68c4b656bde27dc211ebcc0",
+      "sonic/gear_sonic/envs/manager_env/mdp/rewards.py": "5b64c88691f90e0e40dd149d8822e4b6d31c4ee65c7eca4ffe1674dc6770836e",
+      "sonic/gear_sonic/envs/manager_env/mdp/terminations.py": "73a4c0230f8e696199d6bc46be1c1f2cf5e6a529dde10f09468fc657dbaf2bbe",
+      "sonic/gear_sonic/envs/manager_env/mdp/terrain.py": "cd18054abdfdad9c967e3abdf2f51ae7198d4ecb396256d60e4024297423b2e6",
+      "sonic/gear_sonic/envs/manager_env/mdp/utils.py": "95e4cbf338f70f3034495850d5a387d68d4c7f716285081236ac78a9511482f3",
+      "sonic/gear_sonic/envs/manager_env/modular_tracking_env_cfg.py": "d841ea9c199018fa83cc26f7c086ab9e9cf32c098feb37f94034a35521b63bca",
+      "sonic/gear_sonic/envs/manager_env/robots/__init__.py": "cf8bfe34612e06ba2ec40007d76de24ac515e17c4270c5a50ffed4ac34f65763",
+      "sonic/gear_sonic/envs/manager_env/robots/g1.py": "97344e379b15ee347576caa6b56de29e871bec590bb9ad7d4d2215032ce14eb0",
+      "sonic/gear_sonic/envs/manager_env/robots/h2.py": "82829432a1cb73220aadb94a6b11968812bf835e0bf79e5dcda389a1a4074f54",
+      "sonic/gear_sonic/envs/wrapper/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/envs/wrapper/manager_env_wrapper.py": "f4796294fa09d6dc9d40cccf5464c9c4e8c6e158f91acc07a85b6d7c58e27433",
+      "sonic/gear_sonic/eval_agent_trl.py": "a5d2292d9121246e61b5c7768ad0968c49028778fdbe28cf4b720647f4b06b5a",
+      "sonic/gear_sonic/eval_exp.py": "8c32777cb4b18a03afbbba7d39cb52c9165f94c3ac34c6f3026a8c5e824574b6",
+      "sonic/gear_sonic/examples/live_camera_teleop/soma_pt_to_sonic_v3.py": "5ea5c8b2353ed1a5bef351b087076826b148cf45144635140f1b0d18234fbb30",
+      "sonic/gear_sonic/examples/live_camera_teleop/soma_to_smpl.py": "f065d8c3506bd315cf00951a00450e389929f6587acc70bfedbb7070f0eab26c",
+      "sonic/gear_sonic/examples/live_camera_teleop/webcam_stream.py": "0342737f98302918e5fe10ca9536e08196277e2969845cf47608f60c0ae66fe2",
+      "sonic/gear_sonic/isaac_utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/isaac_utils/maths.py": "6664aca11cf24e78d749a6c415422566a8c1c29ddd7b8221732874a423ce5bce",
+      "sonic/gear_sonic/isaac_utils/rotations.py": "b800cc97757ea452e04c12b16b70a2847b5cb08c041b521e32e7347b05479d99",
+      "sonic/gear_sonic/scripts/launch_data_collection.py": "beaba193a1f93d6a505aeeb58a4c6d13a0ed1c277bf077fc771a945eb6e81d63",
+      "sonic/gear_sonic/scripts/launch_inference.py": "e2a66b92693e9ee7c6c0f79bb8e6c873d472dfb3048458842f4448e3e37199f1",
+      "sonic/gear_sonic/scripts/pico_manager_thread_server.py": "728557bea52ee8dddea0d8cc6f54d8a74779d071bd6bd193de194080b90e897c",
+      "sonic/gear_sonic/scripts/process_dataset.py": "af9971ab4fd96e3821a3423974a406fdb8432e1b0b75f720c819ff4e3e5127cc",
+      "sonic/gear_sonic/scripts/run_camera_viewer.py": "4ca5db17c3315fed814b2b27c52edefaa856948e7b35f9616bdfd4148494ac73",
+      "sonic/gear_sonic/scripts/run_data_exporter.py": "9be05e9d03496a9e9c775349ab228e523146ef2d2f70f3a57244a3b5d0653bca",
+      "sonic/gear_sonic/scripts/run_sim_loop.py": "6e79b61d43e94b81997a417f175971c3cb1d35bc2f361fb6d5f29ece27c3a40b",
+      "sonic/gear_sonic/scripts/run_vla_inference.py": "e626d57c87410151c272f7b367b6622f266f4ab16808d53df59aafd0a02da526",
+      "sonic/gear_sonic/tests/test_input_readers.py": "6a11b871ed87f94b979890b2c0da2ccc0982df10622d3ea525801d64c1dda0fb",
+      "sonic/gear_sonic/train_agent_trl.py": "168599e28709a48a70a3e7c1e96481a038bc4565a0f32d678a3ce7e9515b3fcf",
+      "sonic/gear_sonic/trl/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/trl/callbacks/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/trl/callbacks/hv_callback_handler.py": "d119b6cffc48eb4d465863204c85926dc2d462451dec1df1e6e3ea166319a705",
+      "sonic/gear_sonic/trl/callbacks/im_eval_callback.py": "dbee4fbbc1cb4e7dd4c2f5d0438256f59b7732248d15422b23be826f5f4ce16e",
+      "sonic/gear_sonic/trl/callbacks/im_resample_callback.py": "9b6133f50c58531ded01132df4e8be61f6618f80bc43ff592e5252370db2440d",
+      "sonic/gear_sonic/trl/callbacks/m0_evidence_callback.py": "7c88cfa5d0c0be55510f6c34537fc037a3a83cc70abfd84f2de576cc8025b7de",
+      "sonic/gear_sonic/trl/callbacks/model_save_callback.py": "a1bd4456d450dd1a5156c1e1801caf913f763284a9e805bc283927083c824af0",
+      "sonic/gear_sonic/trl/callbacks/read_eval_callback.py": "6c25bb37f23059d8d67cb764fb49287062cdd059facb76e8a3b573ab77ffd89a",
+      "sonic/gear_sonic/trl/callbacks/visual_evidence_callback.py": "637eddc95098b21d88b0bd9a93e9b82821c1c3b19f620e977afa01e4a57d6911",
+      "sonic/gear_sonic/trl/callbacks/wandb_callback.py": "c3eb682ca2ec4db92882a741ae72dc72dff58af9f3fcf4266d8400e16acdb6b9",
+      "sonic/gear_sonic/trl/losses/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/trl/losses/token_losses.py": "193368ab72a35a2af9569fcbf05a9abafc017aabb3d830f99b579da03299de80",
+      "sonic/gear_sonic/trl/modules/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/trl/modules/actor_critic_modules.py": "6050eca4ea29b312d509201667b1aa7681cbb79ad1f5c957b928c936cb9a85be",
+      "sonic/gear_sonic/trl/modules/base_module.py": "462dfc4be982f5d6e2d08275df00fccbc49a81f882bdb60fc257be81da8593b6",
+      "sonic/gear_sonic/trl/modules/data_utils.py": "b1d749c208c24306712c09ed5a647e3f4b9c97125ef287b12f18b65e939b67c8",
+      "sonic/gear_sonic/trl/modules/universal_token_modules.py": "46b6a460032932034a23411b10674adee4ce253e51f66af89d58678c41caf415",
+      "sonic/gear_sonic/trl/trainer/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/trl/trainer/ppo_trainer.py": "f8bdf8930072aa7fe2bcdbcd03960444e51ba86d853bfc32f1186feaf3ad1b07",
+      "sonic/gear_sonic/trl/trainer/ppo_trainer_aux_loss.py": "28be258ef3a67cac33bc97b036b97073f17907333557dae3d9543fdba3cd1b7c",
+      "sonic/gear_sonic/trl/utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/trl/utils/common.py": "81e95c59eae539f34db01cfed0ee248390b48abf0adcdd842236d1d0abe756c2",
+      "sonic/gear_sonic/trl/utils/data.py": "37048f5642f337998212bcddb988e4d1727fd77b745282f7405ddcc65060a304",
+      "sonic/gear_sonic/trl/utils/kornia_transform.py": "576c2209f8f85f38c59c182d6f504cde34899adca68fea2ad50e626c5e03a0f1",
+      "sonic/gear_sonic/trl/utils/math.py": "280dbe8eaeb7413a703e441e2feae02b7d4388f73878f0d2ffe93f4f29324638",
+      "sonic/gear_sonic/trl/utils/order_converter.py": "236e2705d306ab1c938af5baf973fbcd291b04fbdd372bc87e3fa56c907d069f",
+      "sonic/gear_sonic/trl/utils/rl.py": "c74043b94c43914839cc4b17afc645a611b2fda9be862383e75f037d5776269b",
+      "sonic/gear_sonic/trl/utils/rotation_conversion.py": "a2c350e42cc4e7eb906755867f1d977733d190925f22419e4b2e285ffac2bfa1",
+      "sonic/gear_sonic/trl/utils/scheduler.py": "29c44006764ee6829addb9a655e868987bf1b0218d1a57b7606501f8b4ab7f13",
+      "sonic/gear_sonic/trl/utils/smplx/body_model/__init__.py": "f1b4969359ccb1f28dfeae0b53ff8c12f5135ff7227b0bcbda59c501fa029530",
+      "sonic/gear_sonic/trl/utils/smplx/body_model/body_model.py": "2f46a415ce950e91566a70480b28fd8b2f3e641763f71a766244a5f931029450",
+      "sonic/gear_sonic/trl/utils/smplx/body_model/body_model_smplh.py": "90277cf05a574b5767e72670a8b8667420f60565306b1dac33eebe569a20bba4",
+      "sonic/gear_sonic/trl/utils/smplx/body_model/body_model_smplx.py": "f1aa79c0e26be560c6868fe542e4b1ec11e129e4f73728de80955c1edcf2cbd5",
+      "sonic/gear_sonic/trl/utils/smplx/body_model/min_lbs.py": "8ba6136666ef0494bc5702a29c3c5f7d7455f5c1197a14d5ab68d759187e97ed",
+      "sonic/gear_sonic/trl/utils/smplx/body_model/rotation_conversions.py": "9daad492a2a97f9a2123a693d96713acad2f940c816e18c6532b51d25d6c65fc",
+      "sonic/gear_sonic/trl/utils/smplx/body_model/smpl_lite.py": "598591180b37682447dd439d786cb09170946735450aae660455ced9371503a6",
+      "sonic/gear_sonic/trl/utils/smplx/body_model/smplx_lite.py": "87ca50b92c2bd77a3597e8c1e1d8c0f774cfab6299ae64ca7e68e5b8ce79f491",
+      "sonic/gear_sonic/trl/utils/smplx/body_model/utils.py": "62994f415081d30b38a8356c4935bb08299e3a3dd0cfd7d5518ea59871125c53",
+      "sonic/gear_sonic/trl/utils/smplx/smplx_utils.py": "e9c6dd87624ada2307ced20e2ee97350a3498842a43af67654ebb2494620add0",
+      "sonic/gear_sonic/trl/utils/torch_transform.py": "4d40e3ac765cb2541aacd8af60f1162914e4ce97b4cc8fadc871a7c6a2fe7b41",
+      "sonic/gear_sonic/utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/utils/average_meters.py": "904dadb7ea7ada895ae428845db8b5c1223ff9d03ce20f898f3f9647ebb7a88c",
+      "sonic/gear_sonic/utils/batch_normalizer.py": "75d17e143e48120337257d65a1e7f36de772f460641f2ec3202068fc95fe0db4",
+      "sonic/gear_sonic/utils/common.py": "1636f063a9e3e5ad94582838a93c605c1df29e4b25328956d1c8f0c0df148b7d",
+      "sonic/gear_sonic/utils/config_utils.py": "90bbe6ee305c4984077154e289ebd562a2420362e762b300118185d84e881182",
+      "sonic/gear_sonic/utils/data_collection/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/utils/data_collection/episode_state.py": "bee11b69f6876932d0a7a16476c2d5f75b9471a202d47c9c2fe0ea669465a4a8",
+      "sonic/gear_sonic/utils/data_collection/keyboard_subscriber.py": "1c2094fc7bd46a3a7e0a31b091bdff06f58d9d2044aa957c43c86006dd3567b2",
+      "sonic/gear_sonic/utils/data_collection/telemetry.py": "b554f415047016bb7d355ad42228e574037681a4852238ece20210e22f0f3d58",
+      "sonic/gear_sonic/utils/data_collection/text_to_speech.py": "9a5d6904ef01f84d592436b322ea94514f94e4addb9fc449fe96b5921ff778e2",
+      "sonic/gear_sonic/utils/data_collection/transforms.py": "879e1b9dfbecad90cd61d925886e1e22f368ead531c6b7a96de373d02dbc179d",
+      "sonic/gear_sonic/utils/data_collection/zmq_state_subscriber.py": "0aac4b05168a7659098a3dae915e1d4f925abbab0101b942153dbb1c25bbe14f",
+      "sonic/gear_sonic/utils/inference/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/utils/inference/initial_poses.py": "bcc4943016efbd72b2abe744d78ab247984defa6b035347f18216ffdf029c5a1",
+      "sonic/gear_sonic/utils/inference/vla_utils.py": "7d4962f3282f2db8d5300e31c7b8e9b1457bf641563d5e2f0fbdbfa708007ca4",
+      "sonic/gear_sonic/utils/inference_helpers.py": "4a02e49ffe76594ac68adebcf7749fc007fa827bf49a80953f5d6151e70e8d43",
+      "sonic/gear_sonic/utils/lab3_wxyz.py": "5df7963d49fb2008760020cbb8d97e397c38d0786da4a316d09dd3e5522d14a5",
+      "sonic/gear_sonic/utils/logging.py": "585dd620c34e2e5b0fbf973f69bb10a243989947db6162ae5b139199d413b05a",
+      "sonic/gear_sonic/utils/motion_lib/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/utils/motion_lib/motion_lib_base.py": "cc74c05c5c9bffe14f27907513ae693291cf3f27c38a8eb20abbdb7ce24f9cd8",
+      "sonic/gear_sonic/utils/motion_lib/motion_lib_robot.py": "db1d9ad5011e98f5e0c7de8710714753213fd8322beafe2d019035455f76bf75",
+      "sonic/gear_sonic/utils/motion_lib/skeleton.py": "9e593ed72145add9e7b5711602913494128b0853a3ee3a682dfc4609deed0b8e",
+      "sonic/gear_sonic/utils/motion_lib/torch_humanoid_batch.py": "41e5d4a44497547784a1f22fb968d112039f0a7b0eb85e166022e6ac3c4988d1",
+      "sonic/gear_sonic/utils/mujoco_sim/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sonic/gear_sonic/utils/mujoco_sim/base_sim.py": "15cd5a48e60dd34eef3696783b4d1def15ecb1ff9f69bb76c592c24e2b500dcb",
+      "sonic/gear_sonic/utils/mujoco_sim/configs.py": "06945b00653e7a8b8f3a4adfda64ad03b925be59ceb5c1482b4cf94ca273bff8",
+      "sonic/gear_sonic/utils/mujoco_sim/image_publish_utils.py": "3ffce7c7beae200db8de7422662eff3b7c1779bcb72a5d3eb2af92ac0f680233",
+      "sonic/gear_sonic/utils/mujoco_sim/metric_utils.py": "ce725c41c67140816aa980eb5e57b33e19b55d53af63056372506a82f294254e",
+      "sonic/gear_sonic/utils/mujoco_sim/robot.py": "9edd458c8c9397b57166f9f00ce951171b951d19144a47c2f1ef411e1ee224aa",
+      "sonic/gear_sonic/utils/mujoco_sim/sensor_server.py": "968f3dfee1b70eb743024e72b129c85f874272580cf4fa3be994df7dcf8cb9a7",
+      "sonic/gear_sonic/utils/mujoco_sim/sim_utils.py": "e99ca73a9403a3bfb0e87b4add2da09f403a0b2486f8ea508a66fa39f20a5ce5",
+      "sonic/gear_sonic/utils/mujoco_sim/simulator_factory.py": "b503df6c15ad7ac5411167be75265b63232f1e0efabedd2547e8a6c117728e29",
+      "sonic/gear_sonic/utils/mujoco_sim/unitree_sdk2py_bridge.py": "9873d67aa6b9dcbe2ceba2c9d0a8810ba0e303fbd3fc3a6bcfde24fb111ab3a3",
+      "sonic/gear_sonic/utils/network/network_utils.py": "23ec93b11e81f1e86f59303f18052ab5b4a3e1506d7255e93230c08d2d0fe911",
+      "sonic/gear_sonic/utils/obs_utils.py": "a044340abd0e9a0e0a34e59b993a1243f8a48fdeed4778c9c17b8354666c521d",
+      "sonic/gear_sonic/utils/running_mean_std.py": "1e5b0b01b72e9cf216229930409a2dc7522051c593d7f7b8ab61b1fb145fb7ea",
+      "sonic/gear_sonic/utils/teleop/input_readers.py": "ce1ec35c3e72e4341752ad04c6322bf6fc947fb554832516555147b20cf2a72d",
+      "sonic/gear_sonic/utils/teleop/isaac_teleop_client.py": "8ea5005570de0909481d478da213f6820d88bd0ec3e4c7e7e5cf93d712f1662d",
+      "sonic/gear_sonic/utils/teleop/solver/hand/g1_gripper_ik_solver.py": "1819bc011d022e2e9567e5209bc8c5b4f3f328c1275ab5cfeb0a8e0a2e9b9c25",
+      "sonic/gear_sonic/utils/teleop/solver/solver.py": "f7bbf30d54de3f58c9f55e205dbdcf374e3215ce506847fb0347480a0a613c83",
+      "sonic/gear_sonic/utils/teleop/vis/vr3pt_pose_visualizer.py": "f223df8e7e1863e37a423aa80619e0ea42a67f1569df9c1d6e2487af08c4d3a6",
+      "sonic/gear_sonic/utils/teleop/zmq/zmq_planner_sender.py": "f33d7715d36cda8ae64b7ce48d4f5a4c74d73fb1eb9a6c17fe85b3456b023f63",
+      "sonic/gear_sonic/utils/teleop/zmq/zmq_poller.py": "2e445f7eb27691e075f47c81d915b420e3124f3bb278d106b7a7f00b49ef37b4",
+      "sonic/gear_sonic/utils/torch_utils.py": "4020c628709a593057824030aba7990a6f69cc50a37f0f84b64c8899ad577d8c",
+      "sonic/gear_sonic/version.py": "d26e5fa6b9479d30a9b66884fe17dacb8b308706b3145572291726b8d530c8fa",
+      "project/scripts/analyze_m2.py": "2f1e8f4ce894f4f47badca78fea9b032223435af995826df6b1c931efaab3e9a",
+      "project/scripts/audit_m1_predictions.py": "9f9f41d0f2374da22ff2ddec4bfca65ddc8ab5815829194932d93ffb6fe13f55",
+      "project/scripts/audit_m2.py": "95d23f9489bc0a9de909abc59937d4374f2d212c8df1768847589b69a9bdffc7",
+      "project/scripts/build_asset.py": "4d335e956af4eae59c0613d14c9d2ed5601e540423c9e146366411385c07d317",
+      "project/scripts/collect_dataset.py": "05bc4fcdbc05326ef5b2fb9e79997bcfedb5895117b5b886084b32e8c2077dbe",
+      "project/scripts/evaluate_fixed2.py": "250f759662f46762a8bf703327621726c4f9f0e5e96eea6b4c66ea74b2d7116a",
+      "project/scripts/evaluate_m1.py": "818d2a2da1ac37fa2a2fcbb0ce0c8d1089db117c746b523f4b540deeb127bd8c",
+      "project/scripts/evaluate_online.py": "2304581c1d7daa52cef2eb58bcddb16add7f97f8e3ff79e62f21ddd47d059f13",
+      "project/scripts/evaluate_selector.py": "2938c34e2a5dff5988088c1b319aaeabec49ee98125be62079ea64d56d80a63d",
+      "project/scripts/prepare_reference.py": "92083c56ba8ed2e0b0aa39deef6b0c3e0ef6830ab5645d6812378894b666ba42",
+      "project/scripts/prepare_task.py": "37e753ab24b047a222d6a6fea648d93ce930260093fd064bf90ed754268d31b8",
+      "project/scripts/run_m2.py": "34d90557360606b5a1588263ee023a979efdf6281d93d269d50853b7faa73885",
+      "project/scripts/run_sim.py": "3211ec43207da58335f4f59809862b6fdee479572c469d6dd8f08bf58f074a2e",
+      "project/scripts/summarize_collection.py": "86fa950f378996eb9665664764b1408052bb4434898456941601dbe9fed44368",
+      "project/scripts/summarize_evaluation.py": "f39d9b527a11b1308f768ac01a57451091bc4b3d2da25b362947e23db9672fd7",
+      "project/scripts/train_m1.py": "9a80c2edde95eabc5aacbd8af48d6ec68b34f70bd451d0c1d36bf9d12161b16b",
+      "project/scripts/train_selector.py": "e01000932707a1f979c46927e13165f6db4e59dfe0d44b5ff5014ed77a931268",
+      "isaac_python_wrapper": "89fb5a636dde733c977eb7b6a846314874503c91025ff0ee2cca1b4a72e42314",
+      "robot_asset": "a262118f75f369da675034d700082798aafdd5e476430650b3c36133cb6973b8",
+      "sonic_checkpoint": "e6bdab3f64a39336b3d41877d4f497d05f58af275f288ec0e6746c283ded8909",
+      "sonic_checkpoint_configuration": "f08187795fa16a839a28bc1c18e0555d38d9420e03733744341cdcb56ab629c7",
+      "sonic_fk_mjcf": "15a330f1dbff68cdbeb8284be6162a857bdcd21a858f65a8617fb32d5115f209",
+      "sonic_sole_urdf": "6e107391d015ab27438026bb953b21ef8fa6a02305e65393985908941d7fd98d",
+      "reference/low/motion.pkl": "2f3bd2276ae84f11eda1bea3b68cc841c026af44f6a4f4611e752fc786442fe0",
+      "reference/low/reference.json": "d1b9d97d9e308c10c12978b18ab320805ba95d4e0b58ca2395c248fa01e21329",
+      "reference/low/planned.npz": "4b6135933ea399506b1cb990b60b6698b772622c9043971097a3d1b2ac8f78f6",
+      "reference/low/task.json": "d811b2d24e22996e6c6a1085a272c750dbcac63e0cb71c8cbe0f4959ab48df2c",
+      "reference/high/motion.pkl": "120eb63b508c05de43f6bb71a3427ba77cbdd2894e9b2fc580dc20848529cbba",
+      "reference/high/reference.json": "a378688cddd6056bcc1958856a77c0aae5cdd2b48e8981025add29681725b778",
+      "reference/high/planned.npz": "f97a2e3c40f2fc5276ccc265936bfc03375de861f5de1c9d5d531a94c1dc29db",
+      "reference/high/task.json": "ebf52211b4664ececdb7a30ac83e5868cd00f357aa298214f8652ce3d9e46a55",
+      "reference/far/motion.pkl": "e85ee6525d8a51fce28d13cdeae48c10dccfe743990c0cd8f56e90c6a7d5de02",
+      "reference/far/reference.json": "452d42f2440f29e5a22e425ed521e962f251721018900aa070722fae68487efc",
+      "reference/far/planned.npz": "998336e282b8ff192fa454bf078e994a50017c9a08027d1e6429f14b86d2a534",
+      "reference/far/task.json": "c7e068b07c4dbc86180b3f790494cde9374acfdd025aadb583317489afc39889",
+      "reference/right/motion.pkl": "3e814cb56f465b99b88106d438bac6dc3e7caebffacc137dcc11a913ddbbf552",
+      "reference/right/reference.json": "cc0abfe2d3cef3f28a4a57d669d90bdb640e2df2f88f96f780b45cedd18f999a",
+      "reference/right/planned.npz": "bcf24b0d77b51818520f08e36a9c3ff197e4b9a1837ec17d24fb8c031fc4029d",
+      "reference/right/task.json": "2485201a4a5f4f56359d8b7f3460a798091184875d28cca0a1a9ad21d4f6802b",
+      "shard/low-anchor300": "84068cdb53eec901c9f4a1da6f48d957c4e8d8efda5f33d270dd8fe4aa32486d",
+      "shard/low-anchor480": "00b001836154fa4e989db7721e311827c9f3e0eab63bb327bd56d27ed9e09601",
+      "shard/low-anchor680": "e75fe7c70d69487edb0b5b0b9cffd25316f787159f57d56f2f36c6873c1b25ae",
+      "shard/low-anchor830": "d7317506eafd45b3d5c08bf66e2ece4e58193b9139f3ac82becc70409defcf83",
+      "shard/low-anchor980": "a4863a5cb8e7ab0ec6accdb3b3f36c6dbcfdcc74185fb80033f16249cca4ace6",
+      "shard/high-anchor300": "89cd24bc18859a9b0b0ae1c7e4035e2ce831ed4b0e9cd49f3a6d2b9a7b73e8de",
+      "shard/high-anchor480": "d8ada13d6310113706cc8578ca53459bef31d7680487e961892163db59cf3163",
+      "shard/high-anchor680": "08e2b96219cd86a598cdd8edc2efc6eebd614b576463d6dea1ebadfc99531add",
+      "shard/high-anchor830": "83fd162d83c46d472a9f6da3fa0b279307451eb14334e7a0ba0f396a2efdac28",
+      "shard/high-anchor980": "c1e568a22f3beacb600ed8f33246a6aadf314413a6b898f8ea391ee8802dd020",
+      "shard/far-anchor300": "ac805a33abdaebc8c80f55cb8eb3a1e5331fa7e374c44e218d9376c71fe4991c",
+      "shard/far-anchor480": "2e2e44e935bf94c3d623510ebedbd28b8275943faa453e03ebbf048f135a6c22",
+      "shard/far-anchor680": "56eb9b4a93493319471783d081ffee2e0db903298e861aeca87da66802db5ec9",
+      "shard/far-anchor830": "a19e977f2500eb1a81b2b6bcf24ef62c6f115f40c2702524e120a5c987879aea",
+      "shard/far-anchor980": "3baed14036ccbb5d4b3c0bca306329d672f6b8a4ef1ae9ee17129c02b3e822e4",
+      "shard/right-anchor300": "f03e5bb82e9279f6a050e94865952658d101b08e6257acf7cad8c6adae57e841",
+      "shard/right-anchor480": "aaff0fea05af4a19bc07660517099d9f91ead9a2665e52351cf9580610b1884c",
+      "shard/right-anchor680": "7e0db8b80a9a6c0c43b8fcae28b84630f6505ee9bdeaba4ab61158ba6aff6cc1",
+      "shard/right-anchor830": "47ef788ec0410393bdf3359621bcf98957b3a98fb29cdadf5d9879ecc9f6e64b",
+      "shard/right-anchor980": "2859dc130fbfaac72fb43ef854870b20806f3e5866b3974c441b1a03a0af2399"
+    },
+    "shards": [
+      {
+        "name": "low-anchor300",
+        "physical_audit_passed": true,
+        "audit_sha256": "45dfedb1d4a0a532e83af26417a684f3da521420e6f0995f6e0cdce7afc23257",
+        "manifest_sha256": "975846ae32190825920174fd17540d0be0ec32ebb5c323c2c14c5803e0b1ae16",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "low-anchor480",
+        "physical_audit_passed": true,
+        "audit_sha256": "b5e637d7e9580d37df9640ee227723749aba442d4b4ca53f8738173429969bc3",
+        "manifest_sha256": "22ef24b7fb2e1a30e1bb1dd8056a6024b762659c062d4beced1c7832560439b2",
+        "analysis_branches": 36,
+        "physical_total_slot_rollouts": 270
+      },
+      {
+        "name": "low-anchor680",
+        "physical_audit_passed": true,
+        "audit_sha256": "4a0598653f83c7ddc9007a7493f7c5ce43138e4985b38a68cfdead11b5ef8e68",
+        "manifest_sha256": "755922e6461560f66d862386634fa5b55d8537242de4d44538778afefb002957",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "low-anchor830",
+        "physical_audit_passed": true,
+        "audit_sha256": "a0e86001e3b4eee67926e7f759a40bece89cb4919765b0caa0b3a5c21a99107a",
+        "manifest_sha256": "242f915359c8a235963a8dc963e09acf6816f5465f2f5fa4dcdd86f52f9dc08c",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "low-anchor980",
+        "physical_audit_passed": true,
+        "audit_sha256": "b9627d4932b08afe9f54d3081d566b57469fd8a2862f50dbf718719417f3f39f",
+        "manifest_sha256": "83f917efc7ae11e7962b48108db12887209d1855b1d386c5a5deb5ca7a807b17",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "high-anchor300",
+        "physical_audit_passed": true,
+        "audit_sha256": "8049b406d8cf22323f15c0f1828ea247a0e450d972e3dd5d3999da294e5f9f9c",
+        "manifest_sha256": "12a45221f2a05cce75f9c74e01522ed866e5096b064b272680df475377323f4d",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "high-anchor480",
+        "physical_audit_passed": true,
+        "audit_sha256": "01b9d3c6b6a29c50916e3fbf71688a5a17eb067e3a4b21b246835e8a7807c9ac",
+        "manifest_sha256": "6427b6a9fab8234bc34cfd95631219cfecd73d8fc8a4b347c9b7fe9d2aa79a24",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "high-anchor680",
+        "physical_audit_passed": true,
+        "audit_sha256": "6a1ef5e055130c3ddd482bca9360031a3dc17796e68f7dd77a8039cbb2045c22",
+        "manifest_sha256": "04d1b8046dafade2b274c9ed392cf4274712d14d189ef4af942643636029d76a",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "high-anchor830",
+        "physical_audit_passed": true,
+        "audit_sha256": "3256216abebc1a594182271780c0ae2c9517b5068d9a8f4ef60347e93226ef91",
+        "manifest_sha256": "bf62143742d996da991cf9961e4cf1a2a9b2ba3a6521b33c39e7c837e5c0ebf9",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "high-anchor980",
+        "physical_audit_passed": true,
+        "audit_sha256": "679d45c4ab9a92daa05a88641e2c432dfa1c8dc22fbb18c68eb71b63a02f8fb4",
+        "manifest_sha256": "35f3248448502641ec37d74a02b58362187c5680528e2a97b5d0a56348710e67",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "far-anchor300",
+        "physical_audit_passed": true,
+        "audit_sha256": "e5fa4f9015e9571d89eb95ff9533802a6f3ca49a9fc99554a1b53ab90c0cf052",
+        "manifest_sha256": "a50492f49af8618c3481229cb2cbe1a64d7fac854033313fd3f702fddb80355f",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "far-anchor480",
+        "physical_audit_passed": true,
+        "audit_sha256": "953f2cc6cf5352b27735cab8d481dc3374b8672c3e7e315a1b6aa7ba4ecee553",
+        "manifest_sha256": "b6d47171f94ef04c3b9c6b367ee8b1806a0e677445dbde77855e95cf8bd5a6b0",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "far-anchor680",
+        "physical_audit_passed": true,
+        "audit_sha256": "da3f8457d752e465adb9cb529a7ac5a3b7bce95bef61dc29110e3eb9f7381f45",
+        "manifest_sha256": "efa6e1fd75f0713e3f2137f835bdc5660f8c1b29b054b7cda3b466f05fd4f219",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "far-anchor830",
+        "physical_audit_passed": true,
+        "audit_sha256": "b64ae449132cabb0e750a4936eb21ee5dd093ba04c81aa05223929534f4e8cc1",
+        "manifest_sha256": "8d26eff48f9aad25827e8d3392e2349db5b4f36dc96d3a25bac1475629bdb600",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "far-anchor980",
+        "physical_audit_passed": true,
+        "audit_sha256": "75583b1877283c46877ea50ce536f5b9be8f1f0e57bf007b46ee3f411df42ba1",
+        "manifest_sha256": "db340cefed53ac85a959adbf191aba6042eeabb3cc50b0c6fcda70290e703fd1",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "right-anchor300",
+        "physical_audit_passed": true,
+        "audit_sha256": "2f8dbcb40c5ac1ebadd062814aa3f0f7aa71b9bf1e648d261d19fe59d131c3e3",
+        "manifest_sha256": "b8e436b3ad05038e4225f2c78a4efdf044f3a0ea0b5cf05e2fe805ffd9a7d367",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "right-anchor480",
+        "physical_audit_passed": true,
+        "audit_sha256": "53c5b9efef32d995c6ee6a857c1ba24d958d8be49cdb157f372d2e891b6bd6b0",
+        "manifest_sha256": "b76884bf41ad576b2e966f423eef09eb576c98c55e90bdf69005ccef886f57e2",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "right-anchor680",
+        "physical_audit_passed": true,
+        "audit_sha256": "d9cda1fa84cd9c466d53d5002f069a702c732fe81a2f112baade6bfd6c1e3c70",
+        "manifest_sha256": "e1f24291fa9f55ffe393d1e748ec4957cbcaa250d51276fac97786ee47ac7dc8",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "right-anchor830",
+        "physical_audit_passed": true,
+        "audit_sha256": "815d9acd700db0db271b4bd90ebbe37f0a90cd11d028a96992ffbfbdf308c9a3",
+        "manifest_sha256": "ebdcc0aad9e333348f099ab354963b2b2407ed946ef1246fe3263ab230d273d0",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      },
+      {
+        "name": "right-anchor980",
+        "physical_audit_passed": true,
+        "audit_sha256": "cbb391a4fc7fc4de2866852d000d3b99b91ae61055f71e923817cf9016729bde",
+        "manifest_sha256": "ae4bc6a93c3b104408bae4247253a8f74d2ec35763cb580616f14334285f1a23",
+        "analysis_branches": 18,
+        "physical_total_slot_rollouts": 90
+      }
+    ],
+    "final_frozen_input_recheck": {
+      "files": 250,
+      "all_unchanged": true,
+      "verified_at": "2026-10-15T22:18:07+08:00"
+    },
+    "independent_final_review": {
+      "files_verified": 4006,
+      "all_unchanged": true,
+      "review_report_sha256": "00c99a51a4a83cb00a1c23cd81e7017c725f2a5c71d2ecdda6a089bfd4050df6",
+      "review_json_sha256": "36863c78d8e5f95303361cdaec8cdf8e66b9814aef22797bf224fcc9671fb4cd",
+      "padding_audit_sha256": "b351078e26bb16af30bdb3aea39591ac6e2e29e5c3cde986777db8794036837c",
+      "blocking_errors": 0
+    }
+  },
+  "formal_not_started": {
+    "episode_seeds": [
+      920000,
+      920039
+    ],
+    "planned_episodes": 40,
+    "planned_anchors": 200,
+    "planned_analysis_branches": 1980,
+    "observed_formal_episodes": 0,
+    "observed_formal_branches": 0,
+    "inspected_physical_manifests": 22,
+    "executed_seed_set": [
+      929000,
+      929001,
+      929002,
+      929003,
+      929004,
+      929005,
+      929006,
+      929007
+    ]
+  },
+  "interpretation": [
+    "All forty development grids were feasible; a feasible native reference does not guarantee the expected physical waist response.",
+    "The fixed R3 instance failed both signed body-direction gates; zero centered replay noise at this instance does not establish low noise elsewhere.",
+    "Only eight independent development episodes; forty anchors and repeated candidate branches are correlated.",
+    "No formal Gamma/rank/kinematic-null outcome claim, no learned M2 selector result, and no sim-to-real claim.",
+    "v1 and v2 differ in environment count and requested waist amplitude; their difference is not a paired causal estimate of the amplitude effect."
+  ],
+  "padding_observation": {
+    "physical_padding_slot_rollouts": 1584,
+    "rollouts_with_true_termination": 154,
+    "shared_traces_with_padding_termination": 34,
+    "termination_counting": "First terminated=true per padding slot and physical pass, not number of terminated time steps",
+    "rollouts_by_shard": {
+      "far-anchor300": 53,
+      "far-anchor480": 40,
+      "high-anchor300": 8,
+      "high-anchor480": 1,
+      "high-anchor980": 1,
+      "low-anchor300": 24,
+      "right-anchor300": 27
+    },
+    "active_slot_rollouts_with_true_termination": 0,
+    "active_slot_rollouts": 396,
+    "independent_padding_audit_sha256": "b351078e26bb16af30bdb3aea39591ac6e2e29e5c3cde986777db8794036837c"
+  },
+  "physical_control_slot_steps_scope": "1200 allocated world control steps per physical pass times 10 slots; includes continued world simulation after padding terminations; not all valid task observations"
+}
