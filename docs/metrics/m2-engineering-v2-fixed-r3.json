@@ -1,0 +1,157 @@
+{
+  "schema": "g1_embodiedskills.m2_fixed_development_gate_check.v1",
+  "scope": "Completed low-anchor480 shard only; parent pipeline running at observation.",
+  "observed_at": "2026-10-15T18:55:36.616237+08:00",
+  "pipeline_observation": {
+    "observed_at": "2026-10-15T18:55:36.616237+08:00",
+    "pipeline": "/home/zxc/ski/g1_embodiedskills/outputs/m2/development-10env-body006-v2/pipeline.json",
+    "pipeline_sha256_at_observation": "f7f397b71df59d5dd4ce5dd5aa1b30b8c296bcf3c83b7782ef1d217eacc09546",
+    "pipeline_completed_at_observation": false,
+    "pipeline_status_at_observation": "running",
+    "target_shard_only": {
+      "name": "low-anchor480",
+      "status": "complete",
+      "output": "/home/zxc/ski/g1_embodiedskills/outputs/m2/development-10env-body006-v2/low-anchor480",
+      "command": [
+        "bash",
+        "/home/zxc/miniconda3/envs/sonic_isaaclab/bin/isaac-python",
+        "/home/zxc/ski/g1_embodiedskills/scripts/run_sim.py",
+        "--sonic",
+        "/home/zxc/oprr-sim/vendor/SONIC-runtime",
+        "--reference",
+        "/home/zxc/ski/g1_embodiedskills/outputs/m2/references/low/native",
+        "--embodiedskills-root",
+        "/home/zxc/ski/EmbodiedSkills",
+        "--asset",
+        "/home/zxc/ski/g1_embodiedskills/outputs/assets/g1_parallel_gripper.urdf",
+        "--output",
+        "/home/zxc/ski/g1_embodiedskills/outputs/m2/development-10env-body006-v2/low-anchor480",
+        "--mode",
+        "m2_collect",
+        "--m2-collection-config",
+        "/home/zxc/ski/g1_embodiedskills/outputs/m2/development-10env-body006-v2/configurations/low-anchor480.json",
+        "--num-envs",
+        "10",
+        "--seconds",
+        "24",
+        "--cameras",
+        "--position-jitter",
+        "0.02"
+      ],
+      "log": "/home/zxc/ski/g1_embodiedskills/outputs/m2/development-10env-body006-v2/low-anchor480.log",
+      "started_at": "2026-10-15T18:17:09.387039+08:00",
+      "pid": 1903699,
+      "sampled_gpu_maxima": {
+        "0": {
+          "name": "NVIDIA GeForce RTX 4090",
+          "memory_total_mib": 49140.0,
+          "memory_used_mib": 7868.0,
+          "utilization_gpu_percent": 51.0
+        }
+      },
+      "resource_samples": 195,
+      "returncode": 0,
+      "finished_at": "2026-10-15T18:49:32.243799+08:00",
+      "wall_seconds": 1942.8560493429977,
+      "physical_audit_passed": true,
+      "audit": "/home/zxc/ski/g1_embodiedskills/outputs/m2/development-10env-body006-v2/audits/low-anchor480.json",
+      "audit_sha256": "b5e637d7e9580d37df9640ee227723749aba442d4b4ca53f8738173429969bc3",
+      "manifest": "/home/zxc/ski/g1_embodiedskills/outputs/m2/development-10env-body006-v2/low-anchor480/m2-collection/manifest.json",
+      "manifest_sha256": "22ef24b7fb2e1a30e1bb1dd8056a6024b762659c062d4beced1c7832560439b2",
+      "attempted_anchors": 2,
+      "analysis_branches": 36,
+      "physical_total_slot_rollouts": 270
+    },
+    "scope": "Only this completed shard is opened; no other shard outputs are read."
+  },
+  "frozen_release_rule_recorded_at": "2026-10-15T18:13:16.155119+08:00",
+  "rule_sha256": "aa18824b093071e8d6ceeb4faaf72d0c08a6ad61d6f957287b23ceace6e7d5e5",
+  "rule_precedes_target_shard": true,
+  "target_manifest_sha256": "22ef24b7fb2e1a30e1bb1dd8056a6024b762659c062d4beced1c7832560439b2",
+  "target_audit_sha256": "b5e637d7e9580d37df9640ee227723749aba442d4b4ca53f8738173429969bc3",
+  "target_physical_audit_passed": true,
+  "official_cpu_fk_verified": true,
+  "historical_audit_evidence_count": 550,
+  "current_frozen_source_changes": [],
+  "global_pipeline_freeze_completion_check": "pending; pipeline still running; not inferred",
+  "group": {
+    "id": "seed-929000-anchor-480",
+    "seed": 929000,
+    "condition": "low",
+    "family": "height",
+    "anchor_step": 480,
+    "slot": 0,
+    "noise_anchor": true,
+    "accepted": true,
+    "rejections": [],
+    "candidate_feasible": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "complete_feasible_grid": true,
+  "valid_analysis_rows": 27,
+  "amplitudes": {
+    "requested_amplitude_m": 0.01,
+    "requested_body_pitch_rad": 0.06,
+    "effective_amplitude_m": 0.00125,
+    "effective_body_pitch_rad": 0.0075,
+    "common_scale": 0.125
+  },
+  "signed_body_response_half_second": [
+    {
+      "body_index": 1,
+      "body_sign": 1,
+      "contrasts_rad_R3": [
+        -0.00044932588934898376,
+        -0.00044932588934898376,
+        -0.00044932588934898376
+      ],
+      "centered_direct_R3_noise_rad": 0.0,
+      "direction_threshold_rad": 0.0001,
+      "signed_first_pass_response_rad": -0.00044932588934898376,
+      "local_direction_gate_passed": false,
+      "canonical_waist_offset_at_pulse_plateau_rad": 0.0075
+    },
+    {
+      "body_index": 2,
+      "body_sign": -1,
+      "contrasts_rad_R3": [
+        0.0004934519529342651,
+        0.0004934519529342651,
+        0.0004934519529342651
+      ],
+      "centered_direct_R3_noise_rad": 0.0,
+      "direction_threshold_rad": 0.0001,
+      "signed_first_pass_response_rad": -0.0004934519529342651,
+      "local_direction_gate_passed": false,
+      "canonical_waist_offset_at_pulse_plateau_rad": -0.0075
+    }
+  ],
+  "fixed_instance_both_body_directions_passed": false,
+  "engineering_passed": null,
+  "shard_physical_cost": {
+    "attempted_anchors": 2,
+    "analysis_branches": 36,
+    "physical_active_branch_rows": 54,
+    "physical_total_slot_rollouts": 270,
+    "physical_padding_slot_rollouts": 216,
+    "physical_extra_active_companion_rollouts": 18
+  },
+  "formula": "D_b,r=(waist_b,r(+.5)-anchor_waist_b,r)-(waist_0,r(+.5)-anchor_waist_0,r); noise=sqrt(sum((D_r-mean(D))^2)/(3-1)); pass iff sign_b*D_b,0>max(3*noise,1e-4).",
+  "limitations": [
+    "Zero R3 scatter applies only to this same-grid, same-batch replay.",
+    "Feasible references and a passed physical audit do not demonstrate correct body response.",
+    "No other shard outputs, task success advantages, or interaction-model evidence are analyzed.",
+    "No stopping/replacement of development coverage or formal seed usage is authorized."
+  ],
+  "formal_collection_enabled": false,
+  "root_decision": "The fixed signed R3 release condition failed; continue all development coverage, retain formal seeds unused"
+}
