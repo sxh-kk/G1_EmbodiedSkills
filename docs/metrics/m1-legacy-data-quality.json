@@ -1,0 +1,170 @@
+{
+  "schema": "g1_embodiedskills.m1_legacy_cache_readonly_audit.v1",
+  "created_at": "2026-10-15T13:04:13.618241+08:00",
+  "physical_rerun": false,
+  "gpu_used": false,
+  "sources": {
+    "servo.py": "2998bf2b195b6baccda62b63b1bda85e745f413d3c4f778f645b59a115ee1281",
+    "collection.py": "05ada7b17a5762a489be78ab2a2df342a36442e2dd39427d33b02a1c32cbe679",
+    "online.py": "0750483fdd4b22ac4dc3eefcd5f6daeea3d28ded66a3349100c1ba0a61526253",
+    "kinematics.py": "c179e4b4a6be02ca108d1b4c5fbeaedeffe6720d4edf79b28c9ca0d86c084c2d"
+  },
+  "all_five_manifest_source_hashes_match": true,
+  "phase_summaries": [
+    {
+      "phase": 0,
+      "anchor_step": 0,
+      "anchor_seconds": 0.0,
+      "anchors": 40,
+      "maximum_anchor_to_final_l2_m": 0.011934725196612412,
+      "maximum_anchor_to_final_component_m": 0.010276440031986356,
+      "median_anchor_to_final_l2_m": 0.003183039288573217,
+      "exact_anchor_final_matches": 0,
+      "all_saved_post_anchor_offsets_constant_count": 0,
+      "maximum_case": {
+        "seed": 1118,
+        "batch": "batch-00000",
+        "slot": 18
+      },
+      "late_cache_missing_case": false,
+      "interpretation": "Offset convergence diagnostic; anchor0/6 difference is normal later sensing, not an omission bound"
+    },
+    {
+      "phase": 1,
+      "anchor_step": 300,
+      "anchor_seconds": 6.0,
+      "anchors": 40,
+      "maximum_anchor_to_final_l2_m": 0.0071779418621238916,
+      "maximum_anchor_to_final_component_m": 0.006436897346962493,
+      "median_anchor_to_final_l2_m": 0.002145048462903645,
+      "exact_anchor_final_matches": 0,
+      "all_saved_post_anchor_offsets_constant_count": 0,
+      "maximum_case": {
+        "seed": 1118,
+        "batch": "batch-00000",
+        "slot": 18
+      },
+      "late_cache_missing_case": false,
+      "interpretation": "Offset convergence diagnostic; anchor0/6 difference is normal later sensing, not an omission bound"
+    },
+    {
+      "phase": 2,
+      "anchor_step": 500,
+      "anchor_seconds": 10.0,
+      "anchors": 40,
+      "maximum_anchor_to_final_l2_m": 1.4150048434695886e-08,
+      "maximum_anchor_to_final_component_m": 1.0528133979198495e-08,
+      "median_anchor_to_final_l2_m": 2.170575490722987e-09,
+      "exact_anchor_final_matches": 0,
+      "all_saved_post_anchor_offsets_constant_count": 0,
+      "maximum_case": {
+        "seed": 1118,
+        "batch": "batch-00000",
+        "slot": 18
+      },
+      "late_cache_missing_case": true,
+      "interpretation": "Exact saved baseline offset difference bounds the input change from restoring common cached perception; not a physical outcome bound"
+    },
+    {
+      "phase": 3,
+      "anchor_step": 800,
+      "anchor_seconds": 16.0,
+      "anchors": 40,
+      "maximum_anchor_to_final_l2_m": 5.898697549827395e-18,
+      "maximum_anchor_to_final_component_m": 4.7704895589362195e-18,
+      "median_anchor_to_final_l2_m": 1.95152672755837e-18,
+      "exact_anchor_final_matches": 0,
+      "all_saved_post_anchor_offsets_constant_count": 0,
+      "maximum_case": {
+        "seed": 1114,
+        "batch": "batch-00000",
+        "slot": 14
+      },
+      "late_cache_missing_case": true,
+      "interpretation": "Exact saved baseline offset difference bounds the input change from restoring common cached perception; not a physical outcome bound"
+    },
+    {
+      "phase": 4,
+      "anchor_step": 1000,
+      "anchor_seconds": 20.0,
+      "anchors": 40,
+      "maximum_anchor_to_final_l2_m": 0.0,
+      "maximum_anchor_to_final_component_m": 0.0,
+      "median_anchor_to_final_l2_m": 0.0,
+      "exact_anchor_final_matches": 40,
+      "all_saved_post_anchor_offsets_constant_count": 40,
+      "maximum_case": {
+        "seed": 1100,
+        "batch": "batch-00000",
+        "slot": 0
+      },
+      "late_cache_missing_case": true,
+      "interpretation": "Exact saved baseline offset difference bounds the input change from restoring common cached perception; not a physical outcome bound"
+    }
+  ],
+  "primary_scalar_reference_sensitivity": {
+    "status": "completed",
+    "anchor_step": 500,
+    "branches": 160,
+    "candidate_ids": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "seeds": [
+      1100,
+      1139
+    ],
+    "policy": "Original ReferenceServo.update and trajectory on actual archived TCP/WXYZ observations, model is official CPU SONIC G1 FK.",
+    "initialization": "Both paths start exact stored anchor correction/cube_offset/tray_offset. Old path freezes tray_offset; restored path gets exact same-step saved baseline tray_offset. Root/reference/finger schedule unchanged.",
+    "stop_rule": "Stop each branch at the first old-versus-restored float32 reference discrepancy; this is an input-sensitivity test, not full corrected physical outcome evaluation.",
+    "windows_checked": 3525,
+    "old_reconstruction_max_correction_absolute_delta_rad": 0.0,
+    "old_reconstruction_float32_window_mismatches": 0,
+    "branches_with_cache_induced_float32_difference": 160,
+    "maximum_first_difference_float32_q_delta_rad": 1.1920928955078125e-07,
+    "first_examples": [
+      {
+        "seed": 1100,
+        "candidate": 1,
+        "step": 720,
+        "q32_max_delta_rad": 1.1920928955078125e-07,
+        "old_matches_recorded": true
+      },
+      {
+        "seed": 1101,
+        "candidate": 1,
+        "step": 740,
+        "q32_max_delta_rad": 2.9802322387695312e-08,
+        "old_matches_recorded": true
+      },
+      {
+        "seed": 1102,
+        "candidate": 1,
+        "step": 710,
+        "q32_max_delta_rad": 2.9802322387695312e-08,
+        "old_matches_recorded": true
+      }
+    ],
+    "wall_seconds": 39.40311042200483
+  },
+  "future_window_steps": 10,
+  "last_estimate_time_used_in_actions_or_model_state": false,
+  "physical_success_label_change_count": null,
+  "decision": {
+    "continue_m1": true,
+    "scope": "Valid controlled future-loss ablation conditional on the fixed legacy dataset, identical training budget and unaffected real online evaluation.",
+    "conditions": [
+      "Record discovery before sealed testing and preserve code/data/models/method set/100 seeds.",
+      "Do not call the legacy late-anchor outcome labels perfect one-intervention/common-continuation counterfactual data.",
+      "Do not claim the missing cache has zero outcome impact.",
+      "Use corrected new collection/training for later clean mechanism confirmation."
+    ],
+    "reason": "All M1 variants use the same fixed training labels, while first0.2s future supervision precedes the affected continuation and online evaluation has no replay-branch cache omission."
+  },
+  "raw_local_evidence": "outputs/m1/legacy-cache-audit.json",
+  "raw_evidence_sha256": "3fc4f8462883bdbf6881dd1278b487dd944690151da9b19f15083aef787c409d",
+  "evidence_file_count": 82,
+  "evidence_unchanged_during_report": true
+}
