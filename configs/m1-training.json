@@ -1,0 +1,21 @@
+{
+  "schema": "g1_embodiedskills.m1_training_config.v1",
+  "family": "continuous",
+  "seed": 0,
+  "member_seeds": [0, 1, 2],
+  "batch_size": 128,
+  "variants": ["full_d", "full_g", "no_future_g", "sa_critic"],
+  "model": {
+    "hidden": 192,
+    "success_priority": 4.0,
+    "outcome_change_standardized": true,
+    "state_dim": 1041,
+    "action_dim": 38,
+    "execution_horizon": 75
+  },
+  "member": {"epochs": 30, "learning_rate": 0.0003, "expert_weight": 0.5},
+  "consensus": {"epochs": 40, "batch_size": 128, "samples_per_task": 256, "learning_rate": 0.0003},
+  "checkpoint_rule": "fixed_final_epoch",
+  "capacity_tolerance": 0.05,
+  "threads": 8
+}

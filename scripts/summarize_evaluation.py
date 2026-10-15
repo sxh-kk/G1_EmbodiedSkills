@@ -19,6 +19,8 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from g1_embodiedskills.io import sha256, write_json
 from g1_embodiedskills.metrics import episode_outcome
+from g1_embodiedskills.m1_runtime import (PHASE_SCHEMA, SELECTOR_KINDS, fixed_candidate,
+                                        phase_selection, validate_phase_policy)
 
 EPISODES, STEPS, DT = 30, 1200, .02
 INITIAL_TOLERANCE = 1e-6
@@ -124,7 +126,8 @@ def archive_path(directory, relative):
     return path
 
 
-def audit_decision(directory, row, trace, method, completed, seed, slot):
+def audit_decision(directory, row, trace, method, completed, seed, slot, identity=None, require_saved_inputs=False):
+    identity = identity or {}
     label = f"{method}/seed={seed}/step={row.get('step')}"
     step = integer(row.get("step"), f"{label}/step", high=STEPS-10)
     require(step % 10 == 0 and step <= completed, f"{label}: invalid decision clock")
@@ -182,17 +185,48 @@ def audit_decision(directory, row, trace, method, completed, seed, slot):
         scores = numeric_array(scores, (5,), f"{label}/scores")
         saved_scores = numeric_array(data.get("scores"), (5,), f"{label}/saved_scores")
         require(np.array_equal(scores, saved_scores), f"{label}: actual JSON/NPZ scores differ")
+        if require_saved_inputs:
+            visual = numeric_array(data.get("visual"), (1024,), f"{label}/visual")
+            require(visual.dtype == np.float32 and np.isclose(np.linalg.norm(visual), 1., atol=1e-5),
+                    f"{label}: actual runtime visual input must be L2-normalized float32")
+            mask = numeric_array(data.get("mask"), (5, 75), f"{label}/mask")
+            require(mask.dtype == np.float32 and np.all(mask == 1), f"{label}: actual action mask differs from M1 contract")
     else:
         require("scores" not in data, f"{label}: null JSON scores contradict actual saved scores")
     if method == "selector":
         head_argmax = integer(row.get("head_argmax"), f"{label}/head_argmax", high=4)
         require(scores is not None and selected == int(np.argmax(scores)) == head_argmax,
                 f"{label}: selector choice is not the actual comparison-head argmax")
+        if identity.get("selector_kind") is not None:
+            require(row.get("selector_kind") == identity["selector_kind"]
+                    and row.get("checkpoint_sha256") == identity.get("checkpoint_sha256"),
+                    f"{label}: decision selector/checkpoint identity differs from the loaded bundle")
     if method == "direct":
         require(selected == 0, f"{label}: direct baseline selected a nonzero candidate")
     if method == "fixed2":
         require(selected == 2 and scores is None and row.get("head_argmax") is None,
                 f"{label}: fixed2 must select index 2 without model scores or head prediction")
+    if method == "fixed":
+        candidate = fixed_candidate(identity.get("fixed_candidate_index"))
+        require(selected == candidate == row.get("fixed_candidate_index") and scores is None
+                and row.get("head_argmax") is None and row.get("selection_inputs") == {},
+                f"{label}: fixed policy selected a different index or consumed unapproved inputs")
+    if method == "phase":
+        inputs = row.get("selection_inputs")
+        require(isinstance(inputs, dict) and set(inputs) == {"elapsed_seconds"},
+                f"{label}: phase selection must use elapsed_seconds only")
+        close(inputs["elapsed_seconds"], step*DT, f"{label}/phase_elapsed", atol=1e-12)
+        policy = {"schema": PHASE_SCHEMA, "bounds_seconds": identity.get("phase_bounds_seconds"),
+                  "indices": identity.get("phase_indices")}
+        candidate, phase = phase_selection(policy, inputs["elapsed_seconds"])
+        require(selected == candidate and row.get("selection_phase_index") == phase
+                and row.get("phase_policy_sha256") == identity.get("phase_policy_sha256")
+                and scores is None and row.get("head_argmax") is None,
+                f"{label}: phase choice, policy identity or score independence is invalid")
+        close(data.get("selection_elapsed_seconds"), inputs["elapsed_seconds"], f"{label}/saved_phase_elapsed")
+        saved_phase = np.asarray(data.get("selection_phase_index"))
+        require(saved_phase.shape == () and saved_phase.dtype.kind in "iu" and int(saved_phase) == phase,
+                f"{label}: saved phase index disagrees with actual lookup")
     patch = row.get("patch", {})
     require(patch.get("cursor") == step and patch.get("patched_frames") == 75
             and patch.get("last_execution_preview_frame") == step+55, f"{label}: native patch clock/horizon mismatch")
@@ -223,7 +257,11 @@ def validate_latency(result, decisions, label):
     return latency
 
 
-def audit_method(directory, method):
+def audit_method(directory, method, expected_episodes=EPISODES):
+    """Audit every measured episode; old callers retain the 30-episode contract."""
+    expected_episodes = integer(expected_episodes, "expected_episodes", low=1)
+    require(method in ("direct", "random", "selector", "fixed2", "fixed", "phase"),
+            f"Unknown audited method: {method}")
     directory = Path(directory).resolve()
     request, result, interface = (read_json(directory / name) for name in ("request.json", "result.json", "interface.json"))
     process = read_json(directory / "process_result.json")
@@ -232,8 +270,11 @@ def audit_method(directory, method):
     require(result.get("completed") is True and result.get("mode") == request.get("mode") == "closed_loop",
             f"{method}: run is not a completed online evaluation")
     require(request.get("method") == result.get("method") == method, f"{method}: requested/reported method mismatch")
-    require(request.get("repeats") == result.get("requested_episodes") == result.get("counted_episodes") == EPISODES,
-            f"{method}: exactly 30 requested and counted episodes are required")
+    strict_runtime = result.get("runtime_audit_contract") == "g1_embodiedskills.m1_runtime_audit.v1"
+    require(expected_episodes == EPISODES or strict_runtime,
+            f"{method}: new M1 runs require the saved-input/initial-memory audit contract")
+    require(request.get("repeats") == result.get("requested_episodes") == result.get("counted_episodes") == expected_episodes,
+            f"{method}: exactly {expected_episodes} requested and counted episodes are required")
     require(number(request.get("seconds"), f"{method}/seconds") == 24., f"{method}: expected a 24-second budget")
     require(request.get("cameras") is True and result.get("hard_physics_reset") is True,
             f"{method}: real camera observations and full physical reset are required")
@@ -259,17 +300,51 @@ def audit_method(directory, method):
                 and bool(identity.get("comparison_head")) and isinstance(identity.get("checkpoint_sha256"), str)
                 and len(identity["checkpoint_sha256"]) == 64,
                 "selector: missing actual three-WAM comparison-bundle identity")
+        kind = request.get("selector_kind", "legacy")
+        require(kind in SELECTOR_KINDS and identity.get("selector_kind", "legacy") == kind,
+                "selector: requested and loaded selector_kind disagree")
+        if strict_runtime:
+            checkpoint = Path(request.get("selector", ""))
+            require(checkpoint.is_file() and str(checkpoint) == identity.get("checkpoint")
+                    and sha256(checkpoint) == identity.get("checkpoint_sha256"),
+                    "selector: saved checkpoint path/hash disagrees with the loaded model")
+            context_path = archive_path(directory, identity.get("inference_context_archive"))
+            require(sha256(context_path) == identity.get("inference_context_sha256"),
+                    "selector: inference context archive hash mismatch")
+            context = read_npz(context_path)
+            vector = numeric_array(context.get("language_vector"), (384,), "selector/language_vector")
+            require(vector.dtype == np.float32 and hashlib.sha256(vector.tobytes()).hexdigest()
+                    == identity.get("language_vector_sha256"), "selector: saved runtime language vector hash mismatch")
+    if method == "fixed":
+        candidate = fixed_candidate(request.get("fixed_candidate_index"))
+        require(request.get("selector") is None and identity.get("selector") is None
+                and identity.get("fixed_candidate_index") == candidate
+                and identity.get("selection_input_names") == [],
+                "fixed: policy must select the declared constant index with no selector input")
+    if method == "phase":
+        require(request.get("selector") is None and identity.get("selector") is None
+                and identity.get("selector_kind") == "phase_only"
+                and identity.get("selection_input_names") == ["elapsed_seconds"],
+                "phase: policy may only receive elapsed seconds and may not load a selector")
+        phase_path = Path(request.get("phase_policy", ""))
+        require(phase_path.is_file() and identity.get("phase_policy") == str(phase_path)
+                and sha256(phase_path) == identity.get("phase_policy_sha256"),
+                "phase: loaded policy file/identity/hash disagree")
+        policy = validate_phase_policy(read_json(phase_path))
+        require(policy["bounds_seconds"] == identity.get("phase_bounds_seconds")
+                and policy["indices"] == identity.get("phase_indices"),
+                "phase: policy table differs from its loaded identity")
     episodes = read_json(directory / "episodes.json")
-    require(isinstance(episodes, list) and len(episodes) == EPISODES and episodes == result.get("episodes"),
+    require(isinstance(episodes, list) and len(episodes) == expected_episodes and episodes == result.get("episodes"),
             f"{method}: episode records missing or result/episodes.json disagree")
     by_seed = {}
     for row in episodes:
         seed = integer(row.get("seed"), f"{method}/episode_seed", low=900000)
         require(seed not in by_seed, f"{method}: duplicate episode seed {seed}")
         by_seed[seed] = row
-    require(set(by_seed) == set(range(seed_base, seed_base+EPISODES)),
-            f"{method}: missing/extra seeds; expected all 30 consecutive requested seeds")
-    expected_batches = {f"batch-{i:04d}" for i in range((EPISODES+count-1)//count)}
+    require(set(by_seed) == set(range(seed_base, seed_base+expected_episodes)),
+            f"{method}: missing/extra seeds; expected all {expected_episodes} consecutive requested seeds")
+    expected_batches = {f"batch-{i:04d}" for i in range((expected_episodes+count-1)//count)}
     require({p.name for p in directory.glob("batch-*") if p.is_dir()} == expected_batches,
             f"{method}: missing or unexpected episode batches")
     checked, initial, selections, all_decisions, audited_archives = {}, {}, [], [], set()
@@ -277,9 +352,22 @@ def audit_method(directory, method):
         batch_dir = directory / f"batch-{batch_id:04d}"
         trace = read_npz(batch_dir / "trace.npz")
         check_trace(trace, count, f"{method}/{batch_dir.name}")
+        reset = read_npz(batch_dir / "reset-observations.npz")
+        for name, width in (("actor_obs", 930), ("tokenizer", 1761)):
+            value = numeric_array(reset.get(name), (count, width), f"{method}/{batch_dir.name}/reset_{name}")
+            require(value.dtype == np.float32, f"{method}: reset controller observations must be float32")
+        memory_widths = {"servo_correction": 29, "cube_offset": 3, "tray_offset": 3,
+                         "last_estimate_elapsed_seconds": 2}
+        if strict_runtime:
+            for name, width in memory_widths.items():
+                value = numeric_array(reset.get(name), (count, width), f"{method}/{batch_dir.name}/reset_{name}")
+                require(np.all(value == 0), f"{method}: nonzero initial servo memory {name}")
+            valid = np.asarray(reset.get("last_estimate_valid"))
+            require(valid.shape == (count, 2) and valid.dtype == np.bool_ and not valid.any(),
+                    f"{method}: initial visual target validity must be false")
         rows = read_json(batch_dir / "decisions.json")
         require(isinstance(rows, list), f"{method}: decisions.json must be an array")
-        active_count = min(count, EPISODES-batch_id*count)
+        active_count = min(count, expected_episodes-batch_id*count)
         expected_seed_slot = {seed_base+batch_id*count+slot: slot for slot in range(active_count)}
         grouped = {seed: [] for seed in expected_seed_slot}
         for row in rows:
@@ -325,7 +413,8 @@ def audit_method(directory, method):
                     f"{method}/seed={seed}: decision records are out of order")
             cursor, choices, full, partial, rejected = 0, [], 0, 0, 0
             for index, decision in enumerate(decisions):
-                audit = audit_decision(directory, decision, trace, method, completed, seed, slot)
+                audit = audit_decision(directory, decision, trace, method, completed, seed, slot, identity=identity,
+                                       require_saved_inputs=strict_runtime)
                 require(audit["archive"] not in audited_archives, f"{method}: a decision archive was reused")
                 audited_archives.add(audit["archive"])
                 require(audit["step"] == cursor, f"{method}/seed={seed}: gap/overlap in delivered control coverage")
@@ -351,6 +440,12 @@ def audit_method(directory, method):
             initial[seed] = {key: canonical_state(trace[key][0, slot]) if key in ("root", "cube_root")
                              else trace[key][0, slot].copy() for key in ("root", "q", "qdot", "cube_root")}
             initial[seed]["env_origin"] = trace["env_origins"][slot].copy()
+            for name in ("actor_obs", "tokenizer"):
+                initial[seed][name] = reset[name][slot].copy()
+            if strict_runtime:
+                for name in memory_widths:
+                    initial[seed][name] = reset[name][slot].copy()
+                initial[seed]["last_estimate_valid"] = reset["last_estimate_valid"][slot].astype(np.uint8)
             checked[seed] = {"seed": seed, "episode": episode_index, "batch": batch_id, "slot": slot,
                 "completed_steps": completed, "requested_steps": STEPS, "budget_complete": budget_complete,
                 "failure": failure, **physical, "decisions": len(choices), "complete_decisions": full,
@@ -362,17 +457,17 @@ def audit_method(directory, method):
             and result.get("switches_from_direct") == sum(v != 0 for v in selections),
             f"{method}: aggregate selection counts contradict audited decisions")
     success = sum(row["success"] for row in checked.values())
-    close(result.get("success_rate"), success/EPISODES, f"{method}/success_rate")
+    close(result.get("success_rate"), success/expected_episodes, f"{method}/success_rate")
     gpu = result.get("gpu_peak")
     if gpu is not None:
         allocated = integer(gpu.get("allocated_bytes"), f"{method}/gpu_allocated")
         reserved = integer(gpu.get("reserved_bytes"), f"{method}/gpu_reserved")
         require(reserved >= allocated and isinstance(gpu.get("scope"), str), f"{method}: malformed GPU peak record")
-    summary = {"episodes": EPISODES, "counts": {key: sum(row[key] for row in checked.values()) for key in OUTCOME_FLAGS},
-        "success_rate": success/EPISODES, "complete_budget_episodes": sum(row["budget_complete"] for row in checked.values()),
+    summary = {"episodes": expected_episodes, "counts": {key: sum(row[key] for row in checked.values()) for key in OUTCOME_FLAGS},
+        "success_rate": success/expected_episodes, "complete_budget_episodes": sum(row["budget_complete"] for row in checked.values()),
         "failed_episodes": sum(row["failure"] is not None for row in checked.values()),
         "executed_control_steps": sum(row["executed_control_steps"] for row in checked.values()),
-        "maximum_possible_control_steps": EPISODES*STEPS,
+        "maximum_possible_control_steps": expected_episodes*STEPS,
         "decisions": len(selections), "complete_decisions": sum(row["complete_decisions"] for row in checked.values()),
         "partial_decisions": sum(row["partial_decisions"] for row in checked.values()),
         "proposal_failures": sum(row["proposal_failures"] for row in checked.values()),

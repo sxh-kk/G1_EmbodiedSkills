@@ -1,0 +1,30 @@
+{
+  "schema": "g1_embodiedskills.m1_protocol.v1",
+  "base_revision": "e8dec15706e501aa3872a48b62240977cdc1e6a7",
+  "calibration_seed_base": 910000,
+  "calibration_repeats": 40,
+  "test_seed_base": 911000,
+  "test_repeats": 100,
+  "num_envs": 8,
+  "seconds": 24,
+  "position_jitter_m": 0.02,
+  "amplitude_m": 0.025,
+  "execution_steps": 10,
+  "training_archive_sha256": "936915320d0c37b7972b9b3616b2f81d63de8f74f9533876c11791bb314c9a43",
+  "legacy_checkpoint_sha256": "5ecd410e6ff122e827bef34d4c5ca12334fe3c9366fbcb7edcfec01658cdfa90",
+  "phase_bounds_seconds": [0, 6, 10, 16, 20, 24],
+  "phase_anchor_steps": [0, 300, 500, 800, 1000],
+  "models": [
+    {"id": "full-d", "kind": "full_d"},
+    {"id": "full-g", "kind": "full_g"},
+    {"id": "no-future-loss-g", "kind": "no_future_g"},
+    {"id": "sa-critic", "kind": "sa_critic"}
+  ],
+  "primary_comparison": ["no-future-loss-g", "full-g"],
+  "bootstrap_repetitions": 10000,
+  "bootstrap_seed": 20261015,
+  "fixed_tiebreak": ["success_count_desc", "all_episode_mean_final_distance_asc", "prefer_zero", "index_asc"],
+  "checkpoint_rule": "All four new configurations use member epoch 30 and comparison epoch 40; legacy remains immutable",
+  "test_feedback": "No model, protocol, sample size or candidate changes after the frozen test starts",
+  "training_repetitions": 1
+}

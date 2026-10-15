@@ -53,14 +53,27 @@ def _predictions(result, count):
 
 
 def _load_predictor(request, device, instruction):
-    """Load the actual three-WAM bundle and its immutable offline encoders."""
+    """Load the declared three-member bundle and immutable offline encoders."""
     from .learning import (DEFAULT_LANGUAGE, DEFAULT_VISUAL, cached_language_vectors, encoder_revision,
                            resolve_offline_model, use_upstream)
     use_upstream(getattr(request, "upstream_root", None))
     from embodiedskills.runtime import Selector
     from embodiedskills.vision import FrozenPublicVisualEncoder
+    from .m1_runtime import SELECTOR_KINDS
     checkpoint = Path(request.selector)
-    selector = Selector(checkpoint, device=str(device))
+    kind = str(getattr(request, "selector_kind", "legacy"))
+    if kind not in SELECTOR_KINDS:
+        raise ValueError(f"Unknown selector_kind: {kind}")
+    if kind == "legacy":
+        selector = Selector(checkpoint, device=str(device))
+        if selector.payload.get("m1_variant") or selector.payload.get("metadata", {}).get("m1_variant"):
+            raise ValueError("M1 checkpoints require their explicit selector_kind, not legacy")
+    else:
+        from .m1_learning import load_m1_selector
+        selector = load_m1_selector(checkpoint, device=str(device))
+        variant = selector.payload.get("m1_variant", selector.payload.get("metadata", {}).get("m1_variant"))
+        if variant != kind:
+            raise ValueError(f"Requested selector_kind={kind} differs from checkpoint m1_variant={variant}")
     if selector.family != "continuous" or len(selector.members) != 3 or selector.head is None:
         raise ValueError("Online G1 evaluation requires the real continuous three-WAM comparison bundle")
     for member in selector.payload["members"]:
@@ -81,7 +94,7 @@ def _load_predictor(request, device, instruction):
     if visual.feature_dim != 1024 or language_vector.shape != (384,) or not np.isfinite(language_vector).all():
         raise ValueError("Frozen encoder dimensions must be visual=1024/language=384")
     vector_hash = hashlib.sha256(language_vector.tobytes()).hexdigest()
-    identity = {"checkpoint": str(checkpoint), "checkpoint_sha256": sha256(checkpoint),
+    identity = {"checkpoint": str(checkpoint), "checkpoint_sha256": sha256(checkpoint), "selector_kind": kind,
         "family": selector.family, "members": 3, "comparison_head": type(selector.head).__name__,
         "dimensions": {"state": 1041, "action": 38, "horizon": 75, "candidates": 5},
         "visual_model": str(visual_id), "visual_revision": visual_revision,
@@ -92,6 +105,9 @@ def _load_predictor(request, device, instruction):
     identity["language_vector_sha256"] = vector_hash
     identity["language_snapshot"] = str(language_path)
     identity["prediction_matmul"] = "FP32, TF32 disabled locally; SONIC setting restored before control"
+    identity["checkpoint_schema"] = selector.payload.get("schema")
+    if kind != "legacy":
+        identity["m1_variant"] = kind
     return selector, visual, language_vector, identity
 
 
@@ -114,8 +130,8 @@ def run_closed_loop(wrapper, policy, request):
 
     env = wrapper.env
     method = str(getattr(request, "method", "selector"))
-    if method not in ("direct", "random", "selector", "fixed2"):
-        raise ValueError("method must be direct, random, selector or fixed2")
+    if method not in ("direct", "random", "selector", "fixed2", "fixed", "phase"):
+        raise ValueError("method must be direct, random, selector, fixed2, fixed or phase")
     if not request.cameras:
         raise ValueError("Online evaluation requires the actual head RGB-D camera")
     repeats, seed_base = int(request.repeats), int(request.seed_base)
@@ -132,8 +148,23 @@ def run_closed_loop(wrapper, policy, request):
         raise ValueError("Episode budget must contain an integer number of ten-step decisions")
     if method == "selector" and not getattr(request, "selector", None):
         raise ValueError("selector method requires a trained selector bundle")
-    if method == "fixed2" and getattr(request, "selector", None):
-        raise ValueError("fixed2 must run without a learned selector bundle")
+    if method in ("fixed2", "fixed", "phase") and getattr(request, "selector", None):
+        raise ValueError(f"{method} must run without a learned selector bundle")
+    from .m1_runtime import fixed_candidate, load_phase_policy, phase_selection
+    fixed_index = 2 if method == "fixed2" else None
+    if method == "fixed":
+        fixed_index = fixed_candidate(getattr(request, "fixed_candidate_index", None))
+    elif getattr(request, "fixed_candidate_index", None) is not None:
+        raise ValueError("--fixed-candidate-index is only valid with --method fixed")
+    phase_policy = phase_identity = None
+    if method == "phase":
+        if not getattr(request, "phase_policy", None):
+            raise ValueError("phase method requires --phase-policy")
+        phase_policy, phase_identity = load_phase_policy(request.phase_policy)
+        if total_steps != 1200:
+            raise ValueError("The predeclared M1 phase policy requires exactly 24 seconds")
+    elif getattr(request, "phase_policy", None) is not None:
+        raise ValueError("--phase-policy is only valid with --method phase")
     output = Path(request.output)
     output.mkdir(parents=True, exist_ok=True)
     task_path = request.task or Path(request.reference) / "task.json"
@@ -154,9 +185,15 @@ def run_closed_loop(wrapper, policy, request):
     identity = {"selector": None, "model_scores": "not applicable: baseline has no loaded bundle"}
     if getattr(request, "selector", None):
         selector, visual_encoder, language_vector, identity = _load_predictor(request, device, instruction)
-    if method == "fixed2":
-        identity.update(fixed_candidate_index=2,
-                        selection_rule="Always select current feasible candidate index 2; no learned predictor")
+        context_path = output / "inference-context.npz"
+        _save_npz(context_path, language_vector=language_vector)
+        identity.update(inference_context_archive=context_path.name, inference_context_sha256=sha256(context_path))
+    if fixed_index is not None:
+        identity.update(fixed_candidate_index=fixed_index, selector_kind="fixed_candidate",
+                        selection_input_names=[],
+                        selection_rule=f"Always select current feasible candidate index {fixed_index}; no learned predictor")
+    if phase_identity is not None:
+        identity.update(phase_identity)
     if device.type == "cuda":
         torch.cuda.reset_peak_memory_stats(device)
     cmd = env.command_manager.get_term("motion")
@@ -193,7 +230,15 @@ def run_closed_loop(wrapper, policy, request):
             raise ValueError("Reset assigned the same native timeline to multiple physical slots")
         origins = _array(env.scene.env_origins)
         _save_npz(batch_dir / "reset-observations.npz", actor_obs=_array(observations["actor_obs"]),
-                  tokenizer=_array(observations["tokenizer"]))
+                  tokenizer=_array(observations["tokenizer"]),
+                  servo_correction=np.stack([servo.correction for servo in servos]),
+                  cube_offset=np.stack([servo.cube_offset for servo in servos]),
+                  tray_offset=np.stack([servo.tray_offset for servo in servos]),
+                  last_estimate_valid=np.asarray([[servo.last_estimate_time[key] is not None
+                                                   for key in ("cube", "tray")] for servo in servos]),
+                  last_estimate_elapsed_seconds=np.asarray([[0. if servo.last_estimate_time[key] is None
+                                                            else servo.last_estimate_time[key]
+                                                            for key in ("cube", "tray")] for servo in servos]))
         physical_done = torch.zeros(env.num_envs, dtype=torch.bool, device=device)
         terminated_at_end = np.zeros(env.num_envs, dtype=bool)
         failed = np.zeros(env.num_envs, dtype=bool)
@@ -292,8 +337,13 @@ def run_closed_loop(wrapper, policy, request):
                     timings["selector"].append(selector_seconds)
                 for index, slot in enumerate(valid_slots):
                     candidates = proposals[slot]
-                    selected = (2 if method == "fixed2" else 0 if method == "direct" else int(random_generators[slot].integers(5))
-                                if method == "random" else int(head_selected[index]))
+                    phase_index = None
+                    if method == "phase":
+                        selected, phase_index = phase_selection(phase_policy, elapsed)
+                    else:
+                        selected = (fixed_index if fixed_index is not None else 0 if method == "direct"
+                                    else int(random_generators[slot].integers(5))
+                                    if method == "random" else int(head_selected[index]))
                     native = candidates.native[selected]
                     encoded = encode_native(native)
                     if not np.array_equal(encoded, candidates.actions[selected]):
@@ -313,13 +363,19 @@ def run_closed_loop(wrapper, policy, request):
                         "progress": np.asarray([step/total_steps], dtype=np.float32)}
                     if scores is not None:
                         arrays["scores"] = scores[index]
+                        arrays["visual"] = features[index]
+                        arrays["mask"] = np.ones((5, 75), dtype=np.float32)
+                    if method == "phase":
+                        arrays["selection_elapsed_seconds"] = np.asarray(elapsed, dtype=np.float64)
+                        arrays["selection_phase_index"] = np.asarray(phase_index, dtype=np.int64)
                     if step % 250 == 0:
                         arrays["rgb"], arrays["depth"] = images[slot]["rgb"], images[slot]["depth"]
                     _save_npz(audit_path, **arrays)
                     row = {"step": step, "time": elapsed, "slot": slot, "seed": seeds[slot], "method": method,
                         "scores": None if scores is None else scores[index].tolist(), "selected": selected,
                         "head_argmax": None if head_selected is None else int(head_selected[index]),
-                        "scores_status": "actual three-WAM comparison output" if scores is not None else "not applicable: baseline without bundle",
+                        "scores_status": ("actual three-member SA-critic comparison output" if identity.get("selector_kind") == "sa_critic"
+                                          else "actual three-WAM comparison output") if scores is not None else "not applicable: baseline without bundle",
                         "canonical_native_sha256": [_native_digest(candidate) for candidate in candidates.native],
                         "selected_native_sha256": _native_digest(native), "encoded_action_sha256": _native_digest((encoded,)),
                         "root_sha256": _native_digest((snapshots[slot]["root"],)),
@@ -328,6 +384,16 @@ def run_closed_loop(wrapper, policy, request):
                         "servo": servo_logs[slot], "patch": patch, "encoder_batch_seconds": encoder_seconds,
                         "selector_batch_seconds": selector_seconds, "executed_control_steps": 0, "status": "selected"}
                     decisions.append(row)
+                    if method == "selector":
+                        row["selector_kind"] = identity["selector_kind"]
+                        row["checkpoint_sha256"] = identity["checkpoint_sha256"]
+                    if fixed_index is not None:
+                        row["fixed_candidate_index"] = fixed_index
+                        row["selection_inputs"] = {}
+                    if method == "phase":
+                        row["selection_inputs"] = {"elapsed_seconds": float(elapsed)}
+                        row["selection_phase_index"] = phase_index
+                        row["phase_policy_sha256"] = identity["phase_policy_sha256"]
                     selected_rows[slot] = row
                 # Refresh cached observations only: no command compute/cursor
                 # advancement and no history append is allowed here.
@@ -399,6 +465,7 @@ def run_closed_loop(wrapper, policy, request):
     successful_seeds = {row["seed"] for row in episodes if row["success"]}
     preferred_videos = [row for row in recorded_videos if row["seed"] in successful_seeds] or recorded_videos
     result = {"completed": len(episodes) == repeats, "mode": "closed_loop", "method": method,
+        "runtime_audit_contract": "g1_embodiedskills.m1_runtime_audit.v1",
         "episodes": episodes, "success_rate": sum(row["success"] for row in episodes)/len(episodes),
         "requested_episodes": repeats, "counted_episodes": len(episodes), "seed_base": seed_base,
         "position_jitter_m": jitter, "execution_steps": 10, "native_preview_frames": 75,

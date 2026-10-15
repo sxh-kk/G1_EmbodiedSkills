@@ -1,4 +1,4 @@
-version: 0.4.0
+version: 0.5.0
 project:
   title: EmbodiedSkills 迁移 G1 仿真抓放
   short_name: G1_EmbodiedSkills
@@ -8,9 +8,9 @@ target_venue:
   year: ''
   mode: review
 stage:
-  current: fixed_candidate_control_complete
-  gate: fixed2_control_passed
-  updated_at: '2026-10-15T10:26:00+08:00'
+  current: m2_engineering_preflight
+  gate: m1_mechanism_screen_completed
+  updated_at: '2026-10-15T16:48:00+08:00'
 artifacts:
   manuscript: ''
   bibliography: ''
@@ -39,10 +39,16 @@ experiments:
 - id: fixed_candidate2_control
   status: passed
   report: docs/06-固定候选2消融结论.md
+- id: m1_prediction_mechanism_screen
+  status: completed
+  report: docs/09-M1预测贡献消融结论.md
+- id: m2_body_hand_diagnostic
+  status: pending_physical_acceptance
+  protocol: docs/08-M1与M2首批实验计划.md
 reviews: []
 revision_ledger:
   path: LOG.md
-  status: baseline_complete
+  status: m1_complete_m2_pending
 submission_checks:
   path: ''
   status: not_started
