@@ -16,7 +16,7 @@ def main():
     p.add_argument("--reference", type=Path, required=True)
     p.add_argument("--asset", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
-    p.add_argument("--mode", choices=["interface", "direct", "collect", "closed_loop"], default="interface")
+    p.add_argument("--mode", choices=["interface", "direct", "collect", "closed_loop", "m2_collect"], default="interface")
     p.add_argument("--num-envs", type=int, default=1)
     p.add_argument("--repeats", type=int, default=1)
     p.add_argument("--seconds", type=float, default=8.)
@@ -27,6 +27,7 @@ def main():
     p.add_argument("--position-jitter", type=float, default=0., help="Cube XY randomization radius in meters")
     p.add_argument("--record-video", action="store_true", help="Record full 5Hz video; otherwise render only sensing/diagnostic frames")
     p.add_argument("--collection-config", type=Path)
+    p.add_argument("--m2-collection-config", type=Path)
     p.add_argument("--hard-reset", action="store_true", help="Rebuild PhysX before each diagnostic repeat")
     p.add_argument("--method", choices=["direct", "random", "selector", "fixed2", "fixed", "phase"], default="selector")
     p.add_argument("--selector", type=Path)
@@ -39,7 +40,7 @@ def main():
     a = p.parse_args()
     if a.sonic is None:
         p.error("Set SONIC_ROOT or pass --sonic")
-    for key in ["sonic", "reference", "asset", "output", "task", "collection_config", "selector", "upstream_root", "phase_policy"]:
+    for key in ["sonic", "reference", "asset", "output", "task", "collection_config", "m2_collection_config", "selector", "upstream_root", "phase_policy"]:
         value = getattr(a, key)
         if value is not None:
             setattr(a, key, value.resolve())

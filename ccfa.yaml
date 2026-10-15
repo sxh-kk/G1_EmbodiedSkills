@@ -9,8 +9,8 @@ target_venue:
   mode: review
 stage:
   current: m2_engineering_preflight
-  gate: m1_mechanism_screen_completed
-  updated_at: '2026-10-15T16:48:00+08:00'
+  gate: m2_engineering_v0_rejected_grid_requires_repair
+  updated_at: '2026-10-15T17:25:00+08:00'
 artifacts:
   manuscript: ''
   bibliography: ''
@@ -43,12 +43,15 @@ experiments:
   status: completed
   report: docs/09-M1预测贡献消融结论.md
 - id: m2_body_hand_diagnostic
-  status: pending_physical_acceptance
+  status: engineering_in_progress
   protocol: docs/08-M1与M2首批实验计划.md
+- id: m2_engineering_v0
+  status: completed_not_passed
+  report: docs/M2-工程验收与正式采集协议.md
 reviews: []
 revision_ledger:
   path: LOG.md
-  status: m1_complete_m2_pending
+  status: m1_complete_m2_engineering
 submission_checks:
   path: ''
   status: not_started

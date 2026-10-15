@@ -3,6 +3,7 @@ import time
 import numpy as np
 from scipy.spatial.transform import Rotation
 from .kinematics import G1Kinematics
+from .policies import spec_from_geometry
 
 
 class ReferenceServo:
@@ -11,7 +12,8 @@ class ReferenceServo:
         self.q = np.asarray(planned["q"], dtype=float)
         self.root = np.asarray(reference["root_position"], dtype=float)
         self.root_quaternion = np.asarray(reference["root_quaternion_wxyz"], dtype=float)
-        self.geometry = geometry
+        self.spec = spec_from_geometry(geometry)
+        self.geometry = self.spec.as_dict()
         self.correction = np.zeros(29)
         self.cube_offset = np.zeros(3)
         self.tray_offset = np.zeros(3)
@@ -29,7 +31,7 @@ class ReferenceServo:
                 self.last_estimate_time["cube"] = elapsed
         tray = estimates["tray"]
         if tray["found"]:
-            center = np.r_[self.geometry["tray_position_xy"], self.geometry["tray_top_z"]-.006]
+            center = np.r_[self.spec.tray_position_xy, self.spec.tray_top_z-self.spec.tray_thickness_m/2]
             value = np.asarray(tray["position"]) - center
             if np.linalg.norm(value[:2]) < .06 and abs(value[2]) < .03:
                 self.tray_offset = .5*self.tray_offset + .5*value

@@ -497,7 +497,7 @@ def collect_branches(wrapper, policy, request):
                 row = run_rows[slot]
                 row["completed_steps"] = max(0, len(trace_records)-1)
                 if trace:
-                    row["outcome"] = episode_outcome(trace, slot=slot, origin=origins[slot], terminated=bool(done[slot]), control_dt=env.step_dt)
+                    row["outcome"] = episode_outcome(trace, slot=slot, origin=origins[slot], terminated=bool(done[slot]), control_dt=env.step_dt, geometry=task["geometry"])
                 if pass_error:
                     row["rollout_error"] = pass_error
                 if group["actions"][candidate_id] is None or group["future_rgb"][candidate_id] is None or row["completed_steps"] != total_steps:

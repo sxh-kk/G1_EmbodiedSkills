@@ -1,0 +1,93 @@
+{
+  "schema": "g1_embodiedskills.public_m2_engineering_v0.v1",
+  "scope": "Completed engineering-only run; one infeasible grid; not formal M2 effect evidence",
+  "completed": true,
+  "engineering_passed": false,
+  "physical_record_audit_passed": true,
+  "official_cpu_fk_verified": true,
+  "started_at": "2026-10-15T16:53:10.607290+08:00",
+  "finished_at": "2026-10-15T17:25:36.470394+08:00",
+  "wall_seconds": 1945.8623477209912,
+  "attempted_anchors": 2,
+  "analysis_branches": 36,
+  "physical_total_slot_rollouts": 216,
+  "physical_padding_slot_rollouts": 162,
+  "physical_extra_active_companion_rollouts": 18,
+  "whole_gpu_sampled_peak_mib": 8267.0,
+  "groups": [
+    {
+      "seed": 929000,
+      "accepted": true,
+      "rejections": [],
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "effective_amplitude_m": 0.00125,
+      "effective_body_pitch_rad": 0.00375,
+      "common_scale": 0.125,
+      "analysis_runs": 27,
+      "valid_analysis_runs": 27,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "contrasts_rad": [
+            -0.0018361471593379974,
+            -0.0018361471593379974,
+            -0.0018361471593379974
+          ],
+          "centered_repeat_noise_rad": 0.0,
+          "first_pass_direction_correct_above_floor_and_noise": false
+        },
+        {
+          "body_index": 2,
+          "contrasts_rad": [
+            -0.0006615370512008667,
+            -0.0006615370512008667,
+            -0.0006615370512008667
+          ],
+          "centered_repeat_noise_rad": 0.0,
+          "first_pass_direction_correct_above_floor_and_noise": true
+        }
+      ]
+    },
+    {
+      "seed": 929001,
+      "accepted": false,
+      "rejections": [
+        "canonical grid infeasible"
+      ],
+      "candidate_feasible": [
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "effective_amplitude_m": 0.00125,
+      "effective_body_pitch_rad": 0.00375,
+      "common_scale": 0.125,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 0
+    }
+  ],
+  "source_input_fingerprint": "b21bfe897dedb9ab8033b0f072dd884d88937145995542c36997c6c66ba60ef1",
+  "evidence_sha256": {
+    "pipeline": "6ef1167ee4f606119e80e47dd31a82b2fe98a2d00387889f95a5534e5d83f1db",
+    "manifest": "f8ea1d89777fe87af162f57af70be77662696524fb769535db6aae60990bde9d",
+    "physical_audit": "d278fe3891bc6ea2075fd33e288361d56471c47b9d7ae9c815696c47536553aa",
+    "ik_cpu_verification": "0374063b6e690f87f5466a97dbc3313a240e73102354138fe6770256a398fbc9",
+    "ik_patch": "96b4f6d22525b8b9ca4fbb8ccb3d85e80b9748123b7e2e3296e8186f636af873"
+  }
+}

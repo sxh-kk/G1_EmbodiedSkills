@@ -1,0 +1,40 @@
+{
+  "cube_position": [
+    0.28,
+    -0.24000000000000002,
+    0.7275
+  ],
+  "cube_size_m": 0.035,
+  "tray_position_xy": [
+    0.28,
+    -0.04
+  ],
+  "tray_top_z": 0.722,
+  "table_top_z": 0.71,
+  "table_center_xy": [
+    0.5,
+    -0.12
+  ],
+  "table_size_xy": [
+    0.55,
+    0.65
+  ],
+  "tray_size_xy": [
+    0.16,
+    0.16
+  ],
+  "grasp_tcp_z": 0.747,
+  "release_tcp_z": 0.759,
+  "transit_tcp_z": 0.83,
+  "duration": 24.0,
+  "tail_seconds": 2.0,
+  "open_position_m": 0.035,
+  "closed_position_m": 0.0,
+  "yaw_rad": 1.5707963267948966,
+  "table_thickness_m": 0.04,
+  "tray_thickness_m": 0.012,
+  "cube_spawn_clearance_m": 0.0005,
+  "approach_tcp_x": 0.15,
+  "approach_tcp_z": 0.85,
+  "retreat_tcp_z": 0.84
+}

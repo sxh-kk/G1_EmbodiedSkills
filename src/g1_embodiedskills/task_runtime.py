@@ -109,7 +109,7 @@ def run_task(wrapper, policy, request):
             write_json(request.output / f"servo-{repeat:02d}.json", servo_records)
         for slot in range(env.num_envs):
             outcome = episode_outcome(fields, slot=slot, origin=tensor(env.scene.env_origins)[slot].cpu().numpy(),
-                terminated=bool(done[slot]), control_dt=env.step_dt)
+                terminated=bool(done[slot]), control_dt=env.step_dt, geometry=task["geometry"])
             row = dict(repeat=repeat, slot=slot, seed=env.episode_seed, **outcome,
                 duration=float(fields["time"][-1, slot]), wall_seconds=time.monotonic()-started,
                 controller="frozen_sonic", planner="reference_feedback" if request.servo else "reference_diagnostic")

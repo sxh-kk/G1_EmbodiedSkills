@@ -19,6 +19,7 @@ from gear_sonic.utils import lab3_wxyz
 
 from .assets import GRIPPER_JOINTS, TCP_OFFSET
 from .io import write_json, sha256, RunFinished
+from .policies import scene_geometry, spec_from_geometry
 
 
 def tensor(value):
@@ -59,6 +60,21 @@ class FixedTrackingCommand(TrackingCommand):
 
 
 def create_env(config, device, args_cli, request):
+    task_path = Path(request.task) if getattr(request, "task", None) is not None else request.reference / "task.json"
+    if getattr(request, "task", None) is not None or task_path.exists():
+        task = json.loads(task_path.read_text(encoding="utf-8"))
+        task_spec = spec_from_geometry(task["geometry"])
+    else:
+        # Standing/interface references predate the tabletop task manifest.
+        task, task_spec = None, spec_from_geometry()
+    reference = json.loads((request.reference / "reference.json").read_text(encoding="utf-8"))
+    reference_geometry = reference.get("diagnostics", {}).get("task_geometry")
+    if reference_geometry is not None:
+        if spec_from_geometry(reference_geometry) != task_spec:
+            raise ValueError("Task geometry differs from the geometry used to generate its reference")
+    elif task is not None and task_spec != spec_from_geometry():
+        raise ValueError("Non-default geometry requires a reference generated with its task_geometry metadata")
+    geometry = scene_geometry(task_spec)
     with open_dict(config):
         config.manager_env.events = {"_target_": config.manager_env.events._target_}
         config.manager_env.curriculum = {"_target_": config.manager_env.curriculum._target_}
@@ -112,27 +128,29 @@ def create_env(config, device, args_cli, request):
     # The generic sensor is unused; one rigid body avoids nested-contact ambiguity.
     cfg.scene.contact_forces.prim_path = "{ENV_REGEX_NS}/Robot/Geometry/pelvis"
     cfg.scene.table = AssetBaseCfg(prim_path="{ENV_REGEX_NS}/Table",
-        spawn=sim_utils.CuboidCfg(size=(.55, .65, .04), collision_props=sim_utils.CollisionPropertiesCfg(),
+        spawn=sim_utils.CuboidCfg(size=geometry["table_size"], collision_props=sim_utils.CollisionPropertiesCfg(),
             visual_material=sim_utils.PreviewSurfaceCfg(diffuse_color=(.42, .34, .24))),
-        init_state=AssetBaseCfg.InitialStateCfg(pos=(.5, -.12, .69)))
+        init_state=AssetBaseCfg.InitialStateCfg(pos=geometry["table_position"]))
     cfg.scene.cube = RigidObjectCfg(prim_path="{ENV_REGEX_NS}/Cube",
-        spawn=sim_utils.CuboidCfg(size=(.035, .035, .035),
+        spawn=sim_utils.CuboidCfg(size=geometry["cube_size"],
             rigid_props=sim_utils.RigidBodyPropertiesCfg(max_depenetration_velocity=1.),
             mass_props=sim_utils.MassPropertiesCfg(mass=.025),
             collision_props=sim_utils.CollisionPropertiesCfg(contact_offset=.001, rest_offset=0.),
             physics_material=sim_utils.RigidBodyMaterialCfg(static_friction=1.5, dynamic_friction=1.3, restitution=0.),
             visual_material=sim_utils.PreviewSurfaceCfg(diffuse_color=(.9, .025, .025))),
-        init_state=RigidObjectCfg.InitialStateCfg(pos=(.28, -.23, .728)))
+        init_state=RigidObjectCfg.InitialStateCfg(pos=geometry["cube_position"]))
     cfg.scene.tray = AssetBaseCfg(prim_path="{ENV_REGEX_NS}/Tray",
-        spawn=sim_utils.CuboidCfg(size=(.16, .16, .012), collision_props=sim_utils.CollisionPropertiesCfg(),
+        spawn=sim_utils.CuboidCfg(size=geometry["tray_size"], collision_props=sim_utils.CollisionPropertiesCfg(),
             visual_material=sim_utils.PreviewSurfaceCfg(diffuse_color=(.025, .65, .08))),
-        init_state=AssetBaseCfg.InitialStateCfg(pos=(.28, -.03, .716)))
+        init_state=AssetBaseCfg.InitialStateCfg(pos=geometry["tray_position"]))
     if request.cameras:
         from .perception import make_head_camera_cfg
         cfg.scene.head_camera = make_head_camera_cfg()
     env = MigrationEnv(cfg=cfg)
     env.request = request
-    env.reference = json.loads((request.reference / "reference.json").read_text(encoding="utf-8"))
+    env.task_geometry = task_spec.as_dict()
+    env.task_manifest = task
+    env.reference = reference
     robot = env.scene["robot"]
     env.body_ids = get_body_joint_indices(robot)
     env.gripper_ids = robot.find_joints(GRIPPER_JOINTS, preserve_order=True)[0]
@@ -152,7 +170,9 @@ def create_env(config, device, args_cli, request):
         physics_dt=env.physics_dt, control_dt=env.step_dt, floating_base=True,
         action_dim=env.action_manager.total_action_dim,
         observation_shapes={k: str(v) for k, v in env.observation_space.items()},
-        reference_sha256=sha256(request.reference / "motion.pkl"), asset_sha256=sha256(request.asset)))
+        reference_sha256=sha256(request.reference / "motion.pkl"), asset_sha256=sha256(request.asset),
+        task_sha256=sha256(task_path) if task is not None else None,
+        task_geometry=env.task_geometry, scene_geometry=geometry))
     return ManagerEnvWrapper(env, cfg.config)
 
 
@@ -277,6 +297,10 @@ class SimulationCallback:
             if request.mode == "collect":
                 from .collection import collect_branches
                 result = collect_branches(wrapper, policy, request)
+            elif request.mode == "m2_collect":
+                from .m2_collection import collect_factor_branches
+                from .metrics import episode_outcome
+                result = collect_factor_branches(wrapper, policy, request, metrics_fn=episode_outcome)
             elif request.mode == "closed_loop":
                 from .online import run_closed_loop
                 result = run_closed_loop(wrapper, policy, request)

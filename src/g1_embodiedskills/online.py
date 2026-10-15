@@ -443,7 +443,7 @@ def run_closed_loop(wrapper, policy, request):
             completed_steps = end_steps[slot] if end_steps[slot] >= 0 else len(trace_records)-1
             slot_trace = {key: value[:completed_steps+1] for key, value in trace.items()}
             outcome = episode_outcome(slot_trace, slot=slot, origin=origins[slot],
-                terminated=bool(terminated_at_end[slot]), control_dt=env.step_dt)
+                terminated=bool(terminated_at_end[slot]), control_dt=env.step_dt, geometry=task["geometry"])
             if failures[slot] is not None or completed_steps != total_steps:
                 outcome["success"] = False
             row = {"episode": offset+slot, "seed": seeds[slot], "batch": batch_id, "slot": slot,

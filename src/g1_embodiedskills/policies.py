@@ -5,7 +5,8 @@ reference is generated offline and tracked by the unchanged SONIC controller.
 """
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
+from collections.abc import Mapping
+from dataclasses import asdict, dataclass, fields, replace
 import itertools
 import xml.etree.ElementTree as ET
 
@@ -32,16 +33,117 @@ class PickPlaceSpec:
     open_position_m: float = .035
     closed_position_m: float = 0.
     yaw_rad: float = np.pi / 2
+    table_thickness_m: float = .04
+    tray_thickness_m: float = .012
+    cube_spawn_clearance_m: float = .0005
+    approach_tcp_x: float = .15
+    approach_tcp_z: float = .85
+    retreat_tcp_z: float = .84
+
+    def __post_init__(self):
+        vector_lengths = {"cube_position": 3, "tray_position_xy": 2,
+                          "table_center_xy": 2, "table_size_xy": 2,
+                          "tray_size_xy": 2}
+        for field in fields(self):
+            value = getattr(self, field.name)
+            if field.name in vector_lengths:
+                array = np.asarray(value)
+                if array.shape != (vector_lengths[field.name],) or array.dtype.kind not in "fiu" or not np.isfinite(array).all():
+                    raise ValueError(f"{field.name} must contain {vector_lengths[field.name]} finite numbers")
+                object.__setattr__(self, field.name, tuple(float(v) for v in array))
+            else:
+                if isinstance(value, (bool, np.bool_)) or not isinstance(value, (int, float, np.integer, np.floating)) or not np.isfinite(value):
+                    raise ValueError(f"{field.name} must be a finite number")
+                object.__setattr__(self, field.name, float(value))
+        for name in ("cube_size_m", "table_thickness_m", "tray_thickness_m", "duration", "tail_seconds"):
+            if getattr(self, name) <= 0:
+                raise ValueError(f"{name} must be positive")
+        if min(*self.table_size_xy, *self.tray_size_xy) <= 0:
+            raise ValueError("Table and tray planar dimensions must be positive")
+        if self.cube_spawn_clearance_m < 0:
+            raise ValueError("cube_spawn_clearance_m must be nonnegative")
+        if not 0 <= self.closed_position_m < self.open_position_m:
+            raise ValueError("Expected 0 <= closed_position_m < open_position_m")
+        if not np.isclose(self.cube_position[2], self.table_top_z + self.cube_size_m / 2, atol=1e-10, rtol=0):
+            raise ValueError("cube_position must describe the nominal center resting on the table")
+        if self.tray_top_z - self.tray_thickness_m < self.table_top_z - 1e-10:
+            raise ValueError("Tray bottom must not penetrate the table")
+        if self.grasp_tcp_z <= self.cube_position[2] or self.release_tcp_z <= self.tray_top_z:
+            raise ValueError("Grasp/release TCP heights must be above their support targets")
+        if self.transit_tcp_z <= max(self.grasp_tcp_z, self.release_tcp_z):
+            raise ValueError("transit_tcp_z must exceed grasp and release TCP heights")
+        if self.duration != 24.:
+            raise ValueError("The frozen phase schedule currently requires duration=24 seconds")
 
     def as_dict(self):
         return asdict(self)
+
+
+def spec_from_geometry(geometry=None):
+    """Read old/new task geometry without a second source of physical defaults.
+
+    Old task manifests omit the scene thickness, spawn gap and approach/retreat
+    fields. Their dataclass defaults reproduce the original physical scene.
+    Passing the complete task manifest is deliberately rejected: the caller
+    must explicitly select its ``geometry`` mapping.
+    """
+    if geometry is None:
+        return PickPlaceSpec()
+    if isinstance(geometry, PickPlaceSpec):
+        return geometry
+    if not isinstance(geometry, Mapping):
+        raise ValueError("geometry must be a mapping or PickPlaceSpec")
+    allowed = {field.name for field in fields(PickPlaceSpec)}
+    unknown = set(geometry) - allowed
+    if unknown:
+        raise ValueError(f"Unknown geometry fields: {sorted(unknown)}")
+    return PickPlaceSpec(**dict(geometry))
+
+
+def translated_spec(spec=None, *, dz=0., object_dx=0., object_dy=0.):
+    """Move supports in Z or cube/tray in XY; keep the robot and table XY fixed.
+
+    The approach waypoint follows the object displacement. Initial standing
+    targets remain measured from the robot, so they are never translated.
+    """
+    spec = spec_from_geometry(spec)
+    for name, value in (("dz", dz), ("object_dx", object_dx), ("object_dy", object_dy)):
+        if isinstance(value, (bool, np.bool_)) or not isinstance(value, (int, float, np.integer, np.floating)) or not np.isfinite(value):
+            raise ValueError(f"{name} must be a finite scalar")
+    dz, object_dx, object_dy = float(dz), float(object_dx), float(object_dy)
+    cube = np.asarray(spec.cube_position) + [object_dx, object_dy, dz]
+    tray = np.asarray(spec.tray_position_xy) + [object_dx, object_dy]
+    return replace(spec, cube_position=tuple(cube), tray_position_xy=tuple(tray),
+                   table_top_z=spec.table_top_z + dz, tray_top_z=spec.tray_top_z + dz,
+                   grasp_tcp_z=spec.grasp_tcp_z + dz, release_tcp_z=spec.release_tcp_z + dz,
+                   transit_tcp_z=spec.transit_tcp_z + dz,
+                   approach_tcp_x=spec.approach_tcp_x + object_dx,
+                   approach_tcp_z=spec.approach_tcp_z + dz,
+                   retreat_tcp_z=spec.retreat_tcp_z + dz)
+
+
+def scene_geometry(geometry=None):
+    """Derive environment-local spawn poses and sizes from the task prior.
+
+    Preserve the legacy cube's 0.5 mm initial clearance: its nominal center is
+    z=.7275 whereas the physical scene spawns it at z=.728.
+    """
+    spec = spec_from_geometry(geometry)
+    return {
+        "table_size": (*spec.table_size_xy, spec.table_thickness_m),
+        "table_position": (*spec.table_center_xy, spec.table_top_z - spec.table_thickness_m / 2),
+        "cube_size": (spec.cube_size_m,) * 3,
+        "cube_position": (*spec.cube_position[:2], spec.cube_position[2] + spec.cube_spawn_clearance_m),
+        "tray_size": (*spec.tray_size_xy, spec.tray_thickness_m),
+        "tray_position": (*spec.tray_position_xy, spec.tray_top_z - spec.tray_thickness_m / 2),
+    }
 
 
 class NominalPickPlacePolicy:
     """Task geometry and phase schedule, with no simulator oracle calls."""
 
     def __init__(self, initial_tcp, initial_quaternion_wxyz, spec=None):
-        self.spec = spec or PickPlaceSpec()
+        self.spec = spec_from_geometry(spec)
         spec = self.spec
         self.initial_tcp = np.asarray(initial_tcp, dtype=float)
         self.initial_quaternion_wxyz = np.asarray(initial_quaternion_wxyz, dtype=float)
@@ -51,7 +153,7 @@ class NominalPickPlacePolicy:
         self.keyframes = [
             (0., "settle", self.initial_tcp, self.initial_quaternion_wxyz),
             (1., "raise_clear", self.initial_tcp, self.initial_quaternion_wxyz),
-            (4., "orient_and_approach", [.15, cy, .85], self.initial_quaternion_wxyz),
+            (4., "orient_and_approach", [spec.approach_tcp_x, cy, spec.approach_tcp_z], self.initial_quaternion_wxyz),
             (7., "descend", [cx, cy, spec.transit_tcp_z], down),
             (10., "close", [cx, cy, spec.grasp_tcp_z], down),
             (11., "lift", [cx, cy, spec.grasp_tcp_z], down),
@@ -59,7 +161,7 @@ class NominalPickPlacePolicy:
             (17., "lower", [tx, ty, spec.transit_tcp_z], down),
             (20., "release", [tx, ty, spec.release_tcp_z], down),
             (21., "retreat", [tx, ty, spec.release_tcp_z], down),
-            (24., "finished", [tx, ty, .84], down),
+            (24., "finished", [tx, ty, spec.retreat_tcp_z], down),
         ]
         self.gripper_schedule = [
             {"time": 0., "position": spec.open_position_m, "joint_target_m": spec.open_position_m, "event": "open"},
