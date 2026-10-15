@@ -8,9 +8,9 @@ target_venue:
   year: ''
   mode: review
 stage:
-  current: engineering_baseline_complete
-  gate: stage5_passed
-  updated_at: '2026-10-15T00:53:00+08:00'
+  current: fixed_candidate_control_complete
+  gate: fixed2_control_passed
+  updated_at: '2026-10-15T10:26:00+08:00'
 artifacts:
   manuscript: ''
   bibliography: ''
@@ -36,6 +36,9 @@ experiments:
 - id: stage5_online_closed_loop
   status: passed
   report: docs/05-在线闭环与配对评测结论.md
+- id: fixed_candidate2_control
+  status: passed
+  report: docs/06-固定候选2消融结论.md
 reviews: []
 revision_ledger:
   path: LOG.md

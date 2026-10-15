@@ -1,0 +1,14 @@
+{
+  "seed_base": 900000,
+  "repeats": 30,
+  "num_envs": 8,
+  "position_jitter_m": 0.02,
+  "amplitude_m": 0.025,
+  "seconds": 24,
+  "execution_steps": 10,
+  "method": "fixed2",
+  "fixed_candidate_index": 2,
+  "baseline_revision": "527c603d7516a511f10a693ac7f98744a99f2833",
+  "candidate_semantics": "Current feasible native candidate 2: world -X TCP target correction, with the unchanged feasibility checks and amplitude shrinking",
+  "scope": "Post-hoc fixed-policy control on the same 30 initial seeds; existing direct and selector records are reused and independently re-audited, not retrained or rerun"
+}

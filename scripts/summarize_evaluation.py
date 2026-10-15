@@ -190,6 +190,9 @@ def audit_decision(directory, row, trace, method, completed, seed, slot):
                 f"{label}: selector choice is not the actual comparison-head argmax")
     if method == "direct":
         require(selected == 0, f"{label}: direct baseline selected a nonzero candidate")
+    if method == "fixed2":
+        require(selected == 2 and scores is None and row.get("head_argmax") is None,
+                f"{label}: fixed2 must select index 2 without model scores or head prediction")
     patch = row.get("patch", {})
     require(patch.get("cursor") == step and patch.get("patched_frames") == 75
             and patch.get("last_execution_preview_frame") == step+55, f"{label}: native patch clock/horizon mismatch")
@@ -247,6 +250,10 @@ def audit_method(directory, method):
     close(interface.get("control_dt"), DT, f"{method}/control_dt", atol=1e-12)
     require(request.get("instruction") == result.get("instruction"), f"{method}: language instruction mismatch")
     identity = result.get("model_identity", {})
+    if method == "fixed2":
+        require(request.get("selector") is None and identity.get("fixed_candidate_index") == 2
+                and identity.get("selector") is None,
+                "fixed2: requires a fixed candidate-2 policy without a loaded selector")
     if method == "selector":
         require(identity.get("family") == "continuous" and identity.get("members") == 3
                 and bool(identity.get("comparison_head")) and isinstance(identity.get("checkpoint_sha256"), str)

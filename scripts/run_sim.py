@@ -28,7 +28,7 @@ def main():
     p.add_argument("--record-video", action="store_true", help="Record full 5Hz video; otherwise render only sensing/diagnostic frames")
     p.add_argument("--collection-config", type=Path)
     p.add_argument("--hard-reset", action="store_true", help="Rebuild PhysX before each diagnostic repeat")
-    p.add_argument("--method", choices=["direct", "random", "selector"], default="selector")
+    p.add_argument("--method", choices=["direct", "random", "selector", "fixed2"], default="selector")
     p.add_argument("--selector", type=Path)
     p.add_argument("--amplitude-m", type=float, default=.012)
     p.add_argument("--instruction", default="Place the red block into the green tray.")

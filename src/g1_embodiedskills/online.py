@@ -114,8 +114,8 @@ def run_closed_loop(wrapper, policy, request):
 
     env = wrapper.env
     method = str(getattr(request, "method", "selector"))
-    if method not in ("direct", "random", "selector"):
-        raise ValueError("method must be direct, random or selector")
+    if method not in ("direct", "random", "selector", "fixed2"):
+        raise ValueError("method must be direct, random, selector or fixed2")
     if not request.cameras:
         raise ValueError("Online evaluation requires the actual head RGB-D camera")
     repeats, seed_base = int(request.repeats), int(request.seed_base)
@@ -132,6 +132,8 @@ def run_closed_loop(wrapper, policy, request):
         raise ValueError("Episode budget must contain an integer number of ten-step decisions")
     if method == "selector" and not getattr(request, "selector", None):
         raise ValueError("selector method requires a trained selector bundle")
+    if method == "fixed2" and getattr(request, "selector", None):
+        raise ValueError("fixed2 must run without a learned selector bundle")
     output = Path(request.output)
     output.mkdir(parents=True, exist_ok=True)
     task_path = request.task or Path(request.reference) / "task.json"
@@ -152,6 +154,9 @@ def run_closed_loop(wrapper, policy, request):
     identity = {"selector": None, "model_scores": "not applicable: baseline has no loaded bundle"}
     if getattr(request, "selector", None):
         selector, visual_encoder, language_vector, identity = _load_predictor(request, device, instruction)
+    if method == "fixed2":
+        identity.update(fixed_candidate_index=2,
+                        selection_rule="Always select current feasible candidate index 2; no learned predictor")
     if device.type == "cuda":
         torch.cuda.reset_peak_memory_stats(device)
     cmd = env.command_manager.get_term("motion")
@@ -287,7 +292,7 @@ def run_closed_loop(wrapper, policy, request):
                     timings["selector"].append(selector_seconds)
                 for index, slot in enumerate(valid_slots):
                     candidates = proposals[slot]
-                    selected = (0 if method == "direct" else int(random_generators[slot].integers(5))
+                    selected = (2 if method == "fixed2" else 0 if method == "direct" else int(random_generators[slot].integers(5))
                                 if method == "random" else int(head_selected[index]))
                     native = candidates.native[selected]
                     encoded = encode_native(native)
