@@ -126,6 +126,7 @@ def generate_factor_candidates(
                 q = qbase.copy()
                 solver_rows.append({"fk_calls": 0, "total_evaluations": 0,
                                     "seed_projection_count": 0,
+                                    "velocity_infeasible_frames": 0,
                                     "baseline_reused_bitwise": True})
             else:
                 solved = solve_compensated_trajectory(
@@ -135,13 +136,16 @@ def generate_factor_candidates(
                     position_tolerance_m=min(.0004, max_position_error_m*.2),
                     orientation_tolerance_rad=min(.004, max_orientation_error_rad*.2),
                     regularization_weight_m=regularization_weight_m,
-                    max_evaluations=max_ik_evaluations)
+                    max_evaluations=max_ik_evaluations, fps=preview_fps,
+                    max_joint_speed_rad_s=max_joint_speed_rad_s,
+                    max_offset_speed_rad_s=max_offset_speed_rad_s)
                 q = solved.q.astype(qbase.dtype)
                 solver_rows.append({"fk_calls": solved.fk_calls,
                     "total_evaluations": int(solved.solver_evaluations.sum()),
                     "maximum_frame_evaluations": int(solved.solver_evaluations.max()),
                     "inner_tolerance_failed_frames": int((~solved.frame_passed).sum()),
                     "seed_projection_count": solved.seed_projection_count,
+                    "velocity_infeasible_frames": int((~solved.velocity_feasible).sum()),
                     "baseline_reused_bitwise": False})
             commands.append(NativeCommand(*(_readonly(value) for value in
                 (q, rootbase, quatbase, fingerbase))))
@@ -175,6 +179,8 @@ def generate_factor_candidates(
         for cell, (u, b) in enumerate(FACTOR_GRID):
             command = native[cell]
             reasons = []
+            if solver_rows[cell]["velocity_infeasible_frames"]:
+                reasons.append("velocity_constraint_intersection_infeasible")
             if fingerbase.min() < -1e-6 or fingerbase.max() > .035+1e-6:
                 reasons.append("finger_target_outside_gripper_limits")
             if minimum_margin[cell] < -1e-7:

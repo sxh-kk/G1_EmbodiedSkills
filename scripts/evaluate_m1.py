@@ -215,7 +215,7 @@ def run_phase(args, config, phase, methods, pipeline, resources, before, files):
             actual_hash = run["summary"]["model_identity"]["checkpoint_sha256"]
             require(actual_hash == sha256(checkpoint_for(args, method)), f"{method['id']}: checkpoint identity changed")
         row.update(status="complete", physical_audit_passed=True,
-                   audited_episodes=len(run["episodes"]), decisions=run["summary"].get("audited_decisions"))
+                   audited_episodes=len(run["episodes"]), decisions=run["summary"]["decisions"])
         runs[method["id"]] = run
         write_json(args.output/"pipeline.json", pipeline)
         # Deliberately print counts/identity only, not sealed outcomes.

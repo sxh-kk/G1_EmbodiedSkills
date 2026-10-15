@@ -1,0 +1,162 @@
+{
+  "schema": "g1_embodiedskills.m2_engineering_summary.v1",
+  "created_at": "2026-10-15T18:04:43.061372+08:00",
+  "physical_record_audit_passed": true,
+  "engineering_passed": false,
+  "body_definition": "D_b=[waist_b(t)-waist_b(anchor)]-[waist_0(t)-waist_0(anchor)], u=0, t=+.5s",
+  "direction_gate": "sign(b)*D_b > max(3*centered_R3_paired_noise, 1e-4 rad)",
+  "noise_definition": "sqrt(sum_r ||D_r-mean(D)||^2/(R-1)), R=3; same cohort/family/anchor only; missing is not zero",
+  "groups": [
+    {
+      "id": "seed-929000-anchor-480",
+      "condition": "low",
+      "family": "height",
+      "seed": 929000,
+      "anchor_step": 480,
+      "slot": 0,
+      "capsule_id": "low-anchor480-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8d62e66f178916f2d71e06f9000fc06c374ac7033731c710374b360e9e72f9fc",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.03,
+      "effective_amplitude_m": 0.00125,
+      "effective_body_pitch_rad": 0.00375,
+      "common_scale": 0.125,
+      "analysis_runs": 27,
+      "valid_analysis_runs": 27,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.0001589953899383545,
+            0.0001589953899383545,
+            0.0001589953899383545
+          ],
+          "first_pass_signed_response_rad": 0.0001589953899383545,
+          "centered_repeat_noise_rad": 0.0,
+          "direction_threshold_rad": 0.0001,
+          "first_pass_direction_correct_above_floor_and_noise": true,
+          "noise_reference_seed": 929000,
+          "noise_reference_condition": "low",
+          "noise_reference_amplitudes_match": true
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            0.0007879249751567841,
+            0.0007879249751567841,
+            0.0007879249751567841
+          ],
+          "first_pass_signed_response_rad": -0.0007879249751567841,
+          "centered_repeat_noise_rad": 0.0,
+          "direction_threshold_rad": 0.0001,
+          "first_pass_direction_correct_above_floor_and_noise": false,
+          "noise_reference_seed": 929000,
+          "noise_reference_condition": "low",
+          "noise_reference_amplitudes_match": true
+        }
+      ],
+      "both_body_directions_observed_above_noise": false
+    },
+    {
+      "id": "seed-929001-anchor-480",
+      "condition": "low",
+      "family": "height",
+      "seed": 929001,
+      "anchor_step": 480,
+      "slot": 1,
+      "capsule_id": "low-anchor480-batch0",
+      "accepted": true,
+      "rejections": [],
+      "cohort": "8d62e66f178916f2d71e06f9000fc06c374ac7033731c710374b360e9e72f9fc",
+      "candidate_feasible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "complete_feasible_grid": true,
+      "requested_amplitude_m": 0.01,
+      "requested_body_pitch_rad": 0.03,
+      "effective_amplitude_m": 0.00125,
+      "effective_body_pitch_rad": 0.00375,
+      "common_scale": 0.125,
+      "analysis_runs": 9,
+      "valid_analysis_runs": 9,
+      "signed_body_response_half_second": [
+        {
+          "body_index": 1,
+          "body_sign": 1,
+          "contrasts_rad": [
+            0.00024827197194099426,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.00024827197194099426,
+          "centered_repeat_noise_rad": 0.0,
+          "direction_threshold_rad": 0.0001,
+          "first_pass_direction_correct_above_floor_and_noise": true,
+          "noise_reference_seed": 929000,
+          "noise_reference_condition": "low",
+          "noise_reference_amplitudes_match": true
+        },
+        {
+          "body_index": 2,
+          "body_sign": -1,
+          "contrasts_rad": [
+            -0.0005465038120746613,
+            null,
+            null
+          ],
+          "first_pass_signed_response_rad": 0.0005465038120746613,
+          "centered_repeat_noise_rad": 0.0,
+          "direction_threshold_rad": 0.0001,
+          "first_pass_direction_correct_above_floor_and_noise": true,
+          "noise_reference_seed": 929000,
+          "noise_reference_condition": "low",
+          "noise_reference_amplitudes_match": true
+        }
+      ],
+      "both_body_directions_observed_above_noise": true
+    }
+  ],
+  "cost_totals": {
+    "attempted_anchors": 2,
+    "analysis_branches": 36,
+    "physical_total_slot_rollouts": 216,
+    "physical_padding_slot_rollouts": 162,
+    "physical_extra_active_companion_rollouts": 18,
+    "physical_active_branch_rows": 54
+  },
+  "runtime": {
+    "started_at": "2026-10-15T17:31:47.099276+08:00",
+    "finished_at": "2026-10-15T18:04:15.327231+08:00",
+    "wall_seconds": 1948.227284239998,
+    "source_changes": []
+  },
+  "gpu_sampled_peak_mib": 8143.0,
+  "pipeline_sha256": "0c1ac44264583dc3d927b485f2eef2cb1d0e312e645016fd769c0069e7b35468",
+  "manifest_sha256": "c69d0208fbc4e7423d81b39b16c11bd695412eaeaaec5cc4b519784788682cec",
+  "audit_sha256": "5f7693aa053777442fd5a3cbf852535cb7cef60d9503052a6389e17c959efabd",
+  "engineering_scope": "Two development anchors in low/480 only; body response not reliable in both directions for every anchor; formal collection not started"
+}
